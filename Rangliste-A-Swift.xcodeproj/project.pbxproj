@@ -7,13 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B104EB11B0C8CF000912681 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B104EB01B0C8CF000912681 /* UIImageExtensions.swift */; };
 		5B3C6A561B0B5A940099A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A551B0B5A940099A65C /* AppDelegate.swift */; };
-		5B3C6A581B0B5A940099A65C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A571B0B5A940099A65C /* FirstViewController.swift */; };
-		5B3C6A5A1B0B5A940099A65C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A591B0B5A940099A65C /* SecondViewController.swift */; };
 		5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A5B1B0B5A940099A65C /* Main.storyboard */; };
 		5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A5E1B0B5A940099A65C /* Images.xcassets */; };
 		5B3C6A621B0B5A940099A65C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A601B0B5A940099A65C /* LaunchScreen.xib */; };
 		5B3C6A6E1B0B5A940099A65C /* RangTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A6D1B0B5A940099A65C /* RangTests.swift */; };
+		5B3C6A7A1B0B625D0099A65C /* RegattaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A791B0B625D0099A65C /* RegattaListViewController.swift */; };
+		5B3C6A7C1B0B6D590099A65C /* RegattaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */; };
+		5B543E481B0BD74B000271BE /* RegattaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */; };
+		5BA4EC231B0DC5130031A042 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC221B0DC5130031A042 /* FontAwesome.swift */; };
+		5BA4EC251B0DC5590031A042 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4EC241B0DC5590031A042 /* FontAwesome.otf */; };
+		5BA4EC261B0DC5590031A042 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4EC241B0DC5590031A042 /* FontAwesome.otf */; };
+		5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
+		5BA4EC291B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
+		5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
+		5BA4EC2C1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
+		5BD1752C1B14A44D00C7F5EB /* RankingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */; };
+		5BD1752E1B14A6F600C7F5EB /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */; };
+		5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */; };
+		5BD175321B14CD7A00C7F5EB /* RankingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +40,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B3C6A501B0B5A940099A65C /* Rang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rang.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B104EB01B0C8CF000912681 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rangliste-A-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3C6A541B0B5A940099A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B3C6A551B0B5A940099A65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B3C6A571B0B5A940099A65C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		5B3C6A591B0B5A940099A65C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5B3C6A5C1B0B5A940099A65C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B3C6A5E1B0B5A940099A65C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5B3C6A611B0B5A940099A65C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5B3C6A671B0B5A940099A65C /* RangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3C6A671B0B5A940099A65C /* Rangliste-A-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rangliste-A-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3C6A6C1B0B5A940099A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B3C6A6D1B0B5A940099A65C /* RangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangTests.swift; sourceTree = "<group>"; };
+		5B3C6A791B0B625D0099A65C /* RegattaListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegattaListViewController.swift; sourceTree = "<group>"; };
+		5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegattaListCell.swift; sourceTree = "<group>"; };
+		5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegattaDetailViewController.swift; sourceTree = "<group>"; };
+		5BA4EC221B0DC5130031A042 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		5BA4EC241B0DC5590031A042 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = ../../../Downloads/FontAwesome.otf; sourceTree = "<group>"; };
+		5BA4EC271B0DDA2B0031A042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDataProvider.swift; sourceTree = "<group>"; };
+		5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingListViewController.swift; sourceTree = "<group>"; };
+		5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingEntry.swift; sourceTree = "<group>"; };
+		5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +93,8 @@
 		5B3C6A511B0B5A940099A65C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5B3C6A501B0B5A940099A65C /* Rang.app */,
-				5B3C6A671B0B5A940099A65C /* RangTests.xctest */,
+				5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */,
+				5B3C6A671B0B5A940099A65C /* Rangliste-A-SwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,11 +103,21 @@
 			isa = PBXGroup;
 			children = (
 				5B3C6A551B0B5A940099A65C /* AppDelegate.swift */,
-				5B3C6A571B0B5A940099A65C /* FirstViewController.swift */,
-				5B3C6A591B0B5A940099A65C /* SecondViewController.swift */,
+				5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */,
+				5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */,
+				5BA4EC271B0DDA2B0031A042 /* Constants.swift */,
+				5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */,
+				5BA4EC241B0DC5590031A042 /* FontAwesome.otf */,
+				5B3C6A791B0B625D0099A65C /* RegattaListViewController.swift */,
+				5BA4EC221B0DC5130031A042 /* FontAwesome.swift */,
+				5B104EB01B0C8CF000912681 /* UIImageExtensions.swift */,
+				5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */,
+				5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */,
+				5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */,
 				5B3C6A5B1B0B5A940099A65C /* Main.storyboard */,
 				5B3C6A5E1B0B5A940099A65C /* Images.xcassets */,
 				5B3C6A601B0B5A940099A65C /* LaunchScreen.xib */,
+				5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */,
 				5B3C6A531B0B5A940099A65C /* Supporting Files */,
 			);
 			path = Rang;
@@ -118,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5B3C6A4F1B0B5A940099A65C /* Rang */ = {
+		5B3C6A4F1B0B5A940099A65C /* Rangliste-A-Swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B3C6A711B0B5A940099A65C /* Build configuration list for PBXNativeTarget "Rang" */;
+			buildConfigurationList = 5B3C6A711B0B5A940099A65C /* Build configuration list for PBXNativeTarget "Rangliste-A-Swift" */;
 			buildPhases = (
 				5B3C6A4C1B0B5A940099A65C /* Sources */,
 				5B3C6A4D1B0B5A940099A65C /* Frameworks */,
@@ -130,14 +163,14 @@
 			);
 			dependencies = (
 			);
-			name = Rang;
+			name = "Rangliste-A-Swift";
 			productName = Rang;
-			productReference = 5B3C6A501B0B5A940099A65C /* Rang.app */;
+			productReference = 5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5B3C6A661B0B5A940099A65C /* RangTests */ = {
+		5B3C6A661B0B5A940099A65C /* Rangliste-A-SwiftTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B3C6A741B0B5A940099A65C /* Build configuration list for PBXNativeTarget "RangTests" */;
+			buildConfigurationList = 5B3C6A741B0B5A940099A65C /* Build configuration list for PBXNativeTarget "Rangliste-A-SwiftTests" */;
 			buildPhases = (
 				5B3C6A631B0B5A940099A65C /* Sources */,
 				5B3C6A641B0B5A940099A65C /* Frameworks */,
@@ -148,9 +181,9 @@
 			dependencies = (
 				5B3C6A691B0B5A940099A65C /* PBXTargetDependency */,
 			);
-			name = RangTests;
+			name = "Rangliste-A-SwiftTests";
 			productName = RangTests;
-			productReference = 5B3C6A671B0B5A940099A65C /* RangTests.xctest */;
+			productReference = 5B3C6A671B0B5A940099A65C /* Rangliste-A-SwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -171,7 +204,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5B3C6A4B1B0B5A940099A65C /* Build configuration list for PBXProject "Rang" */;
+			buildConfigurationList = 5B3C6A4B1B0B5A940099A65C /* Build configuration list for PBXProject "Rangliste-A-Swift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -184,8 +217,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B3C6A4F1B0B5A940099A65C /* Rang */,
-				5B3C6A661B0B5A940099A65C /* RangTests */,
+				5B3C6A4F1B0B5A940099A65C /* Rangliste-A-Swift */,
+				5B3C6A661B0B5A940099A65C /* Rangliste-A-SwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -197,6 +230,7 @@
 			files = (
 				5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */,
 				5B3C6A621B0B5A940099A65C /* LaunchScreen.xib in Resources */,
+				5BA4EC251B0DC5590031A042 /* FontAwesome.otf in Resources */,
 				5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA4EC261B0DC5590031A042 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +250,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3C6A5A1B0B5A940099A65C /* SecondViewController.swift in Sources */,
+				5B3C6A7C1B0B6D590099A65C /* RegattaListCell.swift in Sources */,
 				5B3C6A561B0B5A940099A65C /* AppDelegate.swift in Sources */,
-				5B3C6A581B0B5A940099A65C /* FirstViewController.swift in Sources */,
+				5BD1752C1B14A44D00C7F5EB /* RankingListViewController.swift in Sources */,
+				5BD1752E1B14A6F600C7F5EB /* Fetcher.swift in Sources */,
+				5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */,
+				5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */,
+				5B104EB11B0C8CF000912681 /* UIImageExtensions.swift in Sources */,
+				5B543E481B0BD74B000271BE /* RegattaDetailViewController.swift in Sources */,
+				5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */,
+				5BA4EC231B0DC5130031A042 /* FontAwesome.swift in Sources */,
+				5BD175321B14CD7A00C7F5EB /* RankingListCell.swift in Sources */,
+				5B3C6A7A1B0B625D0099A65C /* RegattaListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B3C6A6E1B0B5A940099A65C /* RangTests.swift in Sources */,
+				5BA4EC291B0DDA2B0031A042 /* Constants.swift in Sources */,
+				5BA4EC2C1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +280,7 @@
 /* Begin PBXTargetDependency section */
 		5B3C6A691B0B5A940099A65C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5B3C6A4F1B0B5A940099A65C /* Rang */;
+			target = 5B3C6A4F1B0B5A940099A65C /* Rangliste-A-Swift */;
 			targetProxy = 5B3C6A681B0B5A940099A65C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -348,7 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Rang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Rangliste-A-Swift";
 			};
 			name = Debug;
 		};
@@ -358,7 +404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Rang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Rangliste-A-Swift";
 			};
 			name = Release;
 		};
@@ -399,7 +445,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5B3C6A4B1B0B5A940099A65C /* Build configuration list for PBXProject "Rang" */ = {
+		5B3C6A4B1B0B5A940099A65C /* Build configuration list for PBXProject "Rangliste-A-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B3C6A6F1B0B5A940099A65C /* Debug */,
@@ -408,21 +454,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5B3C6A711B0B5A940099A65C /* Build configuration list for PBXNativeTarget "Rang" */ = {
+		5B3C6A711B0B5A940099A65C /* Build configuration list for PBXNativeTarget "Rangliste-A-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B3C6A721B0B5A940099A65C /* Debug */,
 				5B3C6A731B0B5A940099A65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		5B3C6A741B0B5A940099A65C /* Build configuration list for PBXNativeTarget "RangTests" */ = {
+		5B3C6A741B0B5A940099A65C /* Build configuration list for PBXNativeTarget "Rangliste-A-SwiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B3C6A751B0B5A940099A65C /* Debug */,
 				5B3C6A761B0B5A940099A65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
