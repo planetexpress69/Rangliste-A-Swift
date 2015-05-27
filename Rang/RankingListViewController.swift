@@ -26,8 +26,17 @@ class RankingListViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner!)
 
-        let reloadButton = UIBarButtonItem(title: "Reload", style: UIBarButtonItemStyle.Plain, target: self, action: "loadWrapper")
-        self.navigationItem.rightBarButtonItem = reloadButton
+        let reloadButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(FontAwesome.Refresh),
+            style: UIBarButtonItemStyle.Plain,
+            target: self,
+            action: "loadWrapper")
+        var attrs = [
+            NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        reloadButton.setTitleTextAttributes(attrs, forState: .Normal)
+        navigationItem.rightBarButtonItem = reloadButton
+
         title = "Rangliste"
     }
 

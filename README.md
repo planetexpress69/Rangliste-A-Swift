@@ -15,6 +15,7 @@ Dependencies
 --------------------------------------
 
 Code to display the ranking list depends on a JSON file at dodv.org - courtesy of [Franke Renkes](mailto:frank@renkes.de).
+I am using FontAwesome.otf along with [FontAwesome.swift](https://github.com/thii/FontAwesome.swift) - courtesy of Doan Truong Thi) to iconify the app.
 
 
 Questions?

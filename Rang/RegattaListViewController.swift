@@ -17,6 +17,19 @@ class RegattaListViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = true
         title = "Deine Regatten"
         navigationItem.leftBarButtonItem = editButtonItem()
+
+        var addButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(FontAwesome.PlusCircle),
+            style: UIBarButtonItemStyle.Plain,
+            target: self,
+            action: "addRegatta:")
+        var attrs = [
+            NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        addButton.setTitleTextAttributes(attrs, forState: .Normal)
+        navigationItem.rightBarButtonItem = addButton
+
+
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "",
             style: .Plain,
@@ -168,6 +181,10 @@ class RegattaListViewController: UITableViewController {
     // ---------------------------------------------------------------------------------------------
     func calcTotalPoins() -> Float {
         return 99.999
+    }
+
+    @IBAction func addRegatta(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("addSegue", sender: nil)
     }
 
 }

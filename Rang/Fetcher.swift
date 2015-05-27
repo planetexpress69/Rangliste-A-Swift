@@ -13,9 +13,8 @@ class Fetcher {
 
     func load(completion: (([RankingEntry]) -> Void)!) {
 
-        var urlString = "http://www.teambender.de/scrape.php"
-
         let session = NSURLSession.sharedSession()
+        let urlString = "http://www.teambender.de/scrape.php"
         let url = NSURL(string: urlString)
 
         var task = session.dataTaskWithURL(url!) {
@@ -49,8 +48,6 @@ class Fetcher {
                 }
             }
         }
-
         task.resume()
     }
-
 }

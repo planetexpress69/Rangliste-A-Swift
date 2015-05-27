@@ -71,13 +71,13 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             target: self,
             action: "toggleEdit:")
         var attrs = [
-            NSFontAttributeName : UIFont.fontAwesomeOfSize(24),
+            NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
         editButton.setTitleTextAttributes(attrs, forState: .Normal)
         navigationItem.rightBarButtonItem = editButton
 
-        threeDaysButton.titleLabel?.font = UIFont.fontAwesomeOfSize(24)
+        threeDaysButton.titleLabel?.font = UIFont.fontAwesomeOfSize(20)
         threeDaysButton.setTitle(String.fontAwesomeIconWithName(.CheckSquareO),
             forState: UIControlState.Normal)
         threeDaysButton.setTitleColor(Constants.Colors.darkBlue,
@@ -203,7 +203,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                 target: self,
                 action: "toggleEdit:")
             var attrs = [
-                NSFontAttributeName : UIFont.fontAwesomeOfSize(24),
+                NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
                 NSForegroundColorAttributeName: UIColor.whiteColor()
             ]
             editButton.setTitleTextAttributes(attrs, forState: .Normal)
@@ -234,7 +234,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                 target: self,
                 action: "toggleEdit:")
             var attrs = [
-                NSFontAttributeName : UIFont.fontAwesomeOfSize(24),
+                NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
                 NSForegroundColorAttributeName: UIColor.whiteColor()
             ]
             editButton.setTitleTextAttributes(attrs, forState: .Normal)
