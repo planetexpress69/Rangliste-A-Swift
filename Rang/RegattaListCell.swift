@@ -29,7 +29,7 @@ class RegattaListCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if (selected) {
+        if selected {
             regattaNameLabel?.textColor = UIColor.whiteColor()
             regattaFactorLabel?.textColor = UIColor.whiteColor()
             pointsLabel?.textColor = UIColor.whiteColor()
@@ -46,7 +46,7 @@ class RegattaListCell: UITableViewCell {
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         
-        if (highlighted) {
+        if highlighted {
             regattaNameLabel?.textColor = UIColor.whiteColor()
             regattaFactorLabel?.textColor = UIColor.whiteColor()
             pointsLabel?.textColor = UIColor.whiteColor()

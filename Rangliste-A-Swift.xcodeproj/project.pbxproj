@@ -16,10 +16,9 @@
 		5B3C6A7A1B0B625D0099A65C /* RegattaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A791B0B625D0099A65C /* RegattaListViewController.swift */; };
 		5B3C6A7C1B0B6D590099A65C /* RegattaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */; };
 		5B543E481B0BD74B000271BE /* RegattaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */; };
-		5B71DE4C1B1597DF009B607B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5B71DE4B1B1597DF009B607B /* README.md */; };
+		5B71DE4D1B15B38C009B607B /* RankingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */; };
 		5BA4EC231B0DC5130031A042 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC221B0DC5130031A042 /* FontAwesome.swift */; };
 		5BA4EC251B0DC5590031A042 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4EC241B0DC5590031A042 /* FontAwesome.otf */; };
-		5BA4EC261B0DC5590031A042 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4EC241B0DC5590031A042 /* FontAwesome.otf */; };
 		5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
 		5BA4EC291B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
 		5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
@@ -242,7 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BA4EC261B0DC5590031A042 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +255,6 @@
 				5B3C6A561B0B5A940099A65C /* AppDelegate.swift in Sources */,
 				5BD1752C1B14A44D00C7F5EB /* RankingListViewController.swift in Sources */,
 				5BD1752E1B14A6F600C7F5EB /* Fetcher.swift in Sources */,
-				5B71DE4C1B1597DF009B607B /* README.md in Sources */,
 				5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */,
 				5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */,
 				5B104EB11B0C8CF000912681 /* UIImageExtensions.swift in Sources */,
@@ -276,6 +273,7 @@
 				5B3C6A6E1B0B5A940099A65C /* RangTests.swift in Sources */,
 				5BA4EC291B0DDA2B0031A042 /* Constants.swift in Sources */,
 				5BA4EC2C1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */,
+				5B71DE4D1B15B38C009B607B /* RankingEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +423,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = RangTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rang.app/Rang";
@@ -440,6 +439,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = RangTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rang.app/Rang";

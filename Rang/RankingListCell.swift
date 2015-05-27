@@ -15,6 +15,7 @@ class RankingListCell: UITableViewCell {
     @IBOutlet weak var pointsLabel: UILabel?
     @IBOutlet weak var posLabel: UILabel?
     @IBOutlet weak var sailLabel: UILabel?
+    @IBOutlet weak var clubLabel: UILabel?
 
     // ---------------------------------------------------------------------------------------------
     override func awakeFromNib() {
@@ -25,24 +26,27 @@ class RankingListCell: UITableViewCell {
         pointsLabel?.textColor = Constants.Colors.darkBlue
         posLabel?.textColor = Constants.Colors.darkBlue
         sailLabel?.textColor = Constants.Colors.darkBlue
+        clubLabel?.textColor = Constants.Colors.darkBlue
     }
 
     // ---------------------------------------------------------------------------------------------
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if (selected) {
+        if selected {
             nameLabel?.textColor = UIColor.whiteColor()
             yobLabel?.textColor = UIColor.whiteColor()
             pointsLabel?.textColor = UIColor.whiteColor()
             posLabel?.textColor = UIColor.whiteColor()
             sailLabel?.textColor = UIColor.whiteColor()
+            clubLabel?.textColor = UIColor.whiteColor()
         } else {
             nameLabel?.textColor = Constants.Colors.darkBlue
             yobLabel?.textColor = Constants.Colors.darkBlue
             pointsLabel?.textColor = Constants.Colors.darkBlue
             posLabel?.textColor = Constants.Colors.darkBlue
             sailLabel?.textColor = Constants.Colors.darkBlue
+            clubLabel?.textColor = Constants.Colors.darkBlue
         }
     }
 
@@ -50,7 +54,7 @@ class RankingListCell: UITableViewCell {
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
 
-        if (highlighted) {
+        if highlighted {
             nameLabel?.textColor = UIColor.whiteColor()
             yobLabel?.textColor = UIColor.whiteColor()
             pointsLabel?.textColor = UIColor.whiteColor()

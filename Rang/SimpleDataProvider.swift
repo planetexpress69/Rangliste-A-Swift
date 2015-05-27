@@ -8,26 +8,26 @@
 
 import Foundation
 
-class SimpleDataProvider {
+let kArrayKey = "storedDataArray"
 
-    var kArrayKey = "storedDataArray"
+class SimpleDataProvider {
 
     var dataStorageArray: Array<Dictionary<String, AnyObject>>
 
     class var sharedInstance: SimpleDataProvider {
         struct Static {
-            //static var onceToken: dispatch_once_t = 0
+            static var onceToken: dispatch_once_t = 0
             static var instance: SimpleDataProvider? = nil
         }
-        //dispatch_once(&Static.onceToken) {
+        dispatch_once(&Static.onceToken) {
             Static.instance = SimpleDataProvider()
-        //}
+        }
         return Static.instance!
     }
 
     init() {
         var userdefaults = NSUserDefaults.standardUserDefaults()
-        if ((userdefaults.objectForKey(kArrayKey)) != nil) {
+        if userdefaults.objectForKey(kArrayKey) != nil {
             dataStorageArray = userdefaults.objectForKey(kArrayKey) as! Array
         } else {
             dataStorageArray = []

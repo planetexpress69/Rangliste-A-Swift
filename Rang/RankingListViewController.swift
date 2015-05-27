@@ -56,6 +56,8 @@ class RankingListViewController: UITableViewController {
     //MARK: - Data loading wrapper
     // ---------------------------------------------------------------------------------------------
     func loadWrapper() {
+        self.rankingEntries = []
+        tableView.reloadData()
         self.navigationItem.rightBarButtonItem?.enabled = false
         spinner.startAnimating()
         self.rankingEntries = []
@@ -70,7 +72,6 @@ class RankingListViewController: UITableViewController {
         spinner?.stopAnimating()
         self.rankingEntries = rankingEntries
         tableView.reloadData()
-
     }
 
 
@@ -95,6 +96,7 @@ class RankingListViewController: UITableViewController {
         cell.posLabel?.text = "\(rankingEntries[indexPath.row].pos)"
         cell.yobLabel?.text = "\(rankingEntries[indexPath.row].yob)"
         cell.sailLabel?.text = "\(rankingEntries[indexPath.row].sailCountry) \((rankingEntries[indexPath.row].sailNumber))"
+        cell.clubLabel?.text = "\(rankingEntries[indexPath.row].club)"
 
         let selectedBackgroundView = UIView(frame: cell.frame)
         selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
