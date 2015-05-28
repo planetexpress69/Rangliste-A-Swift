@@ -90,6 +90,7 @@ class RankingListViewController: UITableViewController {
 
     // ---------------------------------------------------------------------------------------------
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCellWithIdentifier("RankingListCell", forIndexPath: indexPath) as! RankingListCell
         cell.nameLabel?.text = "\(rankingEntries[indexPath.row].firstname) \(rankingEntries[indexPath.row].name)"
         cell.pointsLabel?.text = NSString(format: "%.3f", locale: NSLocale.currentLocale(), rankingEntries[indexPath.row].totalPoints as Float) as String
@@ -103,6 +104,7 @@ class RankingListViewController: UITableViewController {
         cell.selectedBackgroundView = selectedBackgroundView
 
         return cell
+
     }
 
     /*

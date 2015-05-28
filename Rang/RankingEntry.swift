@@ -19,6 +19,8 @@ class RankingEntry {
     var totalPoints: Float!
     var pos: Int!
 
+    // MARK: - Init
+    // ---------------------------------------------------------------------------------------------
     init(data: NSDictionary) {
         self.firstname      = getStringFromJSON(data, key: "firstname")
         self.name           = getStringFromJSON(data, key: "name")
@@ -30,6 +32,8 @@ class RankingEntry {
         self.pos            = getIntFromJSON(data, key: "pos")
     }
 
+    // MARK: - Init
+    // ---------------------------------------------------------------------------------------------
     func getStringFromJSON(data: NSDictionary, key: String) -> String {
         if let info = data[key] as? String {
             return info
@@ -37,6 +41,8 @@ class RankingEntry {
         return ""
     }
 
+    // MARK: - Typesafe data extraction
+    // ---------------------------------------------------------------------------------------------
     func getFloatFromJSON(data: NSDictionary, key: String) -> Float {
         if let info = data[key] as? Float {
             return info
@@ -44,6 +50,7 @@ class RankingEntry {
         return 0.0
     }
 
+    // ---------------------------------------------------------------------------------------------
     func getIntFromJSON(data: NSDictionary, key: String) -> Int {
         if let info = data[key] as? Int {
             return info

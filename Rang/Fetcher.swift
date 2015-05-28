@@ -11,25 +11,41 @@ import Foundation
 
 class Fetcher {
 
+    // MARK: - Load data
+    // ---------------------------------------------------------------------------------------------
     func load(completion: (([RankingEntry]) -> Void)!) {
 
         let session = NSURLSession.sharedSession()
         let urlString = "http://www.teambender.de/scrape.php"
         let url = NSURL(string: urlString)
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+
 
         var task = session.dataTaskWithURL(url!) {
             (data, response, error) -> Void in
 
             if error != nil {
-                println(error.localizedDescription)
+
+                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion([]) // simply returning an empty array
+                    }
+                }
+
             }
             else {
                 var parsingError: NSError?
 
-                var rankingData = NSJSONSerialization.JSONObjectWithData(
+                var rankingData = []
+
+                if let gottenData: AnyObject = NSJSONSerialization.JSONObjectWithData(
                     data,
                     options: NSJSONReadingOptions.AllowFragments,
-                    error: &parsingError) as! NSArray
+                    error: &parsingError) {
+
+                        rankingData = gottenData as! NSArray
+
+                }
 
                 var rankingEntries = [RankingEntry]()
 
@@ -40,9 +56,9 @@ class Fetcher {
                     }
                 }
 
-                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
                 dispatch_async(dispatch_get_global_queue(priority, 0)) {
                     dispatch_async(dispatch_get_main_queue()) {
+                        println("Beep!");
                         completion(rankingEntries)
                     }
                 }
