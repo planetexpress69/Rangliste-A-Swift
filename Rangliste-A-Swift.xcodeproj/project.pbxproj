@@ -398,7 +398,7 @@
 				INFOPLIST_FILE = Rang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "f0a7a18c-c08a-42e9-b76d-0c57ff714ca5";
+				PROVISIONING_PROFILE = "b50fc6af-efff-41cc-a832-6e92acbc5c38";
 			};
 			name = Debug;
 		};
@@ -411,7 +411,7 @@
 				INFOPLIST_FILE = Rang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "f0a7a18c-c08a-42e9-b76d-0c57ff714ca5";
+				PROVISIONING_PROFILE = "b50fc6af-efff-41cc-a832-6e92acbc5c38";
 			};
 			name = Release;
 		};
