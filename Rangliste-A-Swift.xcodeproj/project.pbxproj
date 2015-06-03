@@ -435,7 +435,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rang.app/Rang";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rangliste-A-Swift.app/Rangliste-A-Swift";
 			};
 			name = Debug;
 		};
@@ -451,7 +451,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rang.app/Rang";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rangliste-A-Swift.app/Rangliste-A-Swift";
 			};
 			name = Release;
 		};
