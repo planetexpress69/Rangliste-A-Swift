@@ -674,7 +674,7 @@ public extension UIImage {
         return image
     }
 
-    private class func sizeOfAttributeString(str: NSAttributedString, maxWidth: CGFloat) -> CGSize {
+    public class func sizeOfAttributeString(str: NSAttributedString, maxWidth: CGFloat) -> CGSize {
         let size = str.boundingRectWithSize(CGSizeMake(maxWidth, 1000), options:(NSStringDrawingOptions.UsesLineFragmentOrigin), context:nil).size
         return size
     }

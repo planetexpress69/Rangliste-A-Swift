@@ -43,7 +43,9 @@ class RankingListViewController: UITableViewController {
     // ---------------------------------------------------------------------------------------------
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        loadWrapper()
+        if self.rankingEntries.count == 0 {
+            loadWrapper()
+        }
     }
 
     // ---------------------------------------------------------------------------------------------
