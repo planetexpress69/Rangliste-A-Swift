@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RankingListViewController: UITableViewController, UISearchResultsUpdating {
+class RankingListViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
     var spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
     var rankingEntries: [RankingEntry] = [RankingEntry]()
@@ -39,7 +39,10 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating 
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
+            controller.hidesNavigationBarDuringPresentation = false
+            controller.searchBar.prompt = "Results"
             controller.searchBar.sizeToFit()
+            controller.searchBar.delegate = self
 
             self.tableView.tableHeaderView = controller.searchBar
 
@@ -47,6 +50,8 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating 
         })()
 
         title = "Rangliste"
+
+        self.tableView.setContentOffset(CGPointMake (0, resultSearchController.searchBar.frame.size.height), animated: true)
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -82,6 +87,8 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating 
         spinner?.stopAnimating()
         self.rankingEntries = rankingEntries
         tableView.reloadData()
+        self.resultSearchController.searchBar.prompt = self.rankingEntries.count == 1 ? "\(self.rankingEntries.count) result" : "\(self.rankingEntries.count) results"
+
     }
 
 
@@ -114,11 +121,9 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating 
             cell.yobLabel?.text = "\(filteredRankingEntries[indexPath.row].yob)"
             cell.sailLabel?.text = "\(filteredRankingEntries[indexPath.row].sailCountry) \((filteredRankingEntries[indexPath.row].sailNumber))"
             cell.clubLabel?.text = "\(filteredRankingEntries[indexPath.row].club)"
-
             let selectedBackgroundView = UIView(frame: cell.frame)
             selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
             cell.selectedBackgroundView = selectedBackgroundView
-
         }
         else {
             cell.nameLabel?.text = "\(rankingEntries[indexPath.row].firstname) \(rankingEntries[indexPath.row].name)"
@@ -127,27 +132,35 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating 
             cell.yobLabel?.text = "\(rankingEntries[indexPath.row].yob)"
             cell.sailLabel?.text = "\(rankingEntries[indexPath.row].sailCountry) \((rankingEntries[indexPath.row].sailNumber))"
             cell.clubLabel?.text = "\(rankingEntries[indexPath.row].club)"
-
             let selectedBackgroundView = UIView(frame: cell.frame)
             selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
             cell.selectedBackgroundView = selectedBackgroundView
         }
-
         return cell
-
     }
 
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
         filteredRankingEntries.removeAll(keepCapacity: false)
-
-        let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@", searchController.searchBar.text)
+        let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR firstname CONTAINS[c] %@ OR yob CONTAINS[c] %@ OR club CONTAINS[c] %@ OR sailNumber CONTAINS[c] %@",
+            searchController.searchBar.text,
+            searchController.searchBar.text,
+            searchController.searchBar.text,
+            searchController.searchBar.text,
+            searchController.searchBar.text
+        )
         let array = (rankingEntries as NSArray).filteredArrayUsingPredicate(searchPredicate)
         filteredRankingEntries = array as! [RankingEntry]
-
         self.tableView.reloadData()
+        if self.resultSearchController.active {
+            searchController.searchBar.prompt = self.filteredRankingEntries.count == 1 ? "\(self.filteredRankingEntries.count) result" : "\(self.filteredRankingEntries.count) results"
+        }
+        else {
+            searchController.searchBar.prompt = self.rankingEntries.count == 1 ? "\(self.rankingEntries.count) result" : "\(self.rankingEntries.count) results"
+        }
+
     }
-    
+
     /*
     // MARK: - Navigation
 
