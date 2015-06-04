@@ -397,6 +397,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 3;
 				INFOPLIST_FILE = Rang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
 				PROVISIONING_PROFILE = "b50fc6af-efff-41cc-a832-6e92acbc5c38";
@@ -412,6 +413,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				CURRENT_PROJECT_VERSION = 3;
 				INFOPLIST_FILE = Rang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
 				PROVISIONING_PROFILE = "b50fc6af-efff-41cc-a832-6e92acbc5c38";

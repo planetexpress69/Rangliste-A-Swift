@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RankingEntry {
+class RankingEntry : NSObject {
 
     var firstname: String!
     var name: String!
@@ -22,6 +22,7 @@ class RankingEntry {
     // MARK: - Init
     // ---------------------------------------------------------------------------------------------
     init(data: NSDictionary) {
+        super.init()
         self.firstname      = getStringFromJSON(data, key: "firstname")
         self.name           = getStringFromJSON(data, key: "name")
         self.yob            = getStringFromJSON(data, key: "yob")
