@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
         application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+            BITHockeyManager.sharedHockeyManager().configureWithIdentifier("39213a77b0b123c2dc63279898d6becf")
+            // Configure the SDK in here only!
+            BITHockeyManager.sharedHockeyManager().startManager()
+            BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation() // This line is obsolete in the crash only build
 
             UIApplication.sharedApplication().statusBarStyle = .LightContent
             var navigationBarAppearace = UINavigationBar.appearance()
