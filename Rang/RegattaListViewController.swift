@@ -18,7 +18,8 @@ class RegattaListViewController: UITableViewController {
         title = "Deine Regatten"
         navigationItem.leftBarButtonItem = editButtonItem()
 
-        var addButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(FontAwesome.PlusCircle),
+        var addButton = UIBarButtonItem(
+            title: String.fontAwesomeIconWithName(.PlusCircle),
             style: UIBarButtonItemStyle.Plain,
             target: self,
             action: "addRegatta:")
@@ -36,6 +37,18 @@ class RegattaListViewController: UITableViewController {
             target:
             nil,
             action: nil)
+
+        tableView.backgroundColor = Constants.Colors.darkBlue
+
+        var navigationBar = self.navigationController?.navigationBar
+        navigationBar?.hideBottomHairline()
+
+/*
+        var navigationBar = self.navigationController?.navigationBar
+        navigationBar?.setBackgroundImage(
+            UIImage.imageWithColor(Constants.Colors.darkBlue),
+            forBarMetrics: UIBarMetrics.Default)
+        navigationBar?.shadowImage = UIImage() */
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -74,23 +87,23 @@ class RegattaListViewController: UITableViewController {
         var selectedBackgroundView = UIView(frame: CGRectMake(0, 0, 320, 100))
         selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
         cell.selectedBackgroundView = selectedBackgroundView
-        cell.regattaNameLabel!.text = listOfRegattas[indexPath.row]["name"] as? String
+        cell.regattaNameLabel!.text = listOfRegattas[indexPath.row]["title"] as? String
 
         cell.pointsLabel!.text = NSString(
             format: "%.3f",
             locale: NSLocale.currentLocale(),
-            calcPoints()
+            listOfRegattas[indexPath.row]["score"] as! Float
             ) as String
         cell.regattaFactorLabel!.text = NSString(
             format: "%d",
             locale: NSLocale.currentLocale(),
-            listOfRegattas[indexPath.row]["numberOfRaces"] as! Int
+            listOfRegattas[indexPath.row]["races"] as! Int
             ) as String
         cell.positionLabel!.text = NSString(
             format: "%d/%d",
             locale: NSLocale.currentLocale(),
-            listOfRegattas[indexPath.row]["position"] as! Int,
-            listOfRegattas[indexPath.row]["numberOfTimedBoats"] as! Int
+            listOfRegattas[indexPath.row]["pos"] as! Int,
+            listOfRegattas[indexPath.row]["field"] as! Int
             ) as String
         return cell
     }
@@ -161,7 +174,8 @@ class RegattaListViewController: UITableViewController {
         headerLabel.font = UIFont(
             name: "HelveticaNeue-Bold",
             size: 72)
-        headerLabel.textColor = Constants.Colors.darkBlue
+        headerLabel.textColor = UIColor.whiteColor()
+        headerLabel.backgroundColor = Constants.Colors.darkBlue
         headerLabel.text = NSString(
             format: "%.3f",
             locale: NSLocale.currentLocale(),

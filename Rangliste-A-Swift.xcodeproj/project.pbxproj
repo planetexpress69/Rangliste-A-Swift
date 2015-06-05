@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B104EB11B0C8CF000912681 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B104EB01B0C8CF000912681 /* UIImageExtensions.swift */; };
+		5B104EB11B0C8CF000912681 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B104EB01B0C8CF000912681 /* UIKitExtensions.swift */; };
 		5B3C6A561B0B5A940099A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A551B0B5A940099A65C /* AppDelegate.swift */; };
 		5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A5B1B0B5A940099A65C /* Main.storyboard */; };
 		5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A5E1B0B5A940099A65C /* Images.xcassets */; };
@@ -22,6 +22,7 @@
 		5BA4EC291B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
 		5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
 		5BA4EC2C1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
+		5BAFD8611B2198C9002654F0 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8601B2198C9002654F0 /* sample.json */; };
 		5BCA48691B20919500E51362 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48681B20919500E51362 /* AssetsLibrary.framework */; };
 		5BCA486D1B2091B900E51362 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486A1B2091B900E51362 /* CoreGraphics.framework */; };
 		5BCA486E1B2091B900E51362 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486B1B2091B900E51362 /* CoreText.framework */; };
@@ -51,7 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B104EB01B0C8CF000912681 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		5B104EB01B0C8CF000912681 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rangliste-A-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3C6A541B0B5A940099A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B3C6A551B0B5A940099A65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		5BA4EC221B0DC5130031A042 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		5BA4EC271B0DDA2B0031A042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDataProvider.swift; sourceTree = "<group>"; };
+		5BAFD8601B2198C9002654F0 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		5BCA48681B20919500E51362 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5BCA486A1B2091B900E51362 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BCA486B1B2091B900E51362 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD6EAF41B209F100078EB0D /* aRegattas.json */,
+				5BAFD8601B2198C9002654F0 /* sample.json */,
 				5BCA48761B20928200E51362 /* HockeySDK.embeddedframework */,
 				5BCA48701B2091D000E51362 /* QuartzCore.framework */,
 				5BCA48711B2091D000E51362 /* QuickLook.framework */,
@@ -152,7 +155,7 @@
 				5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */,
 				5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */,
 				5BA4EC221B0DC5130031A042 /* FontAwesome.swift */,
-				5B104EB01B0C8CF000912681 /* UIImageExtensions.swift */,
+				5B104EB01B0C8CF000912681 /* UIKitExtensions.swift */,
 				5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */,
 				5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */,
 				5B3C6A5B1B0B5A940099A65C /* Main.storyboard */,
@@ -294,6 +297,7 @@
 				5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */,
 				5BD6EAF51B209F100078EB0D /* aRegattas.json in Resources */,
 				5B3C6A621B0B5A940099A65C /* LaunchScreen.xib in Resources */,
+				5BAFD8611B2198C9002654F0 /* sample.json in Resources */,
 				5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */,
 				5BCA487D1B20928200E51362 /* HockeySDKResources.bundle in Resources */,
 			);
@@ -319,7 +323,7 @@
 				5BD1752E1B14A6F600C7F5EB /* Fetcher.swift in Sources */,
 				5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */,
 				5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */,
-				5B104EB11B0C8CF000912681 /* UIImageExtensions.swift in Sources */,
+				5B104EB11B0C8CF000912681 /* UIKitExtensions.swift in Sources */,
 				5B543E481B0BD74B000271BE /* RegattaDetailViewController.swift in Sources */,
 				5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */,
 				5BA4EC231B0DC5130031A042 /* FontAwesome.swift in Sources */,

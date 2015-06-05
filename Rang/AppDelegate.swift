@@ -20,12 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
             BITHockeyManager.sharedHockeyManager().configureWithIdentifier("39213a77b0b123c2dc63279898d6becf")
-            // Configure the SDK in here only!
             BITHockeyManager.sharedHockeyManager().startManager()
             BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation() // This line is obsolete in the crash only build
 
             UIApplication.sharedApplication().statusBarStyle = .LightContent
-            var navigationBarAppearace = UINavigationBar.appearance()
+            let navigationBarAppearace = UINavigationBar.appearance()
             navigationBarAppearace.tintColor = UIColor.whiteColor()
             navigationBarAppearace.barTintColor = Constants.Colors.darkBlue
             navigationBarAppearace.translucent = false
@@ -36,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.tintColor = Constants.Colors.darkBlue
 
-            var tabBarController: UITabBarController = self.window?.rootViewController as! UITabBarController
-            var array = tabBarController.viewControllers as! Array<UINavigationController>
+            let tabBarController: UITabBarController = self.window?.rootViewController as! UITabBarController
+            let array = tabBarController.viewControllers as! Array<UINavigationController>
             array[0].tabBarItem.image = UIImage.fontAwesomeIconWithName(.User, size: CGSizeMake(30.0, 30.0), textColor: UIColor.blackColor())
             array[1].tabBarItem.image = UIImage.fontAwesomeIconWithName(.Trophy, size: CGSizeMake(30.0, 30.0), textColor: UIColor.blackColor())
             array[2].tabBarItem.image = UIImage.fontAwesomeIconWithName(.InfoCircle, size: CGSizeMake(30.0, 30.0), textColor: UIColor.blackColor())
@@ -49,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
+
+    
 
 }
 

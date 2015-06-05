@@ -31,6 +31,7 @@ class SimpleDataProvider {
             dataStorageArray = userdefaults.objectForKey(kArrayKey) as! Array
         } else {
             dataStorageArray = []
+            loadGreta()
         }
     }
 
@@ -49,4 +50,16 @@ class SimpleDataProvider {
         dataStorageArray.removeAtIndex(index)
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
+
+    func loadGreta() -> () {
+        if let
+            path     = NSBundle.mainBundle().pathForResource("sample", ofType: "json"),
+            url = NSURL(fileURLWithPath: path),
+            data = NSData(contentsOfURL: url),
+            array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]]
+            {
+                dataStorageArray = array
+                NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
+            }
+        }
 }
