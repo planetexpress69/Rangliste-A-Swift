@@ -17,8 +17,9 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var selectorButton: UIButton!
     @IBOutlet weak var threeDaysButton: UIButton!
 
-    var dSelectedRegatta: Dictionary<String, AnyObject>?
-    var theRegatta: Dictionary<String, AnyObject>? = [ : ]
+    var regattaList: [[String : AnyObject]]?
+    var dSelectedRegatta: [String : AnyObject]?
+    var theRegatta: [String : AnyObject]?
     var currentIndex: Int = -1
 
     //MARK: - View lifecycle
@@ -65,6 +66,8 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         selectorButton.layer.cornerRadius = selectorButton.frame.size.height / 2
         selectorButton.layer.borderWidth = 0
         selectorButton.clipsToBounds = true
+
+        selectorButton.addTarget(self, action: "requestSelector:", forControlEvents: .TouchUpInside)
 
         var editButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(.Edit),
             style: UIBarButtonItemStyle.Plain,
@@ -135,6 +138,24 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
             self.setEditing(false, animated: true)
         }
+
+        initRegattas()
+
+        if (NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") != nil) {
+            if let s: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") {
+                dSelectedRegatta = s as? [String : AnyObject]
+                selectorButton.setTitle(s["title"] as? String, forState: UIControlState.Normal)
+            }
+        }
+        else {
+            // set list[0]
+        }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -146,9 +167,9 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - User triggered actions
     // ---------------------------------------------------------------------------------------------
-    @IBAction func requestSelector(sender: UIButton) {
-        println("Boom")
-    }
+    //@IBAction func requestSelector(sender: UIButton) {
+    //    println("Boom")
+    //}
 
     // ---------------------------------------------------------------------------------------------
     @IBAction func toggleEdit(sender: UIBarButtonItem) {
@@ -294,5 +315,104 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
         navigationController?.popToRootViewControllerAnimated(true) // get outta here
     }
-    
+
+    func initRegattas() {
+
+        if let
+            path     = NSBundle.mainBundle().pathForResource("aRegattas", ofType: "json"),
+            url = NSURL(fileURLWithPath: path),
+            data = NSData(contentsOfURL: url),
+            array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]]
+
+        {
+            self.regattaList = array
+        }
+    }
+
+/*
+    func initDatasource() {
+        let path = NSBundle.mainBundle().pathForResource("aRegattas", ofType: "json") as! String
+        let jsonData = NSData.dataWithContentsOfFile(path, options: .DataReadingMappedIfSafe, error: nil)
+        var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        var persons : NSArray = jsonResult["person"] as NSArray
+    }
+*/
+
+
+    /*
+
+
+    func initDatasource()
+    {
+    NSError     *readError      = nil;
+    NSString    *sPathToJson    = [[NSBundle mainBundle]pathForResource:@"aRegattas" ofType:@"json"];
+    NSData      *dJson          = [NSData dataWithContentsOfFile:sPathToJson
+    options:NSDataReadingMapped
+    error:&readError];
+    if (dJson && !readError) {
+    NSError *parsingError = nil;
+    self.aRegattas = [NSJSONSerialization JSONObjectWithData:dJson
+    options:NSJSONReadingAllowFragments
+    error:&parsingError];
+    if (!self.aRegattas && parsingError) {
+    NSLog(@"error: %@", parsingError);
+    }
+
+
+    } else {
+    NSLog(@"error: %@", readError);
+    }
+    }
+
+*/
+    @IBAction func requestSelector(sender: UIButton) {
+
+        let alertController = UIAlertController(title: "Regatta typ", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+
+
+        if let array = regattaList {
+            for regatta in array {
+                let action = UIAlertAction(
+                    title: regatta["title"] as! String,
+                    style: .Default,
+                    handler: {
+                        (alert: UIAlertAction!) in self.setSelectedRegattaType(alert.title)
+                    }
+                )
+                alertController.addAction(action)
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+            (action) in
+            // ...
+        }
+        alertController.addAction(cancelAction)
+/*
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            // ...
+        }
+        alertController.addAction(OKAction) */
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+        
+    }
+
+    func setSelectedRegattaType(title: String) {
+        if let array = regattaList {
+            for regatta in array {
+                if let foo = regatta["title"] as? String {
+                    if foo == title {
+                        println("foo: \(foo) == \(title)")
+                        NSUserDefaults.standardUserDefaults().setObject(regatta, forKey: "selectedRegatta")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                        selectorButton.setTitle(title, forState: UIControlState.Normal)
+                        break
+                    }
+                }
+            }
+        }
+    }
 }

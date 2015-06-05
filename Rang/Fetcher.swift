@@ -20,31 +20,25 @@ class Fetcher {
         let url = NSURL(string: urlString)
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
 
-
         var task = session.dataTaskWithURL(url!) {
             (data, response, error) -> Void in
 
             if error != nil {
-
                 dispatch_async(dispatch_get_global_queue(priority, 0)) {
                     dispatch_async(dispatch_get_main_queue()) {
                         completion([]) // simply returning an empty array
                     }
                 }
-
             }
             else {
                 var parsingError: NSError?
-
                 var rankingData = []
 
                 if let gottenData: AnyObject = NSJSONSerialization.JSONObjectWithData(
                     data,
                     options: NSJSONReadingOptions.AllowFragments,
                     error: &parsingError) {
-
                         rankingData = gottenData as! NSArray
-
                 }
 
                 var rankingEntries = [RankingEntry]()

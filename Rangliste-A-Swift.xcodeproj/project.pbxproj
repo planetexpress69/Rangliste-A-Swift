@@ -36,6 +36,7 @@
 		5BD1752E1B14A6F600C7F5EB /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */; };
 		5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */; };
 		5BD175321B14CD7A00C7F5EB /* RankingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */; };
+		5BD6EAF51B209F100078EB0D /* aRegattas.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BD6EAF41B209F100078EB0D /* aRegattas.json */; };
 		5BDA004F1B1744AA0027EB5A /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA004E1B17449F0027EB5A /* FontAwesome.otf */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingEntry.swift; sourceTree = "<group>"; };
 		5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingListCell.swift; sourceTree = "<group>"; };
+		5BD6EAF41B209F100078EB0D /* aRegattas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = aRegattas.json; sourceTree = "<group>"; };
 		5BDA004E1B17449F0027EB5A /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 		5B3C6A471B0B5A940099A65C = {
 			isa = PBXGroup;
 			children = (
+				5BD6EAF41B209F100078EB0D /* aRegattas.json */,
 				5BCA48761B20928200E51362 /* HockeySDK.embeddedframework */,
 				5BCA48701B2091D000E51362 /* QuartzCore.framework */,
 				5BCA48711B2091D000E51362 /* QuickLook.framework */,
@@ -254,6 +257,7 @@
 				TargetAttributes = {
 					5B3C6A4F1B0B5A940099A65C = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = UQ24M9LT38;
 					};
 					5B3C6A661B0B5A940099A65C = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -288,6 +292,7 @@
 				5BDA004F1B1744AA0027EB5A /* FontAwesome.otf in Resources */,
 				5BCA487C1B20928200E51362 /* HockeySDK.xcconfig in Resources */,
 				5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */,
+				5BD6EAF51B209F100078EB0D /* aRegattas.json in Resources */,
 				5B3C6A621B0B5A940099A65C /* LaunchScreen.xib in Resources */,
 				5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */,
 				5BCA487D1B20928200E51362 /* HockeySDKResources.bundle in Resources */,
@@ -451,7 +456,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +468,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "b50fc6af-efff-41cc-a832-6e92acbc5c38";
+				PROVISIONING_PROFILE = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -471,8 +477,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Kautz (5CL7HE474F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,7 +489,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "b50fc6af-efff-41cc-a832-6e92acbc5c38";
+				PROVISIONING_PROFILE = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
