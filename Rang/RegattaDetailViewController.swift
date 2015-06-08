@@ -60,8 +60,8 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             forState: UIControlState.Highlighted)
         selectorButton.setBackgroundImage(UIImage.imageWithColor(.clearColor()),
             forState: UIControlState.Disabled)
-        selectorButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        selectorButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+        selectorButton.setTitleColor(.whiteColor(), forState: .Normal)
+        selectorButton.setTitleColor(.whiteColor(), forState: .Highlighted)
         selectorButton.setTitleColor(Constants.Colors.darkBlue, forState: .Disabled)
         selectorButton.layer.cornerRadius = selectorButton.frame.size.height / 2
         selectorButton.layer.borderWidth = 0

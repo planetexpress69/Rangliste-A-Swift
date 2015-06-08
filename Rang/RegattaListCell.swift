@@ -30,10 +30,10 @@ class RegattaListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         if selected {
-            regattaNameLabel?.textColor = UIColor.whiteColor()
-            regattaFactorLabel?.textColor = UIColor.whiteColor()
-            pointsLabel?.textColor = UIColor.whiteColor()
-            positionLabel?.textColor = UIColor.whiteColor()
+            regattaNameLabel?.textColor = .whiteColor()
+            regattaFactorLabel?.textColor = .whiteColor()
+            pointsLabel?.textColor = .whiteColor()
+            positionLabel?.textColor = .whiteColor()
         } else {
             regattaNameLabel?.textColor = Constants.Colors.darkBlue
             regattaFactorLabel?.textColor = Constants.Colors.darkBlue
@@ -47,10 +47,10 @@ class RegattaListCell: UITableViewCell {
         super.setHighlighted(highlighted, animated: animated)
         
         if highlighted {
-            regattaNameLabel?.textColor = UIColor.whiteColor()
-            regattaFactorLabel?.textColor = UIColor.whiteColor()
-            pointsLabel?.textColor = UIColor.whiteColor()
-            positionLabel?.textColor = UIColor.whiteColor()
+            regattaNameLabel?.textColor = .whiteColor()
+            regattaFactorLabel?.textColor = .whiteColor()
+            pointsLabel?.textColor = .whiteColor()
+            positionLabel?.textColor = .whiteColor()
         } else {
             regattaNameLabel?.textColor = Constants.Colors.darkBlue
             regattaFactorLabel?.textColor = Constants.Colors.darkBlue

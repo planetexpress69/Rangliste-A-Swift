@@ -29,7 +29,7 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
             action: "loadWrapper")
         var attrs = [
             NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSForegroundColorAttributeName: .whiteColor()
         ]
         reloadButton.setTitleTextAttributes(attrs, forState: .Normal)
         navigationItem.rightBarButtonItem = reloadButton

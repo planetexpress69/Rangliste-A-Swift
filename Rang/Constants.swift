@@ -10,7 +10,7 @@ import UIKit
 
 struct Constants {
     struct Colors {
-        static let darkBlue = UIColor(red: 20/255, green: 50/255, blue: 150/255, alpha: 1)
+        static let darkBlue = UIColor(red: 13/255, green: 63/255, blue: 94/255, alpha: 1)
     }
 
     struct Path {

@@ -58,6 +58,10 @@ class RegattaListViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
     // ---------------------------------------------------------------------------------------------
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -166,6 +170,9 @@ class RegattaListViewController: UITableViewController {
     override func tableView(
         tableView: UITableView,
         viewForHeaderInSection section: Int) -> UIView? {
+
+            println("Beep!")
+
         var headerLabel = UILabel(frame: CGRectMake(
             15,
             0,
@@ -174,15 +181,19 @@ class RegattaListViewController: UITableViewController {
         headerLabel.font = UIFont(
             name: "HelveticaNeue-Bold",
             size: 72)
-        headerLabel.textColor = UIColor.whiteColor()
+        headerLabel.textColor = .whiteColor()
         headerLabel.backgroundColor = Constants.Colors.darkBlue
         headerLabel.text = NSString(
             format: "%.3f",
             locale: NSLocale.currentLocale(),
             calcTotalPoins()) as String
 
+        headerLabel.tag = 1
+
         var headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 100))
         headerView.addSubview(headerLabel)
+
+            println("Beep, beep!")
 
         return headerView
     }
@@ -194,7 +205,7 @@ class RegattaListViewController: UITableViewController {
 
     // ---------------------------------------------------------------------------------------------
     func calcTotalPoins() -> Float {
-        return 99.999
+        return SimpleDataProvider.sharedInstance.bestScoreA()
     }
 
     @IBAction func addRegatta(sender: UIBarButtonItem) {

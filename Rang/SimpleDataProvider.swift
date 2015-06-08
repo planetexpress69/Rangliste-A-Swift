@@ -29,20 +29,24 @@ class SimpleDataProvider {
         var userdefaults = NSUserDefaults.standardUserDefaults()
         if userdefaults.objectForKey(kArrayKey) != nil {
             dataStorageArray = userdefaults.objectForKey(kArrayKey) as! Array
+            self.sort()
         } else {
             dataStorageArray = []
             loadGreta()
+            self.sort()
         }
     }
 
     func addRegatta(regatta: Dictionary<String, AnyObject>) {
         dataStorageArray.append(regatta)
+        self.sort()
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
 
     func updateRegatta(regatta: Dictionary<String, AnyObject>, atIndex:NSInteger) {
         dataStorageArray.removeAtIndex(atIndex)
         dataStorageArray.insert(regatta, atIndex: atIndex)
+        self.sort()
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
 
@@ -51,15 +55,73 @@ class SimpleDataProvider {
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
 
+    // convenience while coding
     func loadGreta() -> () {
         if let
             path     = NSBundle.mainBundle().pathForResource("sample", ofType: "json"),
             url = NSURL(fileURLWithPath: path),
             data = NSData(contentsOfURL: url),
-            array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]]
-            {
+            array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]] {
                 dataStorageArray = array
                 NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
             }
+    }
+
+
+    func bestScoreA() -> Float {
+
+        if dataStorageArray.count == 0 {
+            return 0.0
         }
+
+        var counter = 0
+        var allPoints: Float = 0.0
+        var regatta = [ : ]
+
+        for regatta in dataStorageArray {
+
+            var score = regatta["score"] as! Float
+            var races = regatta["races"] as! Int
+            var threeDays = regatta["threeDays"] as! Bool
+            var mFactor = calcmFactor(races, atLeastThreeDays: threeDays)
+
+            for var index = 0; index < mFactor; index++ {
+                if (counter < 9) {
+                    counter++
+                    allPoints += score;
+                }
+            }
+        }
+
+        if counter == 9 {
+            var result: Float = Float(allPoints) / Float(counter)
+            return result
+        }
+        return 0.0
+
+    }
+
+    func calcmFactor(races: Int, atLeastThreeDays: Bool) -> Int {
+
+        if races < 5 {
+            return races
+        }
+
+        if races == 5 {
+            return 4
+        }
+
+        return atLeastThreeDays ? 5 : 4
+
+    }
+
+    func sort() {
+        dataStorageArray.sort {
+            item1, item2 in
+            let item1 = item1["score"] as! Double
+            let item2 = item2["score"] as! Double
+            return item1 > item2
+        }
+    }
+
 }

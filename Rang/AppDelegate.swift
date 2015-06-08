@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             UIApplication.sharedApplication().statusBarStyle = .LightContent
             let navigationBarAppearace = UINavigationBar.appearance()
-            navigationBarAppearace.tintColor = UIColor.whiteColor()
+            navigationBarAppearace.tintColor = .whiteColor()
             navigationBarAppearace.barTintColor = Constants.Colors.darkBlue
             navigationBarAppearace.translucent = false
             navigationBarAppearace.titleTextAttributes = [
@@ -36,10 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.tintColor = Constants.Colors.darkBlue
 
             let tabBarController: UITabBarController = self.window?.rootViewController as! UITabBarController
+
             let array = tabBarController.viewControllers as! Array<UINavigationController>
-            array[0].tabBarItem.image = UIImage.fontAwesomeIconWithName(.User, size: CGSizeMake(30.0, 30.0), textColor: UIColor.blackColor())
-            array[1].tabBarItem.image = UIImage.fontAwesomeIconWithName(.Trophy, size: CGSizeMake(30.0, 30.0), textColor: UIColor.blackColor())
-            array[2].tabBarItem.image = UIImage.fontAwesomeIconWithName(.InfoCircle, size: CGSizeMake(30.0, 30.0), textColor: UIColor.blackColor())
+            array[0].tabBarItem.image = UIImage.fontAwesomeIconWithName(.User, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
+            array[1].tabBarItem.image = UIImage.fontAwesomeIconWithName(.Trophy, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
+            array[2].tabBarItem.image = UIImage.fontAwesomeIconWithName(.InfoCircle, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
 
             return true
     }

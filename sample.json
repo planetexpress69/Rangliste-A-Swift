@@ -89,5 +89,18 @@
         "id" : 1,
         "title" : "Ranglistenregatta",
     }
+ },
+ {
+ "field" : 104,
+ "pos" : 16,
+ "races" : 4,
+ "score" : 102.692,
+ "threeDays" : 0,
+ "title" : "Optimal-Cup Röbel   ",
+ "type" : {
+ "factor" : 1,
+ "id" : 1,
+ "title" : "Ranglistenregatta",
+ }
  }
 ]

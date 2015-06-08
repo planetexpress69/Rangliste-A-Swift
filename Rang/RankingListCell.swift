@@ -34,12 +34,12 @@ class RankingListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         if selected {
-            nameLabel?.textColor = UIColor.whiteColor()
-            yobLabel?.textColor = UIColor.whiteColor()
-            pointsLabel?.textColor = UIColor.whiteColor()
-            posLabel?.textColor = UIColor.whiteColor()
-            sailLabel?.textColor = UIColor.whiteColor()
-            clubLabel?.textColor = UIColor.whiteColor()
+            nameLabel?.textColor = .whiteColor()
+            yobLabel?.textColor = .whiteColor()
+            pointsLabel?.textColor = .whiteColor()
+            posLabel?.textColor = .whiteColor()
+            sailLabel?.textColor = .whiteColor()
+            clubLabel?.textColor = .whiteColor()
         } else {
             nameLabel?.textColor = Constants.Colors.darkBlue
             yobLabel?.textColor = Constants.Colors.darkBlue
@@ -55,11 +55,11 @@ class RankingListCell: UITableViewCell {
         super.setHighlighted(highlighted, animated: animated)
 
         if highlighted {
-            nameLabel?.textColor = UIColor.whiteColor()
-            yobLabel?.textColor = UIColor.whiteColor()
-            pointsLabel?.textColor = UIColor.whiteColor()
-            posLabel?.textColor = UIColor.whiteColor()
-            sailLabel?.textColor = UIColor.whiteColor()
+            nameLabel?.textColor = .whiteColor()
+            yobLabel?.textColor = .whiteColor()
+            pointsLabel?.textColor = .whiteColor()
+            posLabel?.textColor = .whiteColor()
+            sailLabel?.textColor = .whiteColor()
         } else {
             nameLabel?.textColor = Constants.Colors.darkBlue
             yobLabel?.textColor = Constants.Colors.darkBlue
