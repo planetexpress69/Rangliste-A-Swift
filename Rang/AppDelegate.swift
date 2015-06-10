@@ -36,6 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.tintColor = Constants.Colors.darkBlue
 
             let tabBarController: UITabBarController = self.window?.rootViewController as! UITabBarController
+            tabBarController.tabBar.tintColor = .whiteColor()
+            tabBarController.tabBar.barTintColor = Constants.Colors.darkBlue
+            tabBarController.tabBar.translucent = false
+
+            let tabBarAppearance = UITabBar.appearance()
+            tabBarAppearance.shadowImage = UIImage()
+            tabBarAppearance.backgroundImage = UIImage()
+
 
             let array = tabBarController.viewControllers as! Array<UINavigationController>
             array[0].tabBarItem.image = UIImage.fontAwesomeIconWithName(.User, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())

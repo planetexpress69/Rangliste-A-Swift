@@ -56,12 +56,12 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         selectorButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         selectorButton.setBackgroundImage(UIImage.imageWithColor(Constants.Colors.darkBlue),
             forState: UIControlState.Normal)
-        selectorButton.setBackgroundImage(UIImage.imageWithColor(.blackColor()),
+        selectorButton.setBackgroundImage(UIImage.imageWithColor(UIColor.blackColor()),
             forState: UIControlState.Highlighted)
-        selectorButton.setBackgroundImage(UIImage.imageWithColor(.clearColor()),
+        selectorButton.setBackgroundImage(UIImage.imageWithColor(UIColor.clearColor()),
             forState: UIControlState.Disabled)
-        selectorButton.setTitleColor(.whiteColor(), forState: .Normal)
-        selectorButton.setTitleColor(.whiteColor(), forState: .Highlighted)
+        selectorButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        selectorButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
         selectorButton.setTitleColor(Constants.Colors.darkBlue, forState: .Disabled)
         selectorButton.layer.cornerRadius = selectorButton.frame.size.height / 2
         selectorButton.layer.borderWidth = 0
@@ -93,12 +93,31 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+
+        /*
+        
+        {
+        "field" : 74,
+        "pos" : 26,
+        "races" : 2,
+        "score" : 75.63363,
+        "threeDays" : 0,
+        "title" : "LJüM MV",
+        "type" : {
+        "factor" : 1,
+        "id" : 1,
+        "title" : "Ranglistenregatta",
+        }
+        },
+
+*/
+
         if currentIndex == -1 {
             setEditing(true, animated: true)
         }
         else {
             var name: String = ""
-            if let obj: AnyObject = theRegatta?["name"] {
+            if let obj: AnyObject = theRegatta?["title"] {
                 name = obj as! String
             }
             regattaNameTextField.text = name
@@ -106,19 +125,19 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             title = name
 
             var position: Int = 0
-            if let obj: AnyObject = theRegatta!["position"] {
+            if let obj: AnyObject = theRegatta!["pos"] {
                 position = obj as! Int
             }
             regattaPosTextField.text = String(position)
 
             var numberOfTimedBoats: Int = 0
-            if let obj: AnyObject = theRegatta!["numberOfTimedBoats"] {
+            if let obj: AnyObject = theRegatta!["field"] {
                 numberOfTimedBoats = obj as! Int
             }
             regattaFieldTextField.text = String(numberOfTimedBoats)
 
             var numberOfRaces: Int = 0
-            if let obj: AnyObject = theRegatta!["numberOfRaces"] {
+            if let obj: AnyObject = theRegatta!["races"] {
                 numberOfRaces = obj as! Int
             }
             regattaRacesTextField.text = String(numberOfRaces)
@@ -184,17 +203,18 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     // ---------------------------------------------------------------------------------------------
     @IBAction func toggleThreeDays(sender: UIButton) {
         var threeDays: Bool = false
-        if let obj: AnyObject = theRegatta!["threeDays"] {
-            threeDays = obj as! Bool
-        }
-        if threeDays == false {
-            threeDaysButton.setTitle(String.fontAwesomeIconWithName(.CheckSquareO),
-                forState: UIControlState.Normal)
+
+        if let
+            theRegatta = theRegatta,
+            threeDays = theRegatta["threeDays"] as? Bool {
+                threeDaysButton.setTitle(String.fontAwesomeIconWithName(.CheckSquareO),
+                    forState: UIControlState.Normal)
+
         } else {
             threeDaysButton.setTitle(String.fontAwesomeIconWithName(.SquareO),
                 forState: UIControlState.Normal)
         }
-
+        
         theRegatta?["threeDays"] = !threeDays
     }
 
@@ -274,6 +294,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
     // ---------------------------------------------------------------------------------------------
     func store() {
+
         var name = ""
         if let oname = regattaNameTextField.text {
             name = oname as String
@@ -295,23 +316,28 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
 
         var threeDays = false
-        if let othreeDays: AnyObject = theRegatta!["threeDays"] {
-            threeDays = othreeDays as! Bool
+
+        if let
+            theRegatta = theRegatta,
+            threeDays = theRegatta["threeDays"] as? Bool {
         }
 
         var r: Dictionary<String, AnyObject> = [
-            "name" : name,
-            "position" : position.toInt()!,
-            "numberOfTimedBoats" : numberOfTimedBoats.toInt()!,
-            "numberOfRaces" : numberOfRaces.toInt()!,
-            "threeDays" : threeDays
+            "title" : name,
+            "pos" : position.toInt()!,
+            "field" : numberOfTimedBoats.toInt()!,
+            "races" : numberOfRaces.toInt()!,
+            "threeDays" : threeDays,
+            "score" : calcForPosition(position.toInt()!, scoredBoats: numberOfTimedBoats.toInt()!, regattaFactor: 1.0)
         ]
 
         if currentIndex == -1 {
             SimpleDataProvider.sharedInstance.addRegatta(r) // add new
+
         }
         else {
             SimpleDataProvider.sharedInstance.updateRegatta(r, atIndex:currentIndex) // update existing
+            
         }
         navigationController?.popToRootViewControllerAnimated(true) // get outta here
     }
@@ -319,7 +345,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     func initRegattas() {
 
         if let
-            path     = NSBundle.mainBundle().pathForResource("aRegattas", ofType: "json"),
+            path = NSBundle.mainBundle().pathForResource("aRegattas", ofType: "json"),
             url = NSURL(fileURLWithPath: path),
             data = NSData(contentsOfURL: url),
             array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]]
@@ -415,4 +441,42 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+
+    func calcForPosition(pos: Int, scoredBoats: Int, regattaFactor: Float) -> Float {
+        if pos > scoredBoats {
+            return 0.0
+        }
+
+        var secondFactor = 0.2
+        if scoredBoats < 100 {
+            secondFactor = Double(scoredBoats) - 10.0 / 450.0
+        }
+
+        var ffactor = Double(regattaFactor) + secondFactor
+        var result = ffactor * 100.0 * ((Double(scoredBoats) + 1.0 - Double(pos)) / Double(scoredBoats))
+        return Float(result)
+    }
+
+    /*
+    
+    //----------------------------------------------------------------------------------------------------------------------
+    #pragma mark - Actual calculation
+    //----------------------------------------------------------------------------------------------------------------------
+    - (CGFloat)calcForPosition:(NSInteger)position
+    andScoredBoats:(NSInteger)scoredBoats
+    withRegattaFactor:(float)regattaFactor
+    {
+    if (position > scoredBoats)
+    return 0;
+
+    float secondFactor = 0.2f;
+    if (scoredBoats < 100) {
+    secondFactor = ((float)scoredBoats - 10.0f) / 450.0f;
+    }
+
+    float ffactor = regattaFactor + secondFactor;
+    return ffactor * 100.0f *((scoredBoats + 1.0f - position)/scoredBoats);
+    }
+
+*/
 }

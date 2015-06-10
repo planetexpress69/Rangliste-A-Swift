@@ -8,13 +8,17 @@
 
 import UIKit
 
-class RegattaListViewController: UITableViewController {
+class RegattaListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    @IBOutlet weak var theScoreView: UIView!
+    @IBOutlet weak var theScoreLabel: UILabel!
+    @IBOutlet weak var theTableView: UITableView!
 
     var listOfRegattas: [Dictionary<String, AnyObject>] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        clearsSelectionOnViewWillAppear = true
+        //clearsSelectionOnViewWillAppear = true
         title = "Deine Regatten"
         navigationItem.leftBarButtonItem = editButtonItem()
 
@@ -38,10 +42,17 @@ class RegattaListViewController: UITableViewController {
             nil,
             action: nil)
 
-        tableView.backgroundColor = Constants.Colors.darkBlue
+        theTableView?.backgroundColor = Constants.Colors.darkBlue
+        theTableView?.delegate = self;
+        theTableView?.dataSource = self;
+
+        theScoreView.backgroundColor = Constants.Colors.darkBlue
 
         var navigationBar = self.navigationController?.navigationBar
         navigationBar?.hideBottomHairline()
+
+        self.theTableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
+
 
 /*
         var navigationBar = self.navigationController?.navigationBar
@@ -55,7 +66,8 @@ class RegattaListViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         listOfRegattas = SimpleDataProvider.sharedInstance.dataStorageArray
-        tableView.reloadData()
+        theTableView?.reloadData()
+        updateTotalPoints()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -70,21 +82,21 @@ class RegattaListViewController: UITableViewController {
 
     // MARK: - Table view data source
     // ---------------------------------------------------------------------------------------------
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return listOfRegattas.count
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView,
+    func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RegattaListCell",
             forIndexPath: indexPath) as! RegattaListCell
@@ -98,10 +110,13 @@ class RegattaListViewController: UITableViewController {
             locale: NSLocale.currentLocale(),
             listOfRegattas[indexPath.row]["score"] as! Float
             ) as String
+
+        var factor = SimpleDataProvider.sharedInstance.calcmFactor(listOfRegattas[indexPath.row]["races"] as! Int, atLeastThreeDays: listOfRegattas[indexPath.row]["threeDays"] as! Bool)
+
         cell.regattaFactorLabel!.text = NSString(
             format: "%d",
             locale: NSLocale.currentLocale(),
-            listOfRegattas[indexPath.row]["races"] as! Int
+            factor as Int
             ) as String
         cell.positionLabel!.text = NSString(
             format: "%d/%d",
@@ -113,14 +128,14 @@ class RegattaListViewController: UITableViewController {
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView,
+    func tableView(tableView: UITableView,
         canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView,
+    func tableView(tableView: UITableView,
         commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -128,6 +143,7 @@ class RegattaListViewController: UITableViewController {
             SimpleDataProvider.sharedInstance.removeRegattaAtIndex(indexPath.row)
             listOfRegattas.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            updateTotalPoints()
         } else if editingStyle == .Insert {
             //Create a new instance of the appropriate class, 
             //insert it into the array, and add a new row to the table view
@@ -148,26 +164,29 @@ class RegattaListViewController: UITableViewController {
             default:
                 var detailViewController =
                 segue.destinationViewController as! RegattaDetailViewController
-                let indexPath = tableView.indexPathForCell(sender as! RegattaListCell)
+                let indexPath = theTableView.indexPathForCell(sender as! RegattaListCell)
                 detailViewController.loadRegattaWithIndex(indexPath!.row)
             }
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView,
+    func tableView(tableView: UITableView,
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80.0
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(
+/*
+    func tableView(
         tableView: UITableView,
         heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
+*/
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(
+/*
+    func tableView(
         tableView: UITableView,
         viewForHeaderInSection section: Int) -> UIView? {
 
@@ -197,6 +216,7 @@ class RegattaListViewController: UITableViewController {
 
         return headerView
     }
+*/
 
     // ---------------------------------------------------------------------------------------------
     func calcPoints() -> Float {
@@ -204,8 +224,15 @@ class RegattaListViewController: UITableViewController {
     }
 
     // ---------------------------------------------------------------------------------------------
-    func calcTotalPoins() -> Float {
+    func calcTotalPoints() -> Float {
         return SimpleDataProvider.sharedInstance.bestScoreA()
+    }
+
+    func updateTotalPoints() -> () {
+        theScoreLabel.text = NSString(
+            format: "%.3f",
+            locale: NSLocale.currentLocale(),
+            calcTotalPoints()) as String
     }
 
     @IBAction func addRegatta(sender: UIBarButtonItem) {

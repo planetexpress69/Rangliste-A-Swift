@@ -19,13 +19,6 @@
 		5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
 		5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
 		5BAFD8611B2198C9002654F0 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8601B2198C9002654F0 /* sample.json */; };
-		5BAFD8941B21C62F002654F0 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFD8931B21C62F002654F0 /* InterfaceController.swift */; };
-		5BAFD8961B21C62F002654F0 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFD8951B21C62F002654F0 /* GlanceController.swift */; };
-		5BAFD8981B21C62F002654F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8971B21C62F002654F0 /* Images.xcassets */; };
-		5BAFD89C1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD89B1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App.app */; };
-		5BAFD8A61B21C62F002654F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8A51B21C62F002654F0 /* Images.xcassets */; };
-		5BAFD8A91B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5BAFD88F1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5BAFD8B21B21C727002654F0 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8B01B21C727002654F0 /* Interface.storyboard */; };
 		5BCA48691B20919500E51362 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48681B20919500E51362 /* AssetsLibrary.framework */; };
 		5BCA486D1B2091B900E51362 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486A1B2091B900E51362 /* CoreGraphics.framework */; };
 		5BCA486E1B2091B900E51362 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486B1B2091B900E51362 /* CoreText.framework */; };
@@ -44,23 +37,6 @@
 		5BDA004F1B1744AA0027EB5A /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA004E1B17449F0027EB5A /* FontAwesome.otf */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5BAFD89D1B21C62F002654F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5B3C6A481B0B5A940099A65C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BAFD89A1B21C62F002654F0;
-			remoteInfo = "Rangliste-A-Swift WatchKit App";
-		};
-		5BAFD8A71B21C62F002654F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5B3C6A481B0B5A940099A65C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BAFD88E1B21C62F002654F0;
-			remoteInfo = "Rangliste-A-Swift WatchKit Extension";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		5BAFD88A1B21B5E3002654F0 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -68,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5BAFD8A91B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,15 +66,6 @@
 		5BA4EC271B0DDA2B0031A042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDataProvider.swift; sourceTree = "<group>"; };
 		5BAFD8601B2198C9002654F0 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
-		5BAFD88F1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Rangliste-A-Swift WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BAFD8921B21C62F002654F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BAFD8931B21C62F002654F0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		5BAFD8951B21C62F002654F0 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		5BAFD8971B21C62F002654F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5BAFD89B1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rangliste-A-Swift WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BAFD8A11B21C62F002654F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Rangliste-A-Swift WatchKit App/Info.plist"; sourceTree = "<group>"; };
-		5BAFD8A51B21C62F002654F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5BAFD8B11B21C727002654F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		5BCA48681B20919500E51362 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5BCA486A1B2091B900E51362 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BCA486B1B2091B900E51362 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -134,13 +100,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BAFD88C1B21C62F002654F0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -158,8 +117,6 @@
 				5BCA486C1B2091B900E51362 /* MobileCoreServices.framework */,
 				5BCA48681B20919500E51362 /* AssetsLibrary.framework */,
 				5B3C6A521B0B5A940099A65C /* Rang */,
-				5BAFD8901B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension */,
-				5BAFD89F1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App */,
 				5B3C6A511B0B5A940099A65C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -168,8 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */,
-				5BAFD88F1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension.appex */,
-				5BAFD89B1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,43 +158,6 @@
 			children = (
 				5B71DE4B1B1597DF009B607B /* README.md */,
 				5B3C6A541B0B5A940099A65C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5BAFD8901B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFD8931B21C62F002654F0 /* InterfaceController.swift */,
-				5BAFD8951B21C62F002654F0 /* GlanceController.swift */,
-				5BAFD8971B21C62F002654F0 /* Images.xcassets */,
-				5BAFD8911B21C62F002654F0 /* Supporting Files */,
-			);
-			path = "Rangliste-A-Swift WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		5BAFD8911B21C62F002654F0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFD8921B21C62F002654F0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5BAFD89F1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFD8A51B21C62F002654F0 /* Images.xcassets */,
-				5BAFD8B01B21C727002654F0 /* Interface.storyboard */,
-				5BAFD8A01B21C62F002654F0 /* Supporting Files */,
-			);
-			path = "Rangliste-A-Swift WatchKit App";
-			sourceTree = "<group>";
-		};
-		5BAFD8A01B21C62F002654F0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BAFD8A11B21C62F002654F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -278,45 +196,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				5BAFD8A81B21C62F002654F0 /* PBXTargetDependency */,
 			);
 			name = "Rangliste-A-Swift";
 			productName = Rang;
 			productReference = 5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5BAFD88E1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5BAFD8AD1B21C62F002654F0 /* Build configuration list for PBXNativeTarget "Rangliste-A-Swift WatchKit Extension" */;
-			buildPhases = (
-				5BAFD88B1B21C62F002654F0 /* Sources */,
-				5BAFD88C1B21C62F002654F0 /* Frameworks */,
-				5BAFD88D1B21C62F002654F0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5BAFD89E1B21C62F002654F0 /* PBXTargetDependency */,
-			);
-			name = "Rangliste-A-Swift WatchKit Extension";
-			productName = "Rangliste-A-Swift WatchKit Extension";
-			productReference = 5BAFD88F1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		5BAFD89A1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5BAFD8AA1B21C62F002654F0 /* Build configuration list for PBXNativeTarget "Rangliste-A-Swift WatchKit App" */;
-			buildPhases = (
-				5BAFD8991B21C62F002654F0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Rangliste-A-Swift WatchKit App";
-			productName = "Rangliste-A-Swift WatchKit App";
-			productReference = 5BAFD89B1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
 
@@ -330,13 +214,6 @@
 					5B3C6A4F1B0B5A940099A65C = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = UQ24M9LT38;
-					};
-					5BAFD88E1B21C62F002654F0 = {
-						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = UQ24M9LT38;
-					};
-					5BAFD89A1B21C62F002654F0 = {
-						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
 			};
@@ -354,8 +231,6 @@
 			projectRoot = "";
 			targets = (
 				5B3C6A4F1B0B5A940099A65C /* Rangliste-A-Swift */,
-				5BAFD88E1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension */,
-				5BAFD89A1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -373,24 +248,6 @@
 				5BAFD8611B2198C9002654F0 /* sample.json in Resources */,
 				5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */,
 				5BCA487D1B20928200E51362 /* HockeySDKResources.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BAFD88D1B21C62F002654F0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BAFD89C1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App.app in Resources */,
-				5BAFD8981B21C62F002654F0 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5BAFD8991B21C62F002654F0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BAFD8B21B21C727002654F0 /* Interface.storyboard in Resources */,
-				5BAFD8A61B21C62F002654F0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,29 +273,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BAFD88B1B21C62F002654F0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5BAFD8941B21C62F002654F0 /* InterfaceController.swift in Sources */,
-				5BAFD8961B21C62F002654F0 /* GlanceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5BAFD89E1B21C62F002654F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5BAFD89A1B21C62F002654F0 /* Rangliste-A-Swift WatchKit App */;
-			targetProxy = 5BAFD89D1B21C62F002654F0 /* PBXContainerItemProxy */;
-		};
-		5BAFD8A81B21C62F002654F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5BAFD88E1B21C62F002654F0 /* Rangliste-A-Swift WatchKit Extension */;
-			targetProxy = 5BAFD8A71B21C62F002654F0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5B3C6A5B1B0B5A940099A65C /* Main.storyboard */ = {
@@ -455,14 +290,6 @@
 				5B3C6A611B0B5A940099A65C /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		5BAFD8B01B21C727002654F0 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BAFD8B11B21C727002654F0 /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -485,6 +312,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -507,6 +335,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d852db53-7cdb-4e65-8c3e-a629b47639ee";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,7 +359,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -545,6 +375,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f58ea4e4-4962-4a6a-99be-6fb110caa27f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -555,8 +386,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Kautz (5CL7HE474F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Kautz (5CL7HE474F)";
 				CURRENT_PROJECT_VERSION = 3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -567,7 +398,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d852db53-7cdb-4e65-8c3e-a629b47639ee";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -576,8 +407,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "JAKOTA Cruise Systems GmbH";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "JAKOTA Cruise Systems GmbH";
 				CURRENT_PROJECT_VERSION = 3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -588,68 +419,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f58ea4e4-4962-4a6a-99be-6fb110caa27f";
 				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
-		5BAFD8AB1B21C62F002654F0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = Rangliste_A_Swift_WatchKit_Extension;
-				INFOPLIST_FILE = "Rangliste-A-Swift WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		5BAFD8AC1B21C62F002654F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				IBSC_MODULE = Rangliste_A_Swift_WatchKit_Extension;
-				INFOPLIST_FILE = "Rangliste-A-Swift WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Release;
-		};
-		5BAFD8AE1B21C62F002654F0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Rangliste-A-Swift WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		5BAFD8AF1B21C62F002654F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Rangliste-A-Swift WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -673,22 +444,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		5BAFD8AA1B21C62F002654F0 /* Build configuration list for PBXNativeTarget "Rangliste-A-Swift WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BAFD8AB1B21C62F002654F0 /* Debug */,
-				5BAFD8AC1B21C62F002654F0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		5BAFD8AD1B21C62F002654F0 /* Build configuration list for PBXNativeTarget "Rangliste-A-Swift WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BAFD8AE1B21C62F002654F0 /* Debug */,
-				5BAFD8AF1B21C62F002654F0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
