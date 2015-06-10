@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarAppearance.shadowImage = UIImage()
             tabBarAppearance.backgroundImage = UIImage()
 
-
             let array = tabBarController.viewControllers as! Array<UINavigationController>
             array[0].tabBarItem.image = UIImage.fontAwesomeIconWithName(.User, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
             array[1].tabBarItem.image = UIImage.fontAwesomeIconWithName(.Trophy, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())

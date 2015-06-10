@@ -149,18 +149,8 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                 threeDays = obj as! Bool
             }
 
-
-
-            /*
-            if threeDays {
-                threeDaysButton.setTitle(String.fontAwesomeIconWithName(.CheckSquareO),
-                    forState: UIControlState.Normal)
-            } else {
-                threeDaysButton.setTitle(String.fontAwesomeIconWithName(.SquareO),
-                    forState: UIControlState.Normal)
-            }
-            */
-
+            isThreeDays = threeDays
+            threeDaysButton.setTitle(threeDays ? String.fontAwesomeIconWithName(.CheckSquareO) : String.fontAwesomeIconWithName(.SquareO), forState: .Normal)
             self.setEditing(false, animated: true)
         }
 
@@ -243,6 +233,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         super.setEditing(editing, animated: animated)
 
         if editing {
+
             regattaNameTextField.userInteractionEnabled     = true
             regattaNameTextField.borderStyle                = .RoundedRect
 
@@ -270,6 +261,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             navigationItem.rightBarButtonItem = editButton
         }
         else {
+
             regattaNameTextField.userInteractionEnabled    = false
             regattaNameTextField.borderStyle               = .None
             // -------------------------------------------------------------------------------------
@@ -341,7 +333,17 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             threeDays = theRegatta["threeDays"] as? Bool {
         }
 
+        if currentIndex != -1 {
+            threeDays = isThreeDays
+        }
 
+        var f = Float(1.0)
+        if let
+            selectedRegatta: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta"),
+            dict: [String : AnyObject] = selectedRegatta as? Dictionary,
+            factor: Float = dict["factor"] as? Float {
+                f = factor
+        }
 
         if let
             pos = position.toInt(),
@@ -353,7 +355,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                     "field" : field,
                     "races" : races,
                     "threeDays" : threeDays,
-                    "score" : calcForPosition(pos, scoredBoats: field, regattaFactor: 1.0)
+                    "score" : calcForPosition(pos, scoredBoats: field, regattaFactor: f)
                 ]
                 if currentIndex == -1 {
                     SimpleDataProvider.sharedInstance.addRegatta(r) // add new
@@ -427,33 +429,11 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
         var secondFactor = Float(0.2)
         if scoredBoats < 100 {
-            secondFactor = Float(scoredBoats) - Float(10.0) / Float(450.0)
+            secondFactor = (Float(scoredBoats) - Float(10.0)) / Float(450.0)
         }
 
         var ffactor = regattaFactor + secondFactor
+
         return (ffactor * 100.0 * ((Float(scoredBoats) + 1.0 - Float(pos)) / Float(scoredBoats)))
     }
-
-    /*
-    
-    //----------------------------------------------------------------------------------------------------------------------
-    #pragma mark - Actual calculation
-    //----------------------------------------------------------------------------------------------------------------------
-    - (CGFloat)calcForPosition:(NSInteger)position
-    andScoredBoats:(NSInteger)scoredBoats
-    withRegattaFactor:(float)regattaFactor
-    {
-    if (position > scoredBoats)
-    return 0;
-
-    float secondFactor = 0.2f;
-    if (scoredBoats < 100) {
-    secondFactor = ((float)scoredBoats - 10.0f) / 450.0f;
-    }
-
-    float ffactor = regattaFactor + secondFactor;
-    return ffactor * 100.0f *((scoredBoats + 1.0f - position)/scoredBoats);
-    }
-
-*/
 }

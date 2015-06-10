@@ -19,10 +19,9 @@ class Fetcher {
         let urlString = "http://www.teambender.de/scrape.php"
         let url = NSURL(string: urlString)
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-
-        var task = session.dataTaskWithURL(url!) {
+        let task = session.dataTaskWithURL(url!) {
             (data, response, error) -> Void in
-
+            
             if error != nil {
                 dispatch_async(dispatch_get_global_queue(priority, 0)) {
                     dispatch_async(dispatch_get_main_queue()) {
