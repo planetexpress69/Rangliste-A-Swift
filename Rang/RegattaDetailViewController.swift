@@ -359,7 +359,6 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                 ]
                 if currentIndex == -1 {
                     SimpleDataProvider.sharedInstance.addRegatta(r) // add new
-
                 }
                 else {
                     SimpleDataProvider.sharedInstance.updateRegatta(r, atIndex:currentIndex) // update existing

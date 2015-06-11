@@ -25,7 +25,7 @@ class RankingEntry : NSObject {
         super.init()
         self.firstname      = getStringFromJSON(data, key: "firstname")
         self.name           = getStringFromJSON(data, key: "name")
-        self.yob            = getStringFromJSON(data, key: "yob")
+        self.yob            = String(getIntFromJSON(data, key: "yob"))
         self.club           = getStringFromJSON(data, key: "club")
         self.sailNumber     = getStringFromJSON(data, key: "sailNumber")
         self.sailCountry    = getStringFromJSON(data, key: "sailCountry")

@@ -115,6 +115,7 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
         let cell = tableView.dequeueReusableCellWithIdentifier("RankingListCell", forIndexPath: indexPath) as! RankingListCell
 
         if self.resultSearchController.active {
+
             cell.nameLabel?.text = "\(filteredRankingEntries[indexPath.row].firstname) \(filteredRankingEntries[indexPath.row].name)"
             cell.pointsLabel?.text = NSString(format: "%.3f", locale: NSLocale.currentLocale(), filteredRankingEntries[indexPath.row].totalPoints as Float) as String
             cell.posLabel?.text = "\(filteredRankingEntries[indexPath.row].pos)"
@@ -126,6 +127,7 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
             cell.selectedBackgroundView = selectedBackgroundView
         }
         else {
+
             cell.nameLabel?.text = "\(rankingEntries[indexPath.row].firstname) \(rankingEntries[indexPath.row].name)"
             cell.pointsLabel?.text = NSString(format: "%.3f", locale: NSLocale.currentLocale(), rankingEntries[indexPath.row].totalPoints as Float) as String
             cell.posLabel?.text = "\(rankingEntries[indexPath.row].pos)"
@@ -135,6 +137,7 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
             let selectedBackgroundView = UIView(frame: cell.frame)
             selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
             cell.selectedBackgroundView = selectedBackgroundView
+            
         }
         return cell
     }
