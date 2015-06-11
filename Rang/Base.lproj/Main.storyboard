@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="806" y="203"/>
         </scene>
-        <!--View Controller-->
+        <!--Ack View Controller-->
         <scene sceneID="SeW-rV-4n5">
             <objects>
-                <viewController id="p24-Qc-FJv" sceneMemberID="viewController">
+                <viewController id="p24-Qc-FJv" customClass="AckViewController" customModule="Rangliste_A_Swift" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jAK-da-k2w"/>
                         <viewControllerLayoutGuide type="bottom" id="sxf-rc-nUh"/>
@@ -262,7 +262,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRL-nf-qqw">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRL-nf-qqw">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -271,7 +271,16 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zRL-nf-qqw" firstAttribute="top" secondItem="jAK-da-k2w" secondAttribute="bottom" id="RqD-9x-DVv"/>
+                            <constraint firstItem="zRL-nf-qqw" firstAttribute="leading" secondItem="gdl-fg-Pn5" secondAttribute="leading" id="hd4-Qq-oGO"/>
+                            <constraint firstItem="sxf-rc-nUh" firstAttribute="top" secondItem="zRL-nf-qqw" secondAttribute="bottom" id="hpw-se-hN9"/>
+                            <constraint firstAttribute="trailing" secondItem="zRL-nf-qqw" secondAttribute="trailing" id="kCf-G2-O0K"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="theTextView" destination="zRL-nf-qqw" id="hQh-zz-Fj1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzk-Bp-pCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
