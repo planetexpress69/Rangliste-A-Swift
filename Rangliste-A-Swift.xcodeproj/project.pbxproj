@@ -19,6 +19,7 @@
 		5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC271B0DDA2B0031A042 /* Constants.swift */; };
 		5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
 		5BAFD8611B2198C9002654F0 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8601B2198C9002654F0 /* sample.json */; };
+		5BC45C1D1B29819A00FAA0C7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC45C1C1B29819A00FAA0C7 /* AboutViewController.swift */; };
 		5BCA48691B20919500E51362 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48681B20919500E51362 /* AssetsLibrary.framework */; };
 		5BCA486D1B2091B900E51362 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486A1B2091B900E51362 /* CoreGraphics.framework */; };
 		5BCA486E1B2091B900E51362 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486B1B2091B900E51362 /* CoreText.framework */; };
@@ -66,6 +67,7 @@
 		5BA4EC271B0DDA2B0031A042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDataProvider.swift; sourceTree = "<group>"; };
 		5BAFD8601B2198C9002654F0 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
+		5BC45C1C1B29819A00FAA0C7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5BCA48681B20919500E51362 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5BCA486A1B2091B900E51362 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BCA486B1B2091B900E51362 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -141,6 +143,7 @@
 				5B3C6A791B0B625D0099A65C /* RegattaListViewController.swift */,
 				5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */,
 				5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */,
+				5BC45C1C1B29819A00FAA0C7 /* AboutViewController.swift */,
 				5BA4EC221B0DC5130031A042 /* FontAwesome.swift */,
 				5B104EB01B0C8CF000912681 /* UIKitExtensions.swift */,
 				5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */,
@@ -269,6 +272,7 @@
 				5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */,
 				5BA4EC231B0DC5130031A042 /* FontAwesome.swift in Sources */,
 				5BD175321B14CD7A00C7F5EB /* RankingListCell.swift in Sources */,
+				5BC45C1D1B29819A00FAA0C7 /* AboutViewController.swift in Sources */,
 				5B3C6A7A1B0B625D0099A65C /* RegattaListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

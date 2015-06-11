@@ -114,10 +114,10 @@
             </objects>
             <point key="canvasLocation" x="806" y="-533"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="CUz-ar-ZMU">
             <objects>
-                <viewController id="vws-h0-wSC" sceneMemberID="viewController">
+                <viewController id="vws-h0-wSC" customClass="AboutViewController" customModule="Rangliste_A_Swift" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m9P-Ke-7g5"/>
                         <viewControllerLayoutGuide type="bottom" id="qWJ-Qj-jSt"/>
@@ -125,7 +125,98 @@
                     <view key="view" contentMode="scaleToFill" id="uCP-kV-PSi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBx-DY-yDE">
+                                <rect key="frame" x="0.0" y="481" width="600" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0D-0h-DUT">
+                                        <rect key="frame" x="495" y="20" width="85" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="GfO-TC-jp9"/>
+                                            <constraint firstAttribute="width" constant="85" id="UJ9-U5-djN"/>
+                                        </constraints>
+                                        <state key="normal" image="LogoRostockSailing">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovc-Gf-Hp0">
+                                        <rect key="frame" x="258" y="20" width="85" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="BhM-W4-NyD"/>
+                                            <constraint firstAttribute="width" constant="85" id="gs6-2C-zjt"/>
+                                        </constraints>
+                                        <state key="normal" image="LogoJakota">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxT-4m-uzf">
+                                        <rect key="frame" x="20" y="20" width="85" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CZb-FP-Dhg"/>
+                                        </constraints>
+                                        <state key="normal" image="LogoFleetmon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LxT-4m-uzf" secondAttribute="bottom" constant="20" id="14E-jP-eBs"/>
+                                    <constraint firstAttribute="bottom" secondItem="U0D-0h-DUT" secondAttribute="bottom" constant="20" id="6t1-Zz-qNa"/>
+                                    <constraint firstAttribute="height" constant="70" id="DIc-Og-l6h"/>
+                                    <constraint firstItem="LxT-4m-uzf" firstAttribute="top" secondItem="BBx-DY-yDE" secondAttribute="top" constant="20" id="FmI-B2-1Rg"/>
+                                    <constraint firstItem="LxT-4m-uzf" firstAttribute="leading" secondItem="BBx-DY-yDE" secondAttribute="leading" constant="20" id="Leu-YF-8If"/>
+                                    <constraint firstAttribute="bottom" secondItem="ovc-Gf-Hp0" secondAttribute="bottom" constant="20" id="OM5-Go-WcO"/>
+                                    <constraint firstItem="ovc-Gf-Hp0" firstAttribute="top" secondItem="BBx-DY-yDE" secondAttribute="top" constant="20" id="RrT-FL-53D"/>
+                                    <constraint firstAttribute="trailing" secondItem="U0D-0h-DUT" secondAttribute="trailing" constant="20" id="a6i-xQ-5YP"/>
+                                    <constraint firstAttribute="centerX" secondItem="ovc-Gf-Hp0" secondAttribute="centerX" id="bNM-3d-p7K"/>
+                                    <constraint firstItem="U0D-0h-DUT" firstAttribute="top" secondItem="BBx-DY-yDE" secondAttribute="top" constant="20" id="ufI-vQ-nlC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj4-5F-c4V">
+                                <rect key="frame" x="16" y="443" width="568" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="ButtonHighlightedA"/>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.0" green="0.1841202978" blue="0.63111040360000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OptiA" translatesAutoresizingMaskIntoConstraints="NO" id="PIB-CS-9WM">
+                                <rect key="frame" x="16" y="64" width="568" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="iRk-HH-qD4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5 (1234)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-bt-qog">
+                                <rect key="frame" x="516" y="72" width="64" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Srw-xg-24f"/>
+                                    <constraint firstAttribute="width" constant="64" id="ucb-qm-dQa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TL-pB-wTD">
+                                <rect key="frame" x="20" y="143" width="560" height="302"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PIB-CS-9WM" firstAttribute="top" secondItem="m9P-Ke-7g5" secondAttribute="bottom" id="5w2-Im-HSr"/>
+                            <constraint firstItem="PIB-CS-9WM" firstAttribute="trailing" secondItem="uCP-kV-PSi" secondAttribute="trailingMargin" id="JRp-5a-Ytl"/>
+                            <constraint firstItem="BBx-DY-yDE" firstAttribute="leading" secondItem="uCP-kV-PSi" secondAttribute="leading" id="M2v-EZ-pQR"/>
+                            <constraint firstAttribute="trailing" secondItem="Qau-bt-qog" secondAttribute="trailing" constant="20" id="WRN-A0-hsz"/>
+                            <constraint firstAttribute="trailing" secondItem="BBx-DY-yDE" secondAttribute="trailing" id="ZDN-fk-TrI"/>
+                            <constraint firstItem="qWJ-Qj-jSt" firstAttribute="top" secondItem="BBx-DY-yDE" secondAttribute="bottom" id="fP7-5P-a4K"/>
+                            <constraint firstItem="PIB-CS-9WM" firstAttribute="leading" secondItem="uCP-kV-PSi" secondAttribute="leadingMargin" id="gYI-un-vmS"/>
+                            <constraint firstItem="Qau-bt-qog" firstAttribute="top" secondItem="m9P-Ke-7g5" secondAttribute="bottom" constant="8" id="gkO-2V-17S"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xKS-uZ-foW"/>
                 </viewController>
@@ -587,6 +678,13 @@
             <point key="canvasLocation" x="806" y="-1315"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ButtonHighlightedA" width="85" height="30"/>
+        <image name="LogoFleetmon" width="85" height="30"/>
+        <image name="LogoJakota" width="85" height="30"/>
+        <image name="LogoRostockSailing" width="85" height="30"/>
+        <image name="OptiA" width="100" height="100"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DGK-kJ-2vv"/>
     </inferredMetricsTieBreakers>
