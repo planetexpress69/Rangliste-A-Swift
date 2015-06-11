@@ -164,15 +164,30 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
 
     }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+
+        var rankingDetailViewController = segue.destinationViewController as! RankingDetailViewController
+        let selectedRowsIndexPath: NSIndexPath = tableView.indexPathForSelectedRow()!
+
+        var elem: RankingEntry
+
+        if self.resultSearchController.active {
+            elem = filteredRankingEntries[selectedRowsIndexPath.row]
+        } else {
+            elem = rankingEntries[selectedRowsIndexPath.row];
+        }
+        tableView.deselectRowAtIndexPath(selectedRowsIndexPath, animated: true)
+        rankingDetailViewController.theDataSource = elem;
+
+
     }
-    */
+    
 
 
 }

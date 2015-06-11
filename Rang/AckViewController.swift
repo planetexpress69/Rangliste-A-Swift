@@ -21,7 +21,7 @@ class AckViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         title = "Danksagungen"
-        var  fontSize: CGFloat = 9.0
+        var  fontSize: CGFloat = 8.0
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             fontSize = 15.0

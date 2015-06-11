@@ -10,9 +10,12 @@
 		5B104EB11B0C8CF000912681 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B104EB01B0C8CF000912681 /* UIKitExtensions.swift */; };
 		5B28A1771B29941D009A3EBF /* about.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B28A1761B29941D009A3EBF /* about.txt */; };
 		5B28A1791B299A50009A3EBF /* 3rdparty.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B28A1781B299A50009A3EBF /* 3rdparty.txt */; };
-		5B28A17B1B299C86009A3EBF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5B28A17A1B299C86009A3EBF /* README.md */; };
 		5B28A17D1B29A31B009A3EBF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5B28A17C1B29A31B009A3EBF /* LICENSE */; };
 		5B28A17F1B29A3F6009A3EBF /* AckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28A17E1B29A3F6009A3EBF /* AckViewController.swift */; };
+		5B28A1811B29A712009A3EBF /* RankingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28A1801B29A712009A3EBF /* RankingDetailViewController.swift */; };
+		5B28A1831B29A7DA009A3EBF /* SailorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28A1821B29A7DA009A3EBF /* SailorCell.swift */; };
+		5B28A1851B29AB04009A3EBF /* RegattaDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28A1841B29AB04009A3EBF /* RegattaDetailCell.swift */; };
+		5B28A1871B29C43F009A3EBF /* RegattaEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28A1861B29C43F009A3EBF /* RegattaEntry.swift */; };
 		5B3C6A561B0B5A940099A65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C6A551B0B5A940099A65C /* AppDelegate.swift */; };
 		5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A5B1B0B5A940099A65C /* Main.storyboard */; };
 		5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C6A5E1B0B5A940099A65C /* Images.xcassets */; };
@@ -63,6 +66,10 @@
 		5B28A17A1B299C86009A3EBF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5B28A17C1B29A31B009A3EBF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5B28A17E1B29A3F6009A3EBF /* AckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AckViewController.swift; sourceTree = "<group>"; };
+		5B28A1801B29A712009A3EBF /* RankingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingDetailViewController.swift; sourceTree = "<group>"; };
+		5B28A1821B29A7DA009A3EBF /* SailorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SailorCell.swift; sourceTree = "<group>"; };
+		5B28A1841B29AB04009A3EBF /* RegattaDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegattaDetailCell.swift; sourceTree = "<group>"; };
+		5B28A1861B29C43F009A3EBF /* RegattaEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegattaEntry.swift; sourceTree = "<group>"; };
 		5B3C6A501B0B5A940099A65C /* Rangliste-A-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rangliste-A-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3C6A541B0B5A940099A65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B3C6A551B0B5A940099A65C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,18 +158,22 @@
 				5BDA004E1B17449F0027EB5A /* FontAwesome.otf */,
 				5B3C6A551B0B5A940099A65C /* AppDelegate.swift */,
 				5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */,
+				5B28A1861B29C43F009A3EBF /* RegattaEntry.swift */,
 				5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */,
 				5BA4EC271B0DDA2B0031A042 /* Constants.swift */,
 				5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */,
 				5B3C6A791B0B625D0099A65C /* RegattaListViewController.swift */,
 				5B543E471B0BD74B000271BE /* RegattaDetailViewController.swift */,
 				5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */,
+				5B28A1801B29A712009A3EBF /* RankingDetailViewController.swift */,
 				5BC45C1C1B29819A00FAA0C7 /* AboutViewController.swift */,
 				5B28A17E1B29A3F6009A3EBF /* AckViewController.swift */,
 				5BA4EC221B0DC5130031A042 /* FontAwesome.swift */,
 				5B104EB01B0C8CF000912681 /* UIKitExtensions.swift */,
 				5B3C6A7B1B0B6D590099A65C /* RegattaListCell.swift */,
 				5BD175311B14CD7A00C7F5EB /* RankingListCell.swift */,
+				5B28A1821B29A7DA009A3EBF /* SailorCell.swift */,
+				5B28A1841B29AB04009A3EBF /* RegattaDetailCell.swift */,
 				5B3C6A5B1B0B5A940099A65C /* Main.storyboard */,
 				5B3C6A5E1B0B5A940099A65C /* Images.xcassets */,
 				5B3C6A601B0B5A940099A65C /* LaunchScreen.xib */,
@@ -287,13 +298,16 @@
 				5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */,
 				5B104EB11B0C8CF000912681 /* UIKitExtensions.swift in Sources */,
 				5B543E481B0BD74B000271BE /* RegattaDetailViewController.swift in Sources */,
+				5B28A1811B29A712009A3EBF /* RankingDetailViewController.swift in Sources */,
+				5B28A1851B29AB04009A3EBF /* RegattaDetailCell.swift in Sources */,
 				5BA4EC281B0DDA2B0031A042 /* Constants.swift in Sources */,
 				5BA4EC231B0DC5130031A042 /* FontAwesome.swift in Sources */,
-				5B28A17B1B299C86009A3EBF /* README.md in Sources */,
+				5B28A1831B29A7DA009A3EBF /* SailorCell.swift in Sources */,
 				5BD175321B14CD7A00C7F5EB /* RankingListCell.swift in Sources */,
 				5BC45C1D1B29819A00FAA0C7 /* AboutViewController.swift in Sources */,
 				5B28A17F1B29A3F6009A3EBF /* AckViewController.swift in Sources */,
 				5B3C6A7A1B0B625D0099A65C /* RegattaListViewController.swift in Sources */,
+				5B28A1871B29C43F009A3EBF /* RegattaEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,24 +18,26 @@ class RankingEntry : NSObject {
     var sailCountry: String!
     var totalPoints: Float!
     var pos: Int!
+    var listOfRegattas: [RegattaEntry]! = []
 
     // MARK: - Init
     // ---------------------------------------------------------------------------------------------
     init(data: NSDictionary) {
         super.init()
-        self.firstname      = getStringFromJSON(data, key: "firstname")
-        self.name           = getStringFromJSON(data, key: "name")
-        self.yob            = String(getIntFromJSON(data, key: "yob"))
-        self.club           = getStringFromJSON(data, key: "club")
-        self.sailNumber     = getStringFromJSON(data, key: "sailNumber")
-        self.sailCountry    = getStringFromJSON(data, key: "sailCountry")
-        self.totalPoints    = getFloatFromJSON(data, key: "totalPoints")
-        self.pos            = getIntFromJSON(data, key: "pos")
+        firstname      = getStringFromJSON(data, key: "firstname")
+        name           = getStringFromJSON(data, key: "name")
+        yob            = String(getIntFromJSON(data, key: "yob"))
+        club           = getStringFromJSON(data, key: "club")
+        sailNumber     = getStringFromJSON(data, key: "sailNumber")
+        sailCountry    = getStringFromJSON(data, key: "sailCountry")
+        totalPoints    = getFloatFromJSON(data, key: "totalPoints")
+        pos            = getIntFromJSON(data, key: "pos")
+        listOfRegattas = getListOfRegattasFromJSON(data, key: "regatta")
     }
 
     // MARK: - Init
     // ---------------------------------------------------------------------------------------------
-    func getStringFromJSON(data: NSDictionary, key: String) -> String {
+    private func getStringFromJSON(data: NSDictionary, key: String) -> String {
         if let info = data[key] as? String {
             return info
         }
@@ -44,7 +46,7 @@ class RankingEntry : NSObject {
 
     // MARK: - Typesafe data extraction
     // ---------------------------------------------------------------------------------------------
-    func getFloatFromJSON(data: NSDictionary, key: String) -> Float {
+    private func getFloatFromJSON(data: NSDictionary, key: String) -> Float {
         if let info = data[key] as? Float {
             return info
         }
@@ -52,11 +54,26 @@ class RankingEntry : NSObject {
     }
 
     // ---------------------------------------------------------------------------------------------
-    func getIntFromJSON(data: NSDictionary, key: String) -> Int {
+    private func getIntFromJSON(data: NSDictionary, key: String) -> Int {
         if let info = data[key] as? Int {
             return info
         }
         return 0
+    }
+
+    private func getListOfRegattasFromJSON(data: NSDictionary, key: String) -> [RegattaEntry]? {
+        if let info = data[key] as? Array<Dictionary<String, AnyObject>> {
+            for regattaDict: Dictionary in info {
+                let regatta = RegattaEntry(data: regattaDict)
+                listOfRegattas.append(regatta)
+            }
+            return listOfRegattas
+        }
+        return nil
+    }
+
+    func numberOfRegattas() -> Int {
+        return listOfRegattas.count
     }
 
 }
