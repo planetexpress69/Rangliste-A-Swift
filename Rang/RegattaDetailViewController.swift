@@ -10,17 +10,19 @@ import UIKit
 
 class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
+    // ---------------------------------------------------------------------------------------------
     @IBOutlet weak var regattaNameTextField: UITextField!
     @IBOutlet weak var regattaPosTextField: UITextField!
     @IBOutlet weak var regattaFieldTextField: UITextField!
     @IBOutlet weak var regattaRacesTextField: UITextField!
     @IBOutlet weak var selectorButton: UIButton!
     @IBOutlet weak var threeDaysButton: UIButton!
-
+    // ---------------------------------------------------------------------------------------------
     var regattaTypeList: [[String : AnyObject]]?
     var theRegatta: [String : AnyObject]?
     var currentIndex: Int = -1
     var isThreeDays: Bool = false
+    // ---------------------------------------------------------------------------------------------
 
     //MARK: - View lifecycle
     // ---------------------------------------------------------------------------------------------
@@ -93,25 +95,6 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-
-        /*
-        
-        {
-        "field" : 74,
-        "pos" : 26,
-        "races" : 2,
-        "score" : 75.63363,
-        "threeDays" : 0,
-        "title" : "LJüM MV",
-        "type" : {
-        "factor" : 1,
-        "id" : 1,
-        "title" : "Ranglistenregatta",
-        }
-        },
-
-*/
-
         if currentIndex == -1 {
             setEditing(true, animated: true)
             isThreeDays = false
@@ -151,40 +134,25 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
             isThreeDays = threeDays
             threeDaysButton.setTitle(threeDays ? String.fontAwesomeIconWithName(.CheckSquareO) : String.fontAwesomeIconWithName(.SquareO), forState: .Normal)
-            self.setEditing(false, animated: true)
+            setEditing(false, animated: true)
         }
 
         initRegattas()
 
-        if (NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") != nil) {
-            if let s: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") {
-                //dSelectedRegatta = s as? [String : AnyObject]
-                selectorButton.setTitle(s["title"] as? String, forState: UIControlState.Normal)
-            }
+        if let
+            selectedRegatta = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") as? Dictionary<String, AnyObject>,
+            title = selectedRegatta["title"] as? String {
+                selectorButton.setTitle(title, forState: .Normal)
         }
         else {
-            // set list[0]
+            if let
+                firstRegatta = regattaTypeList![0] as? Dictionary {
+                    NSUserDefaults.standardUserDefaults().setObject(firstRegatta, forKey: "selectedRegatta")
+                    selectorButton.setTitle(firstRegatta["title"] as? String, forState: .Normal)
+            }
+
         }
     }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-
-    }
-
-    // ---------------------------------------------------------------------------------------------
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-    // MARK: - User triggered actions
-    // ---------------------------------------------------------------------------------------------
-    //@IBAction func requestSelector(sender: UIButton) {
-    //    println("Boom")
-    //}
 
     // ---------------------------------------------------------------------------------------------
     @IBAction func toggleEdit(sender: UIBarButtonItem) {
@@ -198,33 +166,11 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
     // ---------------------------------------------------------------------------------------------
     @IBAction func toggleThreeDays(sender: UIButton) {
-
-        if isThreeDays {
-
-        }
-        else {
-
-        }
-
         isThreeDays = !isThreeDays
-        threeDaysButton.setTitle(isThreeDays ? String.fontAwesomeIconWithName(.CheckSquareO) : String.fontAwesomeIconWithName(.SquareO), forState: UIControlState.Normal)
-
-        /*
-        var threeDays: Bool = false
-
-        if let
-            theRegatta = theRegatta,
-            threeDays = theRegatta["threeDays"] as? Bool {
-                threeDaysButton.setTitle(String.fontAwesomeIconWithName(.CheckSquareO),
-                    forState: UIControlState.Normal)
-
-        } else {
-            threeDaysButton.setTitle(String.fontAwesomeIconWithName(.SquareO),
-                forState: UIControlState.Normal)
-        }
-        
-        theRegatta?["threeDays"] = !threeDays
-    */
+        threeDaysButton.setTitle(isThreeDays ?
+            String.fontAwesomeIconWithName(.CheckSquareO) :
+            String.fontAwesomeIconWithName(.SquareO),
+            forState: UIControlState.Normal)
     }
 
     // MARK: - Editing
@@ -340,7 +286,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         var f = Float(1.0)
         if let
             selectedRegatta: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta"),
-            dict: [String : AnyObject] = selectedRegatta as? Dictionary,
+            dict: Dictionary<String, AnyObject> = selectedRegatta as? Dictionary,
             factor: Float = dict["factor"] as? Float {
                 f = factor
         }
@@ -374,7 +320,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             url = NSURL(fileURLWithPath: path),
             data = NSData(contentsOfURL: url),
             array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]] {
-                self.regattaTypeList = array
+                regattaTypeList = array
         }
     }
 
@@ -410,8 +356,8 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     func setSelectedRegattaType(title: String) {
         if let array = regattaTypeList {
             for regatta in array {
-                if let foo = regatta["title"] as? String {
-                    if foo == title {
+                if let regattaTitle = regatta["title"] as? String {
+                    if regattaTitle == title {
                         NSUserDefaults.standardUserDefaults().setObject(regatta, forKey: "selectedRegatta")
                         selectorButton.setTitle(title, forState: UIControlState.Normal)
                         break

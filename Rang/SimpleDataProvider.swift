@@ -12,8 +12,12 @@ let kArrayKey = "storedDataArray"
 
 class SimpleDataProvider {
 
+    // ---------------------------------------------------------------------------------------------
     var dataStorageArray: Array<Dictionary<String, AnyObject>>
+    // ---------------------------------------------------------------------------------------------
 
+    // ---------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     class var sharedInstance: SimpleDataProvider {
         struct Static {
             static var onceToken: dispatch_once_t = 0
@@ -25,24 +29,27 @@ class SimpleDataProvider {
         return Static.instance!
     }
 
+    // ---------------------------------------------------------------------------------------------
     init() {
         var userdefaults = NSUserDefaults.standardUserDefaults()
         if userdefaults.objectForKey(kArrayKey) != nil {
             dataStorageArray = userdefaults.objectForKey(kArrayKey) as! Array
-            self.sort()
+            repair()
+            sort()
         } else {
             dataStorageArray = []
-            loadGreta()
-            self.sort()
+            //loadGreta()
         }
     }
 
+    // ---------------------------------------------------------------------------------------------
     func addRegatta(regatta: Dictionary<String, AnyObject>) {
         dataStorageArray.append(regatta)
         self.sort()
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
 
+    // ---------------------------------------------------------------------------------------------
     func updateRegatta(regatta: Dictionary<String, AnyObject>, atIndex:NSInteger) {
         dataStorageArray.removeAtIndex(atIndex)
         dataStorageArray.insert(regatta, atIndex: atIndex)
@@ -50,24 +57,29 @@ class SimpleDataProvider {
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
 
+    // ---------------------------------------------------------------------------------------------
     func removeRegattaAtIndex(index: Int) {
         dataStorageArray.removeAtIndex(index)
         NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
     }
 
-    // convenience while coding
+    // ---------------------------------------------------------------------------------------------
     func loadGreta() -> () {
         if let
             path     = NSBundle.mainBundle().pathForResource("sample", ofType: "json"),
             url = NSURL(fileURLWithPath: path),
             data = NSData(contentsOfURL: url),
-            array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]] {
+            array = NSJSONSerialization.JSONObjectWithData(
+                data,
+                options: nil,
+                error: nil) as? [[String: AnyObject]] {
                 dataStorageArray = array
                 NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
             }
+        sort()
     }
 
-
+    // ---------------------------------------------------------------------------------------------
     func bestScoreA() -> Float {
 
         if dataStorageArray.count == 0 {
@@ -101,6 +113,7 @@ class SimpleDataProvider {
 
     }
 
+    // ---------------------------------------------------------------------------------------------
     func calcmFactor(races: Int, atLeastThreeDays: Bool) -> Int {
 
         if races < 5 {
@@ -115,6 +128,7 @@ class SimpleDataProvider {
 
     }
 
+    // ---------------------------------------------------------------------------------------------
     func sort() {
         dataStorageArray.sort {
             item1, item2 in
@@ -124,4 +138,43 @@ class SimpleDataProvider {
         }
     }
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Fixing data types - accuse former Martin!
+    // ---------------------------------------------------------------------------------------------
+    func repair() {
+
+        var newArray = [[String : AnyObject]]()
+        var needsToBeUpdated = false
+        var c = 0
+
+        for regatta in dataStorageArray {
+            var newRegatta: Dictionary = regatta
+
+            if let races = regatta["races"] as? String {
+                var iraces: Int = races.toInt()!
+                newRegatta["races"] = iraces
+                needsToBeUpdated = true
+            }
+
+            if let pos = regatta["pos"] as? String {
+                var ipos: Int = pos.toInt()!
+                newRegatta["pos"] = ipos
+                needsToBeUpdated = true
+            }
+
+            if let field = regatta["field"] as? String {
+                var ifield: Int = field.toInt()!
+                newRegatta["field"] = ifield
+                needsToBeUpdated = true
+            }
+
+            dataStorageArray.removeAtIndex(c)
+            dataStorageArray.insert(newRegatta, atIndex: c)
+        }
+
+        if needsToBeUpdated {
+            println("Updating...")
+            NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
+        }
+    }
 }

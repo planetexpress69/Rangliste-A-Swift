@@ -20,6 +20,8 @@ class RankingDetailViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
+        title = "Detail"
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +56,7 @@ class RankingDetailViewController: UITableViewController {
 
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("SailorCell", forIndexPath: indexPath) as! SailorCell
+            cell.selectionStyle = .None
 
             if let
                 firstName = theDataSource?.firstname,
@@ -82,16 +85,16 @@ class RankingDetailViewController: UITableViewController {
             }
 
             if let totalPoints = theDataSource?.totalPoints {
-                cell.totalPointsLabel.text = "\(totalPoints)"
+                cell.totalPointsLabel.text = NSString(format: "%.3f", locale: NSLocale.currentLocale(), totalPoints) as String
             }
-            
-
 
             return cell
         }
         else {
 
             let cell = tableView.dequeueReusableCellWithIdentifier("RegattaDetailCell", forIndexPath: indexPath) as! RegattaDetailCell
+            cell.selectionStyle = .None
+
 
             cell.rnameLabel.text = theDataSource?.listOfRegattas[indexPath.row].rname
 

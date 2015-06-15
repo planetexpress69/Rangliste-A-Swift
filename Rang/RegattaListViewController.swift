@@ -10,15 +10,19 @@ import UIKit
 
 class RegattaListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // ---------------------------------------------------------------------------------------------
     @IBOutlet weak var theScoreView: UIView!
     @IBOutlet weak var theScoreLabel: UILabel!
     @IBOutlet weak var theTableView: UITableView!
-
+    // ---------------------------------------------------------------------------------------------
     var listOfRegattas: [Dictionary<String, AnyObject>] = []
+    // ---------------------------------------------------------------------------------------------
 
+    // MARK: - View's lifecycle
+    // ---------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        //clearsSelectionOnViewWillAppear = true
+
         title = "Deine Regatten"
         navigationItem.leftBarButtonItem = editButtonItem()
 
@@ -31,15 +35,14 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
             NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
+
         addButton.setTitleTextAttributes(attrs, forState: .Normal)
         navigationItem.rightBarButtonItem = addButton
-
 
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "",
             style: .Plain,
-            target:
-            nil,
+            target: nil,
             action: nil)
 
         theTableView?.backgroundColor = Constants.Colors.darkBlue
@@ -52,14 +55,6 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         navigationBar?.hideBottomHairline()
 
         self.theTableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
-
-
-/*
-        var navigationBar = self.navigationController?.navigationBar
-        navigationBar?.setBackgroundImage(
-            UIImage.imageWithColor(Constants.Colors.darkBlue),
-            forBarMetrics: UIBarMetrics.Default)
-        navigationBar?.shadowImage = UIImage() */
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -70,21 +65,9 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         updateTotalPoints()
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    // ---------------------------------------------------------------------------------------------
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
     // ---------------------------------------------------------------------------------------------
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
@@ -130,7 +113,6 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
     // ---------------------------------------------------------------------------------------------
     func tableView(tableView: UITableView,
         canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
         return true
     }
 
@@ -139,17 +121,19 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
             SimpleDataProvider.sharedInstance.removeRegattaAtIndex(indexPath.row)
             listOfRegattas.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             updateTotalPoints()
-        } else if editingStyle == .Insert {
-            //Create a new instance of the appropriate class, 
-            //insert it into the array, and add a new row to the table view
-        }    
+        }
     }
 
+    // MARK: - Table view delegate
+    // ---------------------------------------------------------------------------------------------
+    func tableView(tableView: UITableView,
+        heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+            return 80.0
+    }
 
     // MARK: - Navigation
     // ---------------------------------------------------------------------------------------------
@@ -170,73 +154,21 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     // ---------------------------------------------------------------------------------------------
-    func tableView(tableView: UITableView,
-        heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80.0
+    func addRegatta(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("addSegue", sender: nil)
     }
 
-    // ---------------------------------------------------------------------------------------------
-/*
-    func tableView(
-        tableView: UITableView,
-        heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-*/
-
-    // ---------------------------------------------------------------------------------------------
-/*
-    func tableView(
-        tableView: UITableView,
-        viewForHeaderInSection section: Int) -> UIView? {
-
-            println("Beep!")
-
-        var headerLabel = UILabel(frame: CGRectMake(
-            15,
-            0,
-            tableView.frame.size.width - 30,
-            100))
-        headerLabel.font = UIFont(
-            name: "HelveticaNeue-Bold",
-            size: 72)
-        headerLabel.textColor = .whiteColor()
-        headerLabel.backgroundColor = Constants.Colors.darkBlue
-        headerLabel.text = NSString(
-            format: "%.3f",
-            locale: NSLocale.currentLocale(),
-            calcTotalPoins()) as String
-
-        headerLabel.tag = 1
-
-        var headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 100))
-        headerView.addSubview(headerLabel)
-
-            println("Beep, beep!")
-
-        return headerView
-    }
-*/
-
-    // ---------------------------------------------------------------------------------------------
-    func calcPoints() -> Float {
-        return 77.777
-    }
-
+    // MARK: - Calculation
     // ---------------------------------------------------------------------------------------------
     func calcTotalPoints() -> Float {
         return SimpleDataProvider.sharedInstance.bestScoreA()
     }
 
+    // ---------------------------------------------------------------------------------------------
     func updateTotalPoints() -> () {
         theScoreLabel.text = NSString(
             format: "%.3f",
             locale: NSLocale.currentLocale(),
             calcTotalPoints()) as String
     }
-
-    @IBAction func addRegatta(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("addSegue", sender: nil)
-    }
-
 }
