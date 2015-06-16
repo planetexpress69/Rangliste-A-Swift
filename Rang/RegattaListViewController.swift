@@ -81,51 +81,51 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
     // ---------------------------------------------------------------------------------------------
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RegattaListCell",
-            forIndexPath: indexPath) as! RegattaListCell
-        var selectedBackgroundView = UIView(frame: CGRectMake(0, 0, 320, 100))
-        selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
-        cell.selectedBackgroundView = selectedBackgroundView
-        cell.regattaNameLabel!.text = listOfRegattas[indexPath.row]["title"] as? String
+            let cell = tableView.dequeueReusableCellWithIdentifier("RegattaListCell",
+                forIndexPath: indexPath) as! RegattaListCell
+            var selectedBackgroundView = UIView(frame: CGRectMake(0, 0, 320, 100))
+            selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
+            cell.selectedBackgroundView = selectedBackgroundView
+            cell.regattaNameLabel!.text = listOfRegattas[indexPath.row]["title"] as? String
 
-        cell.pointsLabel!.text = NSString(
-            format: "%.3f",
-            locale: NSLocale.currentLocale(),
-            listOfRegattas[indexPath.row]["score"] as! Float
-            ) as String
+            cell.pointsLabel!.text = NSString(
+                format: "%.3f",
+                locale: NSLocale.currentLocale(),
+                listOfRegattas[indexPath.row]["score"] as! Float
+                ) as String
 
-        var factor = SimpleDataProvider.sharedInstance.calcmFactor(listOfRegattas[indexPath.row]["races"] as! Int, atLeastThreeDays: listOfRegattas[indexPath.row]["threeDays"] as! Bool)
+            var factor = SimpleDataProvider.sharedInstance.calcmFactor(listOfRegattas[indexPath.row]["races"] as! Int, atLeastThreeDays: listOfRegattas[indexPath.row]["threeDays"] as! Bool)
 
-        cell.regattaFactorLabel!.text = NSString(
-            format: "%d",
-            locale: NSLocale.currentLocale(),
-            factor as Int
-            ) as String
-        cell.positionLabel!.text = NSString(
-            format: "%d/%d",
-            locale: NSLocale.currentLocale(),
-            listOfRegattas[indexPath.row]["pos"] as! Int,
-            listOfRegattas[indexPath.row]["field"] as! Int
-            ) as String
-        return cell
+            cell.regattaFactorLabel!.text = NSString(
+                format: "%d",
+                locale: NSLocale.currentLocale(),
+                factor as Int
+                ) as String
+            cell.positionLabel!.text = NSString(
+                format: "%d/%d",
+                locale: NSLocale.currentLocale(),
+                listOfRegattas[indexPath.row]["pos"] as! Int,
+                listOfRegattas[indexPath.row]["field"] as! Int
+                ) as String
+            return cell
     }
 
     // ---------------------------------------------------------------------------------------------
     func tableView(tableView: UITableView,
         canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+            return true
     }
 
     // ---------------------------------------------------------------------------------------------
     func tableView(tableView: UITableView,
         commitEditingStyle editingStyle: UITableViewCellEditingStyle,
         forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            SimpleDataProvider.sharedInstance.removeRegattaAtIndex(indexPath.row)
-            listOfRegattas.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            updateTotalPoints()
-        }
+            if editingStyle == .Delete {
+                SimpleDataProvider.sharedInstance.removeRegattaAtIndex(indexPath.row)
+                listOfRegattas.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                updateTotalPoints()
+            }
     }
 
     // MARK: - Table view delegate
@@ -156,6 +156,12 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
     // ---------------------------------------------------------------------------------------------
     func addRegatta(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("addSegue", sender: nil)
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        theTableView.setEditing(editing, animated: animated)
     }
 
     // MARK: - Calculation

@@ -146,7 +146,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             if let
-                firstRegatta = regattaTypeList![0] as? Dictionary {
+                firstRegatta: AnyObject = regattaTypeList![0] as? AnyObject {
                     NSUserDefaults.standardUserDefaults().setObject(firstRegatta, forKey: "selectedRegatta")
                     selectorButton.setTitle(firstRegatta["title"] as? String, forState: .Normal)
             }
@@ -346,11 +346,11 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             // ...
         }
         alertController.addAction(cancelAction)
-        
+
         self.presentViewController(alertController, animated: true) {
             // ...
         }
-        
+
     }
 
     func setSelectedRegattaType(title: String) {
@@ -371,14 +371,14 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         if pos > scoredBoats {
             return Float(0.0)
         }
-
+        
         var secondFactor = Float(0.2)
         if scoredBoats < 100 {
             secondFactor = (Float(scoredBoats) - Float(10.0)) / Float(450.0)
         }
-
+        
         var ffactor = regattaFactor + secondFactor
-
+        
         return (ffactor * 100.0 * ((Float(scoredBoats) + 1.0 - Float(pos)) / Float(scoredBoats)))
     }
 }
