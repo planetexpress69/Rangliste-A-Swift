@@ -301,7 +301,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                     "field" : field,
                     "races" : races,
                     "threeDays" : threeDays,
-                    "score" : calcForPosition(pos, scoredBoats: field, regattaFactor: f)
+                    "score" : calcScoreForPosition(pos, scoredBoats: field, regattaFactor: f)
                 ]
                 if currentIndex == -1 {
                     SimpleDataProvider.sharedInstance.addRegatta(r) // add new
@@ -313,6 +313,9 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         navigationController?.popToRootViewControllerAnimated(true) // get outta here
     }
 
+
+    //MARK: - Load regatta types from JSON
+    // ---------------------------------------------------------------------------------------------
     func initRegattas() {
 
         if let
@@ -324,9 +327,12 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+
+    //MARK: - Handle selector button
+    // ---------------------------------------------------------------------------------------------
     @IBAction func requestSelector(sender: UIButton) {
 
-        let alertController = UIAlertController(title: "Art der Regatta", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let alertController = UIAlertController(title: "Art der Regatta", message: nil, preferredStyle: .ActionSheet)
 
         if let array = regattaTypeList {
             for regatta in array {
@@ -341,18 +347,26 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             }
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
-            (action) in
-            // ...
+        if let presentationController = alertController.popoverPresentationController {
+            //iPad
+            alertController.popoverPresentationController!.sourceView = sender;
+            alertController.popoverPresentationController!.sourceRect = CGRectMake(sender.bounds.size.width / 2.0, 60, 1.0, 1.0);
+        } else {
+            //iPhone
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+                (action) in
+                // ...
+            }
+            alertController.addAction(cancelAction)
         }
-        alertController.addAction(cancelAction)
 
         self.presentViewController(alertController, animated: true) {
-            // ...
+            
         }
-
     }
 
+    //MARK: - Set selected regatta type
+    // ---------------------------------------------------------------------------------------------
     func setSelectedRegattaType(title: String) {
         if let array = regattaTypeList {
             for regatta in array {
@@ -367,7 +381,10 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func calcForPosition(pos: Int, scoredBoats: Int, regattaFactor: Float) -> Float {
+    //MARK: - Actual calculation
+    // ---------------------------------------------------------------------------------------------
+    func calcScoreForPosition(pos: Int, scoredBoats: Int, regattaFactor: Float) -> Float {
+
         if pos > scoredBoats {
             return Float(0.0)
         }
@@ -376,9 +393,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         if scoredBoats < 100 {
             secondFactor = (Float(scoredBoats) - Float(10.0)) / Float(450.0)
         }
-        
         var ffactor = regattaFactor + secondFactor
-        
         return (ffactor * 100.0 * ((Float(scoredBoats) + 1.0 - Float(pos)) / Float(scoredBoats)))
     }
 }
