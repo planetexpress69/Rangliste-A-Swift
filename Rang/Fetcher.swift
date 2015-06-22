@@ -21,7 +21,7 @@ class Fetcher {
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         let task = session.dataTaskWithURL(url!) {
             (data, response, error) -> Void in
-            
+
             if error != nil {
                 dispatch_async(dispatch_get_global_queue(priority, 0)) {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -38,6 +38,8 @@ class Fetcher {
                     options: NSJSONReadingOptions.AllowFragments,
                     error: &parsingError) {
                         rankingData = gottenData as! NSArray
+                } else {
+                    // handle parsing error!
                 }
 
                 var rankingEntries = [RankingEntry]()
