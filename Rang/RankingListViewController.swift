@@ -142,8 +142,7 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
         return cell
     }
 
-    func updateSearchResultsForSearchController(searchController: UISearchController)
-    {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         filteredRankingEntries.removeAll(keepCapacity: false)
         let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR firstname CONTAINS[c] %@ OR yob CONTAINS[c] %@ OR club CONTAINS[c] %@ OR sailNumber CONTAINS[c] %@",
             searchController.searchBar.text,
@@ -179,13 +178,13 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
 
         if self.resultSearchController.active {
             elem = filteredRankingEntries[selectedRowsIndexPath.row]
+            self.resultSearchController.active = false;
+
         } else {
             elem = rankingEntries[selectedRowsIndexPath.row];
         }
         tableView.deselectRowAtIndexPath(selectedRowsIndexPath, animated: true)
-        rankingDetailViewController.theDataSource = elem;
-
-
+        rankingDetailViewController.theDataSource = elem
     }
     
 
