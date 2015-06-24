@@ -445,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 2018;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JAKOTA Design Group GmbH (UQ24M9LT38)";
 				CURRENT_PROJECT_VERSION = 3;

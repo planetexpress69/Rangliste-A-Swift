@@ -160,7 +160,6 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
         else {
             searchController.searchBar.prompt = self.rankingEntries.count == 1 ? "\(self.rankingEntries.count) result" : "\(self.rankingEntries.count) results"
         }
-
     }
 
 

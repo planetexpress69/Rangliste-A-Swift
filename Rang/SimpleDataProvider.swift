@@ -150,31 +150,39 @@ class SimpleDataProvider {
         for regatta in dataStorageArray {
             var newRegatta: Dictionary = regatta
 
+            let name = regatta["title"] as! String
+            let newName = newRegatta["title"] as! String
+
+
+            println("   regatta: \(name)")
+            println("newRegatta: \(newName)")
+            println("*********************************")
+
             if let races = regatta["races"] as? String {
+                println("Repairing races...")
                 var iraces: Int = races.toInt()!
                 newRegatta["races"] = iraces
                 needsToBeUpdated = true
             }
 
             if let pos = regatta["pos"] as? String {
+                println("Repairing pos...")
                 var ipos: Int = pos.toInt()!
                 newRegatta["pos"] = ipos
                 needsToBeUpdated = true
             }
 
             if let field = regatta["field"] as? String {
+                println("Repairing field...")
                 var ifield: Int = field.toInt()!
                 newRegatta["field"] = ifield
                 needsToBeUpdated = true
             }
-
-            dataStorageArray.removeAtIndex(c)
-            dataStorageArray.insert(newRegatta, atIndex: c)
+            newArray.insert(newRegatta, atIndex: c)
+            dataStorageArray = newArray
         }
 
-        if needsToBeUpdated {
-            println("Updating...")
-            NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
-        }
+        println("Updating...")
+        NSUserDefaults.standardUserDefaults().setObject(newArray, forKey: kArrayKey)
     }
 }
