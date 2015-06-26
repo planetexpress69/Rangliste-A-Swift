@@ -145,12 +145,8 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                 selectorButton.setTitle(title, forState: .Normal)
         }
         else {
-            if let
-                firstRegatta: AnyObject = regattaTypeList![0] as? AnyObject {
-                    NSUserDefaults.standardUserDefaults().setObject(firstRegatta, forKey: "selectedRegatta")
-                    selectorButton.setTitle(firstRegatta["title"] as? String, forState: .Normal)
-            }
-
+            NSUserDefaults.standardUserDefaults().setObject(regattaTypeList![0], forKey: "selectedRegatta")
+            selectorButton.setTitle(regattaTypeList![0]["title"] as? String, forState: .Normal)
         }
     }
 
