@@ -15,12 +15,22 @@
                         </timer>
                         <group width="1" alignment="left" id="VV9-5O-ytE">
                             <items>
-                                <button width="65" alignment="center" title="Button" id="1gh-BQ-PVn">
+                                <button width="136" alignment="center" title="Button" id="1gh-BQ-PVn">
                                     <color key="backgroundColor" red="1" green="0.00063675548589999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="15"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="AgC-eL-Hgc" id="Dte-a9-wzO"/>
                                     </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="136" alignment="left" id="x85-VL-1fJ">
+                            <items>
+                                <button width="64" alignment="left" title="Button" id="IzJ-Pa-lbI">
+                                    <color key="backgroundColor" red="1" green="0.71058238640000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                                <button width="64" alignment="right" title="Button" id="dfG-jo-4JR">
+                                    <color key="backgroundColor" red="1" green="0.71058238640000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </button>
                             </items>
                         </group>
