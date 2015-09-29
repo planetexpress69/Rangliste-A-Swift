@@ -19,10 +19,10 @@ class RegattaListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        regattaNameLabel?.textColor = Constants.Colors.darkBlue
-        regattaFactorLabel?.textColor = Constants.Colors.darkBlue
-        pointsLabel?.textColor = Constants.Colors.darkBlue
-        positionLabel?.textColor = Constants.Colors.darkBlue
+        regattaNameLabel?.textColor     = Constants.Colors.textColor
+        regattaFactorLabel?.textColor   = Constants.Colors.textColor
+        pointsLabel?.textColor          = Constants.Colors.textColor
+        positionLabel?.textColor        = Constants.Colors.textColor
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -35,10 +35,10 @@ class RegattaListCell: UITableViewCell {
             pointsLabel?.textColor = .whiteColor()
             positionLabel?.textColor = .whiteColor()
         } else {
-            regattaNameLabel?.textColor = Constants.Colors.darkBlue
-            regattaFactorLabel?.textColor = Constants.Colors.darkBlue
-            pointsLabel?.textColor = Constants.Colors.darkBlue
-            positionLabel?.textColor = Constants.Colors.darkBlue
+            regattaNameLabel?.textColor = Constants.Colors.textColor
+            regattaFactorLabel?.textColor = Constants.Colors.textColor
+            pointsLabel?.textColor = Constants.Colors.textColor
+            positionLabel?.textColor = Constants.Colors.textColor
         }
     }
 
@@ -52,10 +52,11 @@ class RegattaListCell: UITableViewCell {
             pointsLabel?.textColor = .whiteColor()
             positionLabel?.textColor = .whiteColor()
         } else {
-            regattaNameLabel?.textColor = Constants.Colors.darkBlue
-            regattaFactorLabel?.textColor = Constants.Colors.darkBlue
-            pointsLabel?.textColor = Constants.Colors.darkBlue
-            positionLabel?.textColor = Constants.Colors.darkBlue
-        } 
+            regattaNameLabel?.textColor = Constants.Colors.textColor
+            regattaFactorLabel?.textColor = Constants.Colors.textColor
+            pointsLabel?.textColor = Constants.Colors.textColor
+            positionLabel?.textColor = Constants.Colors.textColor
+        }
+
     }
 }

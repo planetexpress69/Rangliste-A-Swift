@@ -11,6 +11,7 @@ import Foundation
 
 class Fetcher {
 
+    // ---------------------------------------------------------------------------------------------
     // MARK: - Load data
     // ---------------------------------------------------------------------------------------------
     func load(completion: (([RankingEntry]) -> Void)!) {
@@ -30,30 +31,30 @@ class Fetcher {
                 }
             }
             else {
-                var parsingError: NSError?
                 var rankingData = []
 
-                if let gottenData: AnyObject = NSJSONSerialization.JSONObjectWithData(
-                    data,
-                    options: NSJSONReadingOptions.AllowFragments,
-                    error: &parsingError) {
+                do {
+                    let gottenData: AnyObject = try NSJSONSerialization.JSONObjectWithData(
+                        data!,
+                        options: NSJSONReadingOptions.AllowFragments)
                         rankingData = gottenData as! NSArray
-                } else {
-                    // handle parsing error!
+                } catch let error as NSError {
+                    print("Error: \(error)")
+                } catch {
+                    fatalError()
                 }
 
                 var rankingEntries = [RankingEntry]()
 
                 for record in rankingData {
                     if let record = record as? NSDictionary {
-                        var rankingEntry = RankingEntry(data: record)
+                        let rankingEntry = RankingEntry(data: record)
                         rankingEntries.append(rankingEntry)
                     }
                 }
 
                 dispatch_async(dispatch_get_global_queue(priority, 0)) {
                     dispatch_async(dispatch_get_main_queue()) {
-                        println("Beep!");
                         completion(rankingEntries)
                     }
                 }

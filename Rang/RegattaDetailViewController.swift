@@ -22,8 +22,8 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     var theRegatta: [String : AnyObject]?
     var currentIndex: Int = -1
     var isThreeDays: Bool = false
-    // ---------------------------------------------------------------------------------------------
 
+    // ---------------------------------------------------------------------------------------------
     //MARK: - View lifecycle
     // ---------------------------------------------------------------------------------------------
     override func viewDidLoad() {
@@ -36,58 +36,91 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         regattaNameTextField.autocapitalizationType = .None
         regattaNameTextField.autocorrectionType = .No
         regattaNameTextField.returnKeyType = .Done
+        regattaNameTextField.textColor = Constants.Colors.textColor
 
         regattaPosTextField.delegate = self
         regattaPosTextField.keyboardType = .NumberPad
         regattaPosTextField.autocapitalizationType = .None
         regattaPosTextField.autocorrectionType = .No
         regattaPosTextField.returnKeyType = .Next
+        regattaPosTextField.textColor = Constants.Colors.textColor
 
         regattaFieldTextField.delegate = self
         regattaFieldTextField.keyboardType = .NumberPad
         regattaFieldTextField.autocapitalizationType = .None
         regattaFieldTextField.autocorrectionType = .No
         regattaFieldTextField.returnKeyType = .Next
+        regattaFieldTextField.textColor = Constants.Colors.textColor
 
         regattaRacesTextField.delegate = self
         regattaRacesTextField.keyboardType = .NumberPad
         regattaRacesTextField.autocapitalizationType = .None
         regattaRacesTextField.autocorrectionType = .No
         regattaRacesTextField.returnKeyType = .Next
+        regattaRacesTextField.textColor = Constants.Colors.textColor
 
-        selectorButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
-        selectorButton.setBackgroundImage(UIImage.imageWithColor(Constants.Colors.darkBlue),
-            forState: UIControlState.Normal)
-        selectorButton.setBackgroundImage(UIImage.imageWithColor(UIColor.blackColor()),
-            forState: UIControlState.Highlighted)
-        selectorButton.setBackgroundImage(UIImage.imageWithColor(UIColor.clearColor()),
-            forState: UIControlState.Disabled)
-        selectorButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        selectorButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
-        selectorButton.setTitleColor(Constants.Colors.darkBlue, forState: .Disabled)
+        selectorButton.titleLabel?.font = .systemFontOfSize(16.0)
+
+        selectorButton.setBackgroundImage(
+            .imageWithColor(Constants.Colors.textColor),
+            forState: .Normal)
+
+        selectorButton.setBackgroundImage(
+            .imageWithColor(Constants.Colors.textColor),
+            forState: .Highlighted)
+
+        selectorButton.setBackgroundImage(
+            .imageWithColor(.whiteColor()),
+            forState: .Disabled)
+
+        selectorButton.setTitleColor(
+            .whiteColor(),
+            forState: .Normal)
+
+        selectorButton.setTitleColor(
+            .whiteColor(),
+            forState: .Highlighted)
+
+        selectorButton.setTitleColor(
+            Constants.Colors.textColor,
+            forState: .Disabled)
+
         selectorButton.layer.cornerRadius = selectorButton.frame.size.height / 2
         selectorButton.layer.borderWidth = 0
         selectorButton.clipsToBounds = true
 
-        selectorButton.addTarget(self, action: "requestSelector:", forControlEvents: .TouchUpInside)
+        selectorButton.addTarget(
+            self,
+            action: "requestSelector:",
+            forControlEvents: .TouchUpInside)
 
-        var editButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(.Edit),
-            style: UIBarButtonItemStyle.Plain,
+        let editButton = UIBarButtonItem(title: .fontAwesomeIconWithName(.Edit),
+            style: .Plain,
             target: self,
             action: "toggleEdit:")
-        var attrs = [
+        let attrs = [
             NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSForegroundColorAttributeName : Constants.Colors.textColor
         ]
-        editButton.setTitleTextAttributes(attrs, forState: .Normal)
+        editButton.setTitleTextAttributes(
+            attrs,
+            forState: .Normal)
+
         navigationItem.rightBarButtonItem = editButton
 
-        threeDaysButton.titleLabel?.font = UIFont.fontAwesomeOfSize(20)
-        threeDaysButton.setTitle(String.fontAwesomeIconWithName(.CheckSquareO),
-            forState: UIControlState.Normal)
-        threeDaysButton.setTitleColor(Constants.Colors.darkBlue,
-            forState: UIControlState.Normal)
-        threeDaysButton.addTarget(self, action: "toggleThreeDays:",
+        threeDaysButton.titleLabel?.font = .fontAwesomeOfSize(20)
+
+        threeDaysButton.setTitle(
+            .fontAwesomeIconWithName(.CheckSquareO),
+            forState: .Normal)
+
+        threeDaysButton.setTitleColor(
+            Constants.Colors.textColor,
+            forState: .Normal)
+
+        threeDaysButton.addTarget(
+            self,
+            action: "toggleThreeDays:",
             forControlEvents: .TouchUpInside)
     }
 
@@ -98,7 +131,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         if currentIndex == -1 {
             setEditing(true, animated: true)
             isThreeDays = false
-            threeDaysButton.setTitle(String.fontAwesomeIconWithName(.SquareO), forState: .Normal)
+            threeDaysButton.setTitle(.fontAwesomeIconWithName(.SquareO), forState: .Normal)
         }
         else {
             var name: String = ""
@@ -133,21 +166,26 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             }
 
             isThreeDays = threeDays
-            threeDaysButton.setTitle(threeDays ? String.fontAwesomeIconWithName(.CheckSquareO) : String.fontAwesomeIconWithName(.SquareO), forState: .Normal)
+            threeDaysButton.setTitle(threeDays ?
+                .fontAwesomeIconWithName(.CheckSquareO) :
+                .fontAwesomeIconWithName(.SquareO), forState: .Normal)
             setEditing(false, animated: true)
         }
 
         initRegattas()
 
         if let
-            selectedRegatta = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") as? Dictionary<String, AnyObject>,
-            title = selectedRegatta["title"] as? String {
+            selRegatta = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta") as?
+                Dictionary<String, AnyObject>,
+            title = selRegatta["title"] as? String {
                 selectorButton.setTitle(title, forState: .Normal)
         }
         else {
             if let
-                firstRegatta: AnyObject = regattaTypeList![0] as? AnyObject {
-                    NSUserDefaults.standardUserDefaults().setObject(firstRegatta, forKey: "selectedRegatta")
+                firstRegatta = regattaTypeList?[0]  {
+                    NSUserDefaults.standardUserDefaults().setObject(
+                        firstRegatta,
+                        forKey: "selectedRegatta")
                     selectorButton.setTitle(firstRegatta["title"] as? String, forState: .Normal)
             }
 
@@ -168,9 +206,9 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func toggleThreeDays(sender: UIButton) {
         isThreeDays = !isThreeDays
         threeDaysButton.setTitle(isThreeDays ?
-            String.fontAwesomeIconWithName(.CheckSquareO) :
-            String.fontAwesomeIconWithName(.SquareO),
-            forState: UIControlState.Normal)
+            .fontAwesomeIconWithName(.CheckSquareO) :
+            .fontAwesomeIconWithName(.SquareO),
+            forState: .Normal)
     }
 
     // MARK: - Editing
@@ -195,13 +233,13 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             threeDaysButton.userInteractionEnabled          = true
             selectorButton.enabled                          = true
 
-            var editButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(.Check),
-                style: UIBarButtonItemStyle.Plain,
+            let editButton = UIBarButtonItem(title: .fontAwesomeIconWithName(.Check),
+                style: .Plain,
                 target: self,
                 action: "toggleEdit:")
-            var attrs = [
+            let attrs = [
                 NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-                NSForegroundColorAttributeName: UIColor.whiteColor()
+                NSForegroundColorAttributeName : Constants.Colors.textColor
             ]
             editButton.setTitleTextAttributes(attrs, forState: .Normal)
             navigationItem.rightBarButtonItem = editButton
@@ -210,30 +248,30 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
             regattaNameTextField.userInteractionEnabled    = false
             regattaNameTextField.borderStyle               = .None
-            // -------------------------------------------------------------------------------------
+
             regattaPosTextField.userInteractionEnabled     = false
             regattaPosTextField.borderStyle                = .None
-            // -------------------------------------------------------------------------------------
+
             regattaFieldTextField.userInteractionEnabled   = false
             regattaFieldTextField.borderStyle              = .None
-            // -------------------------------------------------------------------------------------
+
             regattaRacesTextField.userInteractionEnabled   = false
             regattaRacesTextField.borderStyle              = .None
-            // -------------------------------------------------------------------------------------
+
             threeDaysButton.userInteractionEnabled         = false
-            // -------------------------------------------------------------------------------------
+
             //dSelectedRegatta                               = nil
-            // -------------------------------------------------------------------------------------
+
             selectorButton.enabled                          = false
             selectorButton.titleLabel!.textColor             = .grayColor()
 
-            var editButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(.Edit),
-                style: UIBarButtonItemStyle.Plain,
+            let editButton = UIBarButtonItem(title: .fontAwesomeIconWithName(.Edit),
+                style: .Plain,
                 target: self,
                 action: "toggleEdit:")
-            var attrs = [
+            let attrs = [
                 NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-                NSForegroundColorAttributeName: UIColor.whiteColor()
+                NSForegroundColorAttributeName : Constants.Colors.textColor
             ]
             editButton.setTitleTextAttributes(attrs, forState: .Normal)
             navigationItem.rightBarButtonItem = editButton
@@ -276,7 +314,9 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
         if let
             theRegatta = theRegatta,
-            threeDays = theRegatta["threeDays"] as? Bool {
+            td = theRegatta["threeDays"] as? Bool {
+                threeDays = td
+
         }
 
         if currentIndex != -1 {
@@ -284,18 +324,21 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
 
         var f = Float(1.0)
+
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+
         if let
-            selectedRegatta: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("selectedRegatta"),
-            dict: Dictionary<String, AnyObject> = selectedRegatta as? Dictionary,
+            selRegatta: AnyObject = userDefaults.objectForKey("selectedRegatta"),
+            dict: Dictionary<String, AnyObject> = selRegatta as? Dictionary,
             factor: Float = dict["factor"] as? Float {
                 f = factor
         }
 
         if let
-            pos = position.toInt(),
-            field = numberOfTimedBoats.toInt(),
-            races = numberOfRaces.toInt() {
-                var r: Dictionary<String, AnyObject> = [
+            pos = Int(position),
+            field = Int(numberOfTimedBoats),
+            races = Int(numberOfRaces) {
+                let r: Dictionary<String, AnyObject> = [
                     "title" : name,
                     "pos" : pos,
                     "field" : field,
@@ -304,13 +347,15 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
                     "score" : calcScoreForPosition(pos, scoredBoats: field, regattaFactor: f)
                 ]
                 if currentIndex == -1 {
-                    SimpleDataProvider.sharedInstance.addRegatta(r) // add new
+                    // add new
+                    SimpleDataProvider.sharedInstance.addRegatta(r)
                 }
                 else {
-                    SimpleDataProvider.sharedInstance.updateRegatta(r, atIndex:currentIndex) // update existing
+                    // update existing
+                    SimpleDataProvider.sharedInstance.updateRegatta(r, atIndex:currentIndex)
                 }
         }
-        navigationController?.popToRootViewControllerAnimated(true) // get outta here
+        navigationController?.popToRootViewControllerAnimated(true)
     }
 
 
@@ -320,9 +365,10 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
 
         if let
             path = NSBundle.mainBundle().pathForResource("aRegattas", ofType: "json"),
-            url = NSURL(fileURLWithPath: path),
+            url: NSURL = NSURL(fileURLWithPath: path),
             data = NSData(contentsOfURL: url),
-            array = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [[String: AnyObject]] {
+            array = (try? NSJSONSerialization.JSONObjectWithData(data, options: [])) as?
+                [[String: AnyObject]] {
                 regattaTypeList = array
         }
     }
@@ -332,25 +378,31 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
     // ---------------------------------------------------------------------------------------------
     @IBAction func requestSelector(sender: UIButton) {
 
-        let alertController = UIAlertController(title: "Art der Regatta", message: nil, preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(
+            title: "Art der Regatta",
+            message: nil, preferredStyle: .ActionSheet)
 
         if let array = regattaTypeList {
             for regatta in array {
                 let action = UIAlertAction(
-                    title: regatta["title"] as! String,
+                    title: regatta["title"] as? String,
                     style: .Default,
                     handler: {
-                        (alert: UIAlertAction!) in self.setSelectedRegattaType(alert.title)
+                        (alert: UIAlertAction) in self.setSelectedRegattaType(alert.title!)
                     }
                 )
                 alertController.addAction(action)
             }
         }
 
-        if let presentationController = alertController.popoverPresentationController {
+        if let _ = alertController.popoverPresentationController {
             //iPad
             alertController.popoverPresentationController!.sourceView = sender;
-            alertController.popoverPresentationController!.sourceRect = CGRectMake(sender.bounds.size.width / 2.0, 60, 1.0, 1.0);
+            alertController.popoverPresentationController!.sourceRect = CGRectMake(
+                sender.bounds.size.width / 2.0,
+                60,
+                1.0,
+                1.0);
         } else {
             //iPhone
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
@@ -361,7 +413,7 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         }
 
         self.presentViewController(alertController, animated: true) {
-            
+
         }
     }
 
@@ -372,8 +424,10 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             for regatta in array {
                 if let regattaTitle = regatta["title"] as? String {
                     if regattaTitle == title {
-                        NSUserDefaults.standardUserDefaults().setObject(regatta, forKey: "selectedRegatta")
-                        selectorButton.setTitle(title, forState: UIControlState.Normal)
+                        NSUserDefaults.standardUserDefaults().setObject(
+                            regatta,
+                            forKey: "selectedRegatta")
+                        selectorButton.setTitle(title, forState: .Normal)
                         break
                     }
                 }
@@ -388,12 +442,18 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
         if pos > scoredBoats {
             return Float(0.0)
         }
-        
+
         var secondFactor = Float(0.2)
         if scoredBoats < 100 {
             secondFactor = (Float(scoredBoats) - Float(10.0)) / Float(450.0)
         }
-        var ffactor = regattaFactor + secondFactor
+        let ffactor = regattaFactor + secondFactor
         return (ffactor * 100.0 * ((Float(scoredBoats) + 1.0 - Float(pos)) / Float(scoredBoats)))
     }
+
+    // ---------------------------------------------------------------------------------------------
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+
 }

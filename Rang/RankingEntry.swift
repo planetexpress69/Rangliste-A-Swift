@@ -20,6 +20,7 @@ class RankingEntry : NSObject {
     var pos: Int!
     var listOfRegattas: [RegattaEntry]! = []
 
+    // ---------------------------------------------------------------------------------------------
     // MARK: - Init
     // ---------------------------------------------------------------------------------------------
     init(data: NSDictionary) {
@@ -35,6 +36,7 @@ class RankingEntry : NSObject {
         listOfRegattas = getListOfRegattasFromJSON(data, key: "regatta")
     }
 
+    // ---------------------------------------------------------------------------------------------
     // MARK: - Init
     // ---------------------------------------------------------------------------------------------
     private func getStringFromJSON(data: NSDictionary, key: String) -> String {
@@ -44,6 +46,7 @@ class RankingEntry : NSObject {
         return ""
     }
 
+    // ---------------------------------------------------------------------------------------------
     // MARK: - Typesafe data extraction
     // ---------------------------------------------------------------------------------------------
     private func getFloatFromJSON(data: NSDictionary, key: String) -> Float {
@@ -61,6 +64,9 @@ class RankingEntry : NSObject {
         return 0
     }
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Get list of regattas
+    // ---------------------------------------------------------------------------------------------
     private func getListOfRegattasFromJSON(data: NSDictionary, key: String) -> [RegattaEntry]? {
         if let info = data[key] as? Array<Dictionary<String, AnyObject>> {
             for regattaDict: Dictionary in info {
@@ -72,6 +78,9 @@ class RankingEntry : NSObject {
         return nil
     }
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Return the number of regattas
+    // ---------------------------------------------------------------------------------------------
     func numberOfRegattas() -> Int {
         return listOfRegattas.count
     }

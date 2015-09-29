@@ -26,15 +26,20 @@ class AckViewController: UIViewController {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             fontSize = 15.0
         }
-        theTextView.font = UIFont(name: "HelveticaNeue-Light", size: fontSize)
+        theTextView.font = .systemFontOfSize(fontSize)
 
-        var sPathToAboutText = NSBundle.mainBundle().pathForResource("3rdparty", ofType: "txt")
-        var readError: NSError?
+        let sPathToAboutText = NSBundle.mainBundle().pathForResource("3rdparty", ofType: "txt")
 
-        var theAboutText = NSString(contentsOfFile: sPathToAboutText!, encoding: NSUTF8StringEncoding, error: &readError)
+        var theAboutText: NSString?
+        do {
+            theAboutText = try NSString(contentsOfFile: sPathToAboutText!, encoding: NSUTF8StringEncoding)
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+            theAboutText = nil
+        }
 
         self.theTextView.text = String(theAboutText!)
-        self.edgesForExtendedLayout = .None;
+        self.edgesForExtendedLayout = .None
 
     }
 
@@ -42,7 +47,7 @@ class AckViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation
@@ -53,5 +58,11 @@ class AckViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    // ---------------------------------------------------------------------------------------------
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+
 
 }

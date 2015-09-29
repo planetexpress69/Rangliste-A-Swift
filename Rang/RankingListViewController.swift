@@ -8,50 +8,48 @@
 
 import UIKit
 
-class RankingListViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class RankingListViewController: UITableViewController,
+UISearchResultsUpdating,
+UISearchBarDelegate {
 
-    var spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-    var rankingEntries: [RankingEntry] = [RankingEntry]()
-    var filteredRankingEntries: [RankingEntry] = [RankingEntry]()
+    var spinnr = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+    var rankingEntries = [RankingEntry]()
+    var filteredRankingEntries = [RankingEntry]()
     var resultSearchController = UISearchController()
 
+    // ---------------------------------------------------------------------------------------------
     //MARK: - View lifecycle
     // ---------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.startAnimating()
+        spinnr.startAnimating()
         self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner!)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinnr)
 
-        let reloadButton = UIBarButtonItem(title: String.fontAwesomeIconWithName(FontAwesome.Refresh),
-            style: UIBarButtonItemStyle.Plain,
+        let reloadButton = UIBarButtonItem(
+            title: .fontAwesomeIconWithName(.Refresh),
+            style: .Plain,
             target: self,
             action: "loadWrapper")
-        var attrs = [
+
+        let attrs = [
             NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSForegroundColorAttributeName : Constants.Colors.textColor
         ]
+
         reloadButton.setTitleTextAttributes(attrs, forState: .Normal)
         navigationItem.rightBarButtonItem = reloadButton
         navigationItem.rightBarButtonItem?.enabled = false
 
-        self.resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.hidesNavigationBarDuringPresentation = false
-            controller.searchBar.prompt = "Results"
-            controller.searchBar.sizeToFit()
-            controller.searchBar.delegate = self
-
-            self.tableView.tableHeaderView = controller.searchBar
-
-            return controller
-        })()
-
         title = "Rangliste"
 
-        self.tableView.setContentOffset(CGPointMake (0, resultSearchController.searchBar.frame.size.height), animated: true)
+        self.tableView.setContentOffset(
+            CGPointMake(0, resultSearchController.searchBar.frame.size.height),
+            animated: true)
+
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.hideBottomHairline()
+        self.tableView.backgroundView = nil
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -60,6 +58,23 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
         if self.rankingEntries.count == 0 {
             loadWrapper()
         }
+
+        self.resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.hidesNavigationBarDuringPresentation = false
+            controller.searchBar.prompt = "Ergebnisse"
+            controller.searchBar.barTintColor = .whiteColor()
+            controller.searchBar.backgroundImage = .imageWithColor(.blackColor())
+            controller.searchBar.translucent = true
+            controller.searchBar.tintColor = .blackColor()
+            controller.searchBar.sizeToFit()
+            controller.searchBar.delegate = self
+
+            self.tableView.tableHeaderView = controller.searchBar
+            return controller
+        })()
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -74,7 +89,7 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
         self.rankingEntries = []
         tableView.reloadData()
         self.navigationItem.rightBarButtonItem?.enabled = false
-        spinner.startAnimating()
+        spinnr.startAnimating()
         self.rankingEntries = []
         let fetcher = Fetcher()
         fetcher.load(didLoad)
@@ -84,13 +99,13 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
     // ---------------------------------------------------------------------------------------------
     func didLoad(rankingEntries: [RankingEntry]) {
         self.navigationItem.rightBarButtonItem?.enabled = true
-        spinner?.stopAnimating()
+        spinnr.stopAnimating()
         self.rankingEntries = rankingEntries
         tableView.reloadData()
-        self.resultSearchController.searchBar.prompt = self.rankingEntries.count == 1 ? "\(self.rankingEntries.count) result" : "\(self.rankingEntries.count) results"
-
+        self.resultSearchController.searchBar.prompt = self.rankingEntries.count == 1 ?
+            "\(self.rankingEntries.count) result" :
+            "\(self.rankingEntries.count) Einträge"
     }
-
 
     //MARK: - Table view data source
     // ---------------------------------------------------------------------------------------------
@@ -110,82 +125,115 @@ class RankingListViewController: UITableViewController, UISearchResultsUpdating,
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(
+        tableView: UITableView,
+        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier("RankingListCell", forIndexPath: indexPath) as! RankingListCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("RankingListCell",
+            forIndexPath: indexPath) as! RankingListCell
 
         if self.resultSearchController.active {
-
-            cell.nameLabel?.text = "\(filteredRankingEntries[indexPath.row].firstname) \(filteredRankingEntries[indexPath.row].name)"
-            cell.pointsLabel?.text = NSString(format: "%.3f", locale: NSLocale.currentLocale(), filteredRankingEntries[indexPath.row].totalPoints as Float) as String
+            cell.nameLabel?.text =
+                "\(filteredRankingEntries[indexPath.row].firstname) " +
+                "\(filteredRankingEntries[indexPath.row].name)"
+            cell.pointsLabel?.text = NSString(
+                format: "%.2f",
+                locale: NSLocale.currentLocale(),
+                filteredRankingEntries[indexPath.row].totalPoints as Float) as String
             cell.posLabel?.text = "\(filteredRankingEntries[indexPath.row].pos)"
             cell.yobLabel?.text = "\(filteredRankingEntries[indexPath.row].yob)"
-            cell.sailLabel?.text = "\(filteredRankingEntries[indexPath.row].sailCountry) \((filteredRankingEntries[indexPath.row].sailNumber))"
+            cell.sailLabel?.text =
+                "\(filteredRankingEntries[indexPath.row].sailCountry) " +
+                "\((filteredRankingEntries[indexPath.row].sailNumber))"
             cell.clubLabel?.text = "\(filteredRankingEntries[indexPath.row].club)"
             let selectedBackgroundView = UIView(frame: cell.frame)
-            selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
+            selectedBackgroundView.backgroundColor = Constants.Colors.textColor
             cell.selectedBackgroundView = selectedBackgroundView
         }
         else {
-
-            cell.nameLabel?.text = "\(rankingEntries[indexPath.row].firstname) \(rankingEntries[indexPath.row].name)"
-            cell.pointsLabel?.text = NSString(format: "%.3f", locale: NSLocale.currentLocale(), rankingEntries[indexPath.row].totalPoints as Float) as String
+            cell.nameLabel?.text =
+                "\(rankingEntries[indexPath.row].firstname) " +
+                "\(rankingEntries[indexPath.row].name)"
+            cell.pointsLabel?.text = NSString(
+                format: "%.2f",
+                locale: NSLocale.currentLocale(),
+                rankingEntries[indexPath.row].totalPoints as Float) as String
             cell.posLabel?.text = "\(rankingEntries[indexPath.row].pos)"
             cell.yobLabel?.text = "\(rankingEntries[indexPath.row].yob)"
-            cell.sailLabel?.text = "\(rankingEntries[indexPath.row].sailCountry) \((rankingEntries[indexPath.row].sailNumber))"
+            cell.sailLabel?.text =
+                "\(rankingEntries[indexPath.row].sailCountry) " +
+                "\((rankingEntries[indexPath.row].sailNumber))"
             cell.clubLabel?.text = "\(rankingEntries[indexPath.row].club)"
             let selectedBackgroundView = UIView(frame: cell.frame)
-            selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
+            selectedBackgroundView.backgroundColor = Constants.Colors.textColor
             cell.selectedBackgroundView = selectedBackgroundView
-            
+
         }
         return cell
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 64.0
+    }
+
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+
         filteredRankingEntries.removeAll(keepCapacity: false)
-        let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR firstname CONTAINS[c] %@ OR yob CONTAINS[c] %@ OR club CONTAINS[c] %@ OR sailNumber CONTAINS[c] %@",
-            searchController.searchBar.text,
-            searchController.searchBar.text,
-            searchController.searchBar.text,
-            searchController.searchBar.text,
-            searchController.searchBar.text
+
+        let searchPredicate = NSPredicate(
+            format: "name CONTAINS[c] %@ OR firstname CONTAINS[c] %@ " +
+            "OR yob CONTAINS[c] %@ OR club CONTAINS[c] %@ " +
+            "OR sailNumber CONTAINS[c] %@",
+            searchController.searchBar.text!,
+            searchController.searchBar.text!,
+            searchController.searchBar.text!,
+            searchController.searchBar.text!,
+            searchController.searchBar.text!
         )
         let array = (rankingEntries as NSArray).filteredArrayUsingPredicate(searchPredicate)
         filteredRankingEntries = array as! [RankingEntry]
         self.tableView.reloadData()
         if self.resultSearchController.active {
-            searchController.searchBar.prompt = self.filteredRankingEntries.count == 1 ? "\(self.filteredRankingEntries.count) result" : "\(self.filteredRankingEntries.count) results"
+            searchController.searchBar.prompt = self.filteredRankingEntries.count == 1 ?
+                "\(self.filteredRankingEntries.count) Ergebnis" :
+                "\(self.filteredRankingEntries.count) Ergebnisse"
         }
         else {
-            searchController.searchBar.prompt = self.rankingEntries.count == 1 ? "\(self.rankingEntries.count) result" : "\(self.rankingEntries.count) results"
+            searchController.searchBar.prompt = self.rankingEntries.count == 1 ?
+                "\(self.rankingEntries.count) Ergebnis" :
+                "\(self.rankingEntries.count) Ergebnisse"
         }
     }
 
-
+    // ---------------------------------------------------------------------------------------------
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // ---------------------------------------------------------------------------------------------
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
 
-        var rankingDetailViewController = segue.destinationViewController as! RankingDetailViewController
-        let selectedRowsIndexPath: NSIndexPath = tableView.indexPathForSelectedRow()!
+        let detailVC = segue.destinationViewController as! RankingDetailViewController
+        let selectedRowsIndexPath: NSIndexPath = tableView.indexPathForSelectedRow!
 
         var elem: RankingEntry
 
         if self.resultSearchController.active {
             elem = filteredRankingEntries[selectedRowsIndexPath.row]
-            self.resultSearchController.active = false;
+            self.resultSearchController.active = false
 
         } else {
-            elem = rankingEntries[selectedRowsIndexPath.row];
+            elem = rankingEntries[selectedRowsIndexPath.row]
         }
         tableView.deselectRowAtIndexPath(selectedRowsIndexPath, animated: true)
-        rankingDetailViewController.theDataSource = elem
+        detailVC.theDataSource = elem
     }
-    
+
+    // ---------------------------------------------------------------------------------------------
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+
+
 
 
 }

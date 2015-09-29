@@ -21,12 +21,12 @@ class RankingListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        nameLabel?.textColor = Constants.Colors.darkBlue
-        yobLabel?.textColor = Constants.Colors.darkBlue
-        pointsLabel?.textColor = Constants.Colors.darkBlue
-        posLabel?.textColor = Constants.Colors.darkBlue
-        sailLabel?.textColor = Constants.Colors.darkBlue
-        clubLabel?.textColor = Constants.Colors.darkBlue
+        nameLabel?.textColor = Constants.Colors.textColor
+        yobLabel?.textColor = Constants.Colors.textColor
+        pointsLabel?.textColor = Constants.Colors.textColor
+        posLabel?.textColor = Constants.Colors.textColor
+        sailLabel?.textColor = Constants.Colors.textColor
+        clubLabel?.textColor = Constants.Colors.textColor
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -41,12 +41,12 @@ class RankingListCell: UITableViewCell {
             sailLabel?.textColor = .whiteColor()
             clubLabel?.textColor = .whiteColor()
         } else {
-            nameLabel?.textColor = Constants.Colors.darkBlue
-            yobLabel?.textColor = Constants.Colors.darkBlue
-            pointsLabel?.textColor = Constants.Colors.darkBlue
-            posLabel?.textColor = Constants.Colors.darkBlue
-            sailLabel?.textColor = Constants.Colors.darkBlue
-            clubLabel?.textColor = Constants.Colors.darkBlue
+            nameLabel?.textColor = Constants.Colors.textColor
+            yobLabel?.textColor = Constants.Colors.textColor
+            pointsLabel?.textColor = Constants.Colors.textColor
+            posLabel?.textColor = Constants.Colors.textColor
+            sailLabel?.textColor = Constants.Colors.textColor
+            clubLabel?.textColor = Constants.Colors.textColor
         }
     }
 
@@ -60,13 +60,15 @@ class RankingListCell: UITableViewCell {
             pointsLabel?.textColor = .whiteColor()
             posLabel?.textColor = .whiteColor()
             sailLabel?.textColor = .whiteColor()
+            clubLabel?.textColor = .whiteColor()
+
         } else {
-            nameLabel?.textColor = Constants.Colors.darkBlue
-            yobLabel?.textColor = Constants.Colors.darkBlue
-            pointsLabel?.textColor = Constants.Colors.darkBlue
-            posLabel?.textColor = Constants.Colors.darkBlue
-            sailLabel?.textColor = Constants.Colors.darkBlue
+            nameLabel?.textColor = Constants.Colors.textColor
+            yobLabel?.textColor = Constants.Colors.textColor
+            pointsLabel?.textColor = Constants.Colors.textColor
+            posLabel?.textColor = Constants.Colors.textColor
+            sailLabel?.textColor = Constants.Colors.textColor
+            clubLabel?.textColor = Constants.Colors.textColor
         }
     }
-
 }

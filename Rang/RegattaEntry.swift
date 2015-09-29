@@ -18,20 +18,37 @@ class RegattaEntry: NSObject {
     var position: Int!
     var runs_scored: Int!
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Init
+    // ---------------------------------------------------------------------------------------------
     init(data: Dictionary<String, AnyObject>){
         super.init()
-        /* [dsv: BW089, regattaId: 2015A003, sail_number: 12542, sail_country: GER, sl_points: 5.37, rname: Lahrer Opti-Pokal, runs_total: 5, boats: 19, position: 19, sl_points_cup: 5.26, runs_scored: 4, flags: 0] */
+        /* [dsv: BW089, 
+        regattaId: 2015A003, 
+        sail_number: 12542, 
+        sail_country: GER, 
+        sl_points: 5.37, 
+        rname: Lahrer Opti-Pokal, 
+        runs_total: 5, 
+        boats: 19, 
+        position: 19, 
+        sl_points_cup: 5.26, 
+        runs_scored: 4, 
+        flags: 0] */
 
-        sl_points = getFloatFromJSON(data, key: "sl_points")
-        sl_points_cup = getFloatFromJSON(data, key: "sl_points_cup")
-        rname = getStringFromJSON(data, key: "rname")
-        runs_total = getIntFromJSON(data, key: "runs_total")
-        boats = getIntFromJSON(data, key: "boats")
-        position = getIntFromJSON(data, key: "position")
-        runs_scored = getIntFromJSON(data, key: "runs_scored")
+        sl_points       = getFloatFromJSON(data, key: "sl_points")
+        sl_points_cup   = getFloatFromJSON(data, key: "sl_points_cup")
+        rname           = getStringFromJSON(data, key: "rname")
+        runs_total      = getIntFromJSON(data, key: "runs_total")
+        boats           = getIntFromJSON(data, key: "boats")
+        position        = getIntFromJSON(data, key: "position")
+        runs_scored     = getIntFromJSON(data, key: "runs_scored")
 
     }
 
+    // ---------------------------------------------------------------------------------------------
+    // MARK: - Typesafe data extraction from JSON
+    // ---------------------------------------------------------------------------------------------
     private func getIntFromJSON(data: Dictionary<String, AnyObject>, key: String) -> Int {
         if let info = data[key] as? Int {
             return info
@@ -39,6 +56,7 @@ class RegattaEntry: NSObject {
         return 0
     }
 
+    // ---------------------------------------------------------------------------------------------
     private func getStringFromJSON(data: Dictionary<String, AnyObject>, key: String) -> String {
         if let info = data[key] as? String {
             return info
@@ -46,11 +64,11 @@ class RegattaEntry: NSObject {
         return ""
     }
 
+    // ---------------------------------------------------------------------------------------------
     private func getFloatFromJSON(data: Dictionary<String, AnyObject>, key: String) -> Float {
         if let info = data[key] as? Float {
             return info
         }
         return 0.0
     }
-    
 }

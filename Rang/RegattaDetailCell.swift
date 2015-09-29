@@ -10,26 +10,26 @@ import UIKit
 
 class RegattaDetailCell: UITableViewCell {
 
-    @IBOutlet weak var rnameLabel: UILabel!;
-    @IBOutlet weak var sl_pointsLabel: UILabel!;
-    @IBOutlet weak var  sl_points_cupLabel: UILabel!;
-    @IBOutlet weak var  positionboatsLabel: UILabel!;
-    @IBOutlet weak var  runs_totalLabel: UILabel!;
-    @IBOutlet weak var  runs_scoredLabel: UILabel!;
+    @IBOutlet weak var rnameLabel: UILabel!
+    @IBOutlet weak var sl_pointsLabel: UILabel!
+    @IBOutlet weak var  sl_points_cupLabel: UILabel!
+    @IBOutlet weak var  positionboatsLabel: UILabel!
+    @IBOutlet weak var  runs_totalLabel: UILabel!
+    @IBOutlet weak var  runs_scoredLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
-        rnameLabel.textColor = Constants.Colors.darkBlue;
-        sl_points_cupLabel.textColor = Constants.Colors.darkBlue;
-        sl_pointsLabel.textColor = Constants.Colors.darkBlue;
-        positionboatsLabel.textColor = Constants.Colors.darkBlue;
-        runs_totalLabel.textColor = Constants.Colors.darkBlue
-        runs_scoredLabel.textColor = UIColor.whiteColor()
-        runs_scoredLabel.backgroundColor = Constants.Colors.darkBlue;
-        runs_scoredLabel.layer.cornerRadius = 3.0;
-        runs_scoredLabel.layer.masksToBounds = true;
+        rnameLabel.textColor = Constants.Colors.textColor
+        sl_points_cupLabel.textColor = Constants.Colors.textColor
+        sl_pointsLabel.textColor = Constants.Colors.textColor
+        positionboatsLabel.textColor = Constants.Colors.textColor
+        runs_totalLabel.textColor = Constants.Colors.textColor
+        runs_scoredLabel.textColor = .whiteColor()
+        runs_scoredLabel.backgroundColor = Constants.Colors.textColor
+        runs_scoredLabel.layer.cornerRadius = 3.0
+        runs_scoredLabel.layer.masksToBounds = true
     }
 
 }

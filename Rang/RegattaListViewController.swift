@@ -26,18 +26,29 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         title = "Deine Regatten"
         navigationItem.leftBarButtonItem = editButtonItem()
 
-        var addButton = UIBarButtonItem(
-            title: String.fontAwesomeIconWithName(.PlusCircle),
-            style: UIBarButtonItemStyle.Plain,
+        let addButton = UIBarButtonItem(
+            title: .fontAwesomeIconWithName(.Plus),
+            style: .Plain,
             target: self,
             action: "addRegatta:")
-        var attrs = [
+        let attrs = [
             NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSForegroundColorAttributeName : Constants.Colors.textColor
         ]
 
         addButton.setTitleTextAttributes(attrs, forState: .Normal)
         navigationItem.rightBarButtonItem = addButton
+
+
+        let edtButton = UIBarButtonItem(
+            title: .fontAwesomeIconWithName(.Edit),
+            style: .Plain,
+            target: self,
+            action: "edit")
+
+
+        edtButton.setTitleTextAttributes(attrs, forState: .Normal)
+        navigationItem.leftBarButtonItem = edtButton
 
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "",
@@ -45,16 +56,19 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
             target: nil,
             action: nil)
 
-        theTableView?.backgroundColor = Constants.Colors.darkBlue
+        theTableView?.backgroundColor = .whiteColor()
         theTableView?.delegate = self;
         theTableView?.dataSource = self;
 
-        theScoreView.backgroundColor = Constants.Colors.darkBlue
+        theScoreView.backgroundColor = .whiteColor()
+        theScoreLabel.textColor = Constants.Colors.textColor
 
-        var navigationBar = self.navigationController?.navigationBar
+        let navigationBar = self.navigationController?.navigationBar
         navigationBar?.hideBottomHairline()
 
         self.theTableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
+
+        self.setNeedsStatusBarAppearanceUpdate()
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -63,6 +77,7 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         listOfRegattas = SimpleDataProvider.sharedInstance.dataStorageArray
         theTableView?.reloadData()
         updateTotalPoints()
+        self.editButtonItem().title = "Bearb."
     }
 
     // MARK: - Table view data source
@@ -83,30 +98,34 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("RegattaListCell",
                 forIndexPath: indexPath) as! RegattaListCell
-            var selectedBackgroundView = UIView(frame: CGRectMake(0, 0, 320, 100))
-            selectedBackgroundView.backgroundColor = Constants.Colors.darkBlue
+            let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, 320, 100))
+            selectedBackgroundView.backgroundColor = Constants.Colors.textColor
             cell.selectedBackgroundView = selectedBackgroundView
             cell.regattaNameLabel!.text = listOfRegattas[indexPath.row]["title"] as? String
 
             cell.pointsLabel!.text = NSString(
-                format: "%.3f",
+                format: "%.2f",
                 locale: NSLocale.currentLocale(),
                 listOfRegattas[indexPath.row]["score"] as! Float
                 ) as String
 
-            var factor = SimpleDataProvider.sharedInstance.calcmFactor(listOfRegattas[indexPath.row]["races"] as! Int, atLeastThreeDays: listOfRegattas[indexPath.row]["threeDays"] as! Bool)
+            let factor = SimpleDataProvider.sharedInstance.calcmFactor(
+                listOfRegattas[indexPath.row]["races"] as! Int,
+                atLeastThreeDays: listOfRegattas[indexPath.row]["threeDays"] as! Bool)
 
             cell.regattaFactorLabel!.text = NSString(
                 format: "%d",
                 locale: NSLocale.currentLocale(),
                 factor as Int
                 ) as String
+
             cell.positionLabel!.text = NSString(
                 format: "%d/%d",
                 locale: NSLocale.currentLocale(),
                 listOfRegattas[indexPath.row]["pos"] as! Int,
                 listOfRegattas[indexPath.row]["field"] as! Int
                 ) as String
+
             return cell
     }
 
@@ -142,11 +161,11 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         sender: AnyObject?) {
             switch segue.identifier! {
             case "addSegue":
-                var detailViewController =
+                let detailViewController =
                 segue.destinationViewController as! RegattaDetailViewController
                 detailViewController.loadRegattaWithIndex(-1)
             default:
-                var detailViewController =
+                let detailViewController =
                 segue.destinationViewController as! RegattaDetailViewController
                 let indexPath = theTableView.indexPathForCell(sender as! RegattaListCell)
                 detailViewController.loadRegattaWithIndex(indexPath!.row)
@@ -158,10 +177,33 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         self.performSegueWithIdentifier("addSegue", sender: nil)
     }
 
+    func edit() {
+        if self.theTableView.editing {
+            self.setEditing(false, animated: true)
+        }
+        else {
+            print ("Yes!")
+            self.setEditing(true, animated: true)
+        }
+    }
+
     // ---------------------------------------------------------------------------------------------
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         theTableView.setEditing(editing, animated: animated)
+
+        let button = navigationItem.leftBarButtonItem
+
+        if editing {
+            button?.title = .fontAwesomeIconWithName(.Check)
+            navigationItem.rightBarButtonItem?.enabled = false;
+        }
+        else {
+            button?.title = .fontAwesomeIconWithName(.Edit)
+            navigationItem.rightBarButtonItem?.enabled = true;
+
+        }
+
     }
 
     // MARK: - Calculation
@@ -173,8 +215,14 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
     // ---------------------------------------------------------------------------------------------
     func updateTotalPoints() -> () {
         theScoreLabel.text = NSString(
-            format: "%.3f",
+            format: "%.2f",
             locale: NSLocale.currentLocale(),
             calcTotalPoints()) as String
     }
+
+    // ---------------------------------------------------------------------------------------------
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+
 }

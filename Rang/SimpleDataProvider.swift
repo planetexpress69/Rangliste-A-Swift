@@ -31,7 +31,7 @@ class SimpleDataProvider {
 
     // ---------------------------------------------------------------------------------------------
     init() {
-        var userdefaults = NSUserDefaults.standardUserDefaults()
+        let userdefaults = NSUserDefaults.standardUserDefaults()
         if userdefaults.objectForKey(kArrayKey) != nil {
             dataStorageArray = userdefaults.objectForKey(kArrayKey) as! Array
             repair()
@@ -67,15 +67,15 @@ class SimpleDataProvider {
     func loadGreta() -> () {
         if let
             path     = NSBundle.mainBundle().pathForResource("sample", ofType: "json"),
-            url = NSURL(fileURLWithPath: path),
+            url: NSURL = NSURL(fileURLWithPath: path),
             data = NSData(contentsOfURL: url),
-            array = NSJSONSerialization.JSONObjectWithData(
+            array = (try? NSJSONSerialization.JSONObjectWithData(
                 data,
-                options: nil,
-                error: nil) as? [[String: AnyObject]] {
+                options: [])) as? [[String: AnyObject]] {
                 dataStorageArray = array
                 NSUserDefaults.standardUserDefaults().setObject(dataStorageArray, forKey: kArrayKey)
             }
+
         sort()
     }
 
@@ -88,14 +88,14 @@ class SimpleDataProvider {
 
         var counter = 0
         var allPoints: Float = 0.0
-        var regatta = [ : ]
+        //var regatta = [ : ]
 
         for regatta in dataStorageArray {
 
-            var score = regatta["score"] as! Float
-            var races = regatta["races"] as! Int
-            var threeDays = regatta["threeDays"] as! Bool
-            var mFactor = calcmFactor(races, atLeastThreeDays: threeDays)
+            let score = regatta["score"] as! Float
+            let races = regatta["races"] as! Int
+            let threeDays = regatta["threeDays"] as! Bool
+            let mFactor = calcmFactor(races, atLeastThreeDays: threeDays)
 
             for var index = 0; index < mFactor; index++ {
                 if (counter < 9) {
@@ -106,7 +106,7 @@ class SimpleDataProvider {
         }
 
         if counter == 9 {
-            var result: Float = Float(allPoints) / Float(counter)
+            let result: Float = Float(allPoints) / Float(counter)
             return result
         }
         return 0.0
@@ -130,7 +130,7 @@ class SimpleDataProvider {
 
     // ---------------------------------------------------------------------------------------------
     func sort() {
-        dataStorageArray.sort {
+        dataStorageArray.sortInPlace {
             item1, item2 in
             let item1 = item1["score"] as! Double
             let item2 = item2["score"] as! Double
@@ -144,8 +144,7 @@ class SimpleDataProvider {
     func repair() {
 
         var newArray = [[String : AnyObject]]()
-        var needsToBeUpdated = false
-        var c = 0
+        let c = 0
 
         for regatta in dataStorageArray {
             var newRegatta: Dictionary = regatta
@@ -154,35 +153,31 @@ class SimpleDataProvider {
             let newName = newRegatta["title"] as! String
 
 
-            println("   regatta: \(name)")
-            println("newRegatta: \(newName)")
-            println("*********************************")
+            print("   regatta: \(name)")
+            print("newRegatta: \(newName)")
+            print("*********************************")
 
             if let races = regatta["races"] as? String {
-                println("Repairing races...")
-                var iraces: Int = races.toInt()!
+                print("Repairing races...")
+                let iraces: Int = Int(races)!
                 newRegatta["races"] = iraces
-                needsToBeUpdated = true
             }
 
             if let pos = regatta["pos"] as? String {
-                println("Repairing pos...")
-                var ipos: Int = pos.toInt()!
+                print("Repairing pos...")
+                let ipos: Int = Int(pos)!
                 newRegatta["pos"] = ipos
-                needsToBeUpdated = true
             }
 
             if let field = regatta["field"] as? String {
-                println("Repairing field...")
-                var ifield: Int = field.toInt()!
+                print("Repairing field...")
+                let ifield: Int = Int(field)!
                 newRegatta["field"] = ifield
-                needsToBeUpdated = true
             }
             newArray.insert(newRegatta, atIndex: c)
             dataStorageArray = newArray
         }
-
-        println("Updating...")
+        print("Updating...")
         NSUserDefaults.standardUserDefaults().setObject(newArray, forKey: kArrayKey)
     }
 }

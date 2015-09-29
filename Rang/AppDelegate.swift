@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,36 +18,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-            BITHockeyManager.sharedHockeyManager().configureWithIdentifier("39213a77b0b123c2dc63279898d6becf")
-            BITHockeyManager.sharedHockeyManager().startManager()
-            BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation() // This line is obsolete in the crash only build
-
             UIApplication.sharedApplication().statusBarStyle = .LightContent
+
             let navigationBarAppearace = UINavigationBar.appearance()
-            navigationBarAppearace.tintColor = .whiteColor()
-            navigationBarAppearace.barTintColor = Constants.Colors.darkBlue
+            navigationBarAppearace.tintColor = Constants.Colors.textColor
+            navigationBarAppearace.barTintColor = .whiteColor()
             navigationBarAppearace.translucent = false
             navigationBarAppearace.titleTextAttributes = [
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 22)!,
-                NSForegroundColorAttributeName:UIColor.whiteColor()
+                NSFontAttributeName : UIFont.systemFontOfSize(22),
+                NSForegroundColorAttributeName : Constants.Colors.textColor
             ]
-            
-            self.window?.tintColor = Constants.Colors.darkBlue
 
-            let tabBarController: UITabBarController = self.window?.rootViewController as! UITabBarController
-            tabBarController.tabBar.tintColor = .whiteColor()
-            tabBarController.tabBar.barTintColor = Constants.Colors.darkBlue
-            tabBarController.tabBar.translucent = false
+            self.window?.tintColor = Constants.Colors.textColor
 
-            let tabBarAppearance = UITabBar.appearance()
-            tabBarAppearance.shadowImage = UIImage()
-            tabBarAppearance.backgroundImage = UIImage()
+            if let tabBarController = self.window?.rootViewController as? UITabBarController {
+                tabBarController.tabBar.tintColor = Constants.Colors.textColor
+                tabBarController.tabBar.barTintColor = .whiteColor()
+                tabBarController.tabBar.translucent = false
 
-            let array = tabBarController.viewControllers as! Array<UINavigationController>
-            array[0].tabBarItem.image = UIImage.fontAwesomeIconWithName(.User, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
-            array[1].tabBarItem.image = UIImage.fontAwesomeIconWithName(.Trophy, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
-            array[2].tabBarItem.image = UIImage.fontAwesomeIconWithName(.InfoCircle, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
+                let tabBarAppearance = UITabBar.appearance()
+                tabBarAppearance.shadowImage = UIImage()
+                tabBarAppearance.backgroundImage = UIImage()
 
+                if let controllersArray = tabBarController.viewControllers as?
+                    Array<UINavigationController> {
+                    controllersArray[0].tabBarItem.image = .fontAwesomeIconWithName(
+                        .User, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
+                    controllersArray[1].tabBarItem.image = .fontAwesomeIconWithName(
+                        .Trophy, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
+                    controllersArray[2].tabBarItem.image = .fontAwesomeIconWithName(
+                        .InfoCircle, size: CGSizeMake(30.0, 30.0), textColor: .blackColor())
+                }
+
+            }
             return true
     }
 

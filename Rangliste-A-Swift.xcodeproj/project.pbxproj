@@ -28,16 +28,6 @@
 		5BA4EC2B1B0E01B10031A042 /* SimpleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */; };
 		5BAFD8611B2198C9002654F0 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BAFD8601B2198C9002654F0 /* sample.json */; };
 		5BC45C1D1B29819A00FAA0C7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC45C1C1B29819A00FAA0C7 /* AboutViewController.swift */; };
-		5BCA48691B20919500E51362 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48681B20919500E51362 /* AssetsLibrary.framework */; };
-		5BCA486D1B2091B900E51362 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486A1B2091B900E51362 /* CoreGraphics.framework */; };
-		5BCA486E1B2091B900E51362 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486B1B2091B900E51362 /* CoreText.framework */; };
-		5BCA486F1B2091B900E51362 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA486C1B2091B900E51362 /* MobileCoreServices.framework */; };
-		5BCA48731B2091D000E51362 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48701B2091D000E51362 /* QuartzCore.framework */; };
-		5BCA48741B2091D000E51362 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48711B2091D000E51362 /* QuickLook.framework */; };
-		5BCA48751B2091D000E51362 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48721B2091D000E51362 /* Security.framework */; };
-		5BCA487B1B20928200E51362 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA48771B20928200E51362 /* HockeySDK.framework */; };
-		5BCA487C1B20928200E51362 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA48791B20928200E51362 /* HockeySDK.xcconfig */; };
-		5BCA487D1B20928200E51362 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA487A1B20928200E51362 /* HockeySDKResources.bundle */; };
 		5BD1752C1B14A44D00C7F5EB /* RankingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */; };
 		5BD1752E1B14A6F600C7F5EB /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */; };
 		5BD175301B14AC5F00C7F5EB /* RankingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */; };
@@ -85,16 +75,6 @@
 		5BA4EC2A1B0E01B10031A042 /* SimpleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDataProvider.swift; sourceTree = "<group>"; };
 		5BAFD8601B2198C9002654F0 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		5BC45C1C1B29819A00FAA0C7 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		5BCA48681B20919500E51362 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		5BCA486A1B2091B900E51362 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5BCA486B1B2091B900E51362 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		5BCA486C1B2091B900E51362 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		5BCA48701B2091D000E51362 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5BCA48711B2091D000E51362 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
-		5BCA48721B2091D000E51362 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		5BCA48771B20928200E51362 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		5BCA48791B20928200E51362 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
-		5BCA487A1B20928200E51362 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		5BD1752B1B14A44D00C7F5EB /* RankingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingListViewController.swift; sourceTree = "<group>"; };
 		5BD1752D1B14A6F600C7F5EB /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		5BD1752F1B14AC5F00C7F5EB /* RankingEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingEntry.swift; sourceTree = "<group>"; };
@@ -108,14 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCA48731B2091D000E51362 /* QuartzCore.framework in Frameworks */,
-				5BCA48741B2091D000E51362 /* QuickLook.framework in Frameworks */,
-				5BCA48751B2091D000E51362 /* Security.framework in Frameworks */,
-				5BCA486D1B2091B900E51362 /* CoreGraphics.framework in Frameworks */,
-				5BCA487B1B20928200E51362 /* HockeySDK.framework in Frameworks */,
-				5BCA486E1B2091B900E51362 /* CoreText.framework in Frameworks */,
-				5BCA486F1B2091B900E51362 /* MobileCoreServices.framework in Frameworks */,
-				5BCA48691B20919500E51362 /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,14 +103,6 @@
 				5B28A1781B299A50009A3EBF /* 3rdparty.txt */,
 				5B28A17A1B299C86009A3EBF /* README.md */,
 				5B28A17C1B29A31B009A3EBF /* LICENSE */,
-				5BCA48761B20928200E51362 /* HockeySDK.embeddedframework */,
-				5BCA48701B2091D000E51362 /* QuartzCore.framework */,
-				5BCA48711B2091D000E51362 /* QuickLook.framework */,
-				5BCA48721B2091D000E51362 /* Security.framework */,
-				5BCA486A1B2091B900E51362 /* CoreGraphics.framework */,
-				5BCA486B1B2091B900E51362 /* CoreText.framework */,
-				5BCA486C1B2091B900E51362 /* MobileCoreServices.framework */,
-				5BCA48681B20919500E51362 /* AssetsLibrary.framework */,
 				5B3C6A521B0B5A940099A65C /* Rang */,
 				5B3C6A511B0B5A940099A65C /* Products */,
 			);
@@ -191,25 +155,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5BCA48761B20928200E51362 /* HockeySDK.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				5BCA48771B20928200E51362 /* HockeySDK.framework */,
-				5BCA48781B20928200E51362 /* Resources */,
-			);
-			name = HockeySDK.embeddedframework;
-			path = Vendor/HockeySDK.embeddedframework;
-			sourceTree = "<group>";
-		};
-		5BCA48781B20928200E51362 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5BCA48791B20928200E51362 /* HockeySDK.xcconfig */,
-				5BCA487A1B20928200E51362 /* HockeySDKResources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -237,7 +182,9 @@
 		5B3C6A481B0B5A940099A65C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "JAKOTA Design Group";
 				TargetAttributes = {
 					5B3C6A4F1B0B5A940099A65C = {
@@ -270,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BDA004F1B1744AA0027EB5A /* FontAwesome.otf in Resources */,
-				5BCA487C1B20928200E51362 /* HockeySDK.xcconfig in Resources */,
 				5B28A1771B29941D009A3EBF /* about.txt in Resources */,
 				5B28A1791B299A50009A3EBF /* 3rdparty.txt in Resources */,
 				5B3C6A5D1B0B5A940099A65C /* Main.storyboard in Resources */,
@@ -279,7 +225,6 @@
 				5B3C6A621B0B5A940099A65C /* LaunchScreen.xib in Resources */,
 				5BAFD8611B2198C9002654F0 /* sample.json in Resources */,
 				5B3C6A5F1B0B5A940099A65C /* Images.xcassets in Resources */,
-				5BCA487D1B20928200E51362 /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +300,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -373,7 +319,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d852db53-7cdb-4e65-8c3e-a629b47639ee";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -430,13 +376,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendor/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = Rang/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.jakota.Ranglistenpunkte;
 				PRODUCT_NAME = "Rangliste-A-Swift";
-				PROVISIONING_PROFILE = "d852db53-7cdb-4e65-8c3e-a629b47639ee";
+				PROVISIONING_PROFILE = "83a19fb2-3873-47e9-9e54-4193c9681b39";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -452,11 +398,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendor/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = Rang/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.jakota.Ranglistenpunkte;
 				PRODUCT_NAME = "Rangliste-A-Swift";
 				PROVISIONING_PROFILE = "f58ea4e4-4962-4a6a-99be-6fb110caa27f";
 				VERSIONING_SYSTEM = "apple-generic";

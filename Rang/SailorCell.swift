@@ -22,17 +22,17 @@ class SailorCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        firstnamenameLabel.textColor = Constants.Colors.darkBlue;
-        posLabel.textColor = Constants.Colors.darkBlue;
-        sailCountryLabel.textColor = Constants.Colors.darkBlue;
-        sailNumberLabel.textColor = Constants.Colors.darkBlue;
-        yobLabel.textColor = Constants.Colors.darkBlue;
-        clubLabel.textColor = Constants.Colors.darkBlue;
-        totalPointsLabel.textColor = Constants.Colors.darkBlue;
-        totalRunsLabel.textColor = UIColor.whiteColor();
-        totalRunsLabel.backgroundColor = Constants.Colors.darkBlue;
-        totalRunsLabel.layer.cornerRadius = 3.0;
-        totalRunsLabel.layer.masksToBounds = true;
+        firstnamenameLabel.textColor = Constants.Colors.textColor
+        posLabel.textColor = Constants.Colors.textColor
+        sailCountryLabel.textColor = Constants.Colors.textColor
+        sailNumberLabel.textColor = Constants.Colors.textColor
+        yobLabel.textColor = Constants.Colors.textColor
+        clubLabel.textColor = Constants.Colors.textColor
+        totalPointsLabel.textColor = Constants.Colors.textColor
+        totalRunsLabel.textColor = .whiteColor()
+        totalRunsLabel.backgroundColor = Constants.Colors.textColor
+        totalRunsLabel.layer.cornerRadius = 3.0
+        totalRunsLabel.layer.masksToBounds = true
 
     }
 
