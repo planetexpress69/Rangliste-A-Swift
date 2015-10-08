@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
 
             self.window?.tintColor = Constants.Colors.textColor
+            self.window?.backgroundColor = UIColor.blueColor()
 
             if let tabBarController = self.window?.rootViewController as? UITabBarController {
                 tabBarController.tabBar.tintColor = Constants.Colors.textColor
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 tabBarController.tabBar.translucent = false
 
                 let tabBarAppearance = UITabBar.appearance()
-                tabBarAppearance.shadowImage = UIImage()
+                //tabBarAppearance.shadowImage = UIImage()
                 tabBarAppearance.backgroundImage = UIImage()
 
                 if let controllersArray = tabBarController.viewControllers as?

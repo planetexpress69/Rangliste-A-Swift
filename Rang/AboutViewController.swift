@@ -65,8 +65,8 @@ class AboutViewController: UIViewController, UITextViewDelegate {
 
         self.navigationController?.navigationBar.barTintColor = .whiteColor()
 
-        let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.hideBottomHairline()
+        //let navigationBar = self.navigationController?.navigationBar
+        //navigationBar?.hideBottomHairline()
     }
 
     override func didReceiveMemoryWarning() {

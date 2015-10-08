@@ -60,11 +60,13 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         theTableView?.delegate = self;
         theTableView?.dataSource = self;
 
+        theTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
         theScoreView.backgroundColor = .whiteColor()
         theScoreLabel.textColor = Constants.Colors.textColor
 
-        let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.hideBottomHairline()
+        //let navigationBar = self.navigationController?.navigationBar
+        //navigationBar?.hideBottomHairline()
 
         self.theTableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
 

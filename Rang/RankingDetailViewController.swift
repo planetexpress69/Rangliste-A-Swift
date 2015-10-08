@@ -20,6 +20,9 @@ class RankingDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail"
+        self.tableView.backgroundView = nil
+        self.tableView.backgroundColor = .whiteColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     // ---------------------------------------------------------------------------------------------

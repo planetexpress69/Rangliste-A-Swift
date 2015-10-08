@@ -8,10 +8,13 @@
 
 import UIKit
 
-class RankingListViewController: UITableViewController,
+class RankingListViewController: UIViewController,
+UITableViewDelegate,
+UITableViewDataSource,
 UISearchResultsUpdating,
 UISearchBarDelegate {
 
+    @IBOutlet weak var theTableView: UITableView!
     var spinnr = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
     var rankingEntries = [RankingEntry]()
     var filteredRankingEntries = [RankingEntry]()
@@ -23,7 +26,7 @@ UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         spinnr.startAnimating()
-        self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinnr)
 
         let reloadButton = UIBarButtonItem(
@@ -43,13 +46,20 @@ UISearchBarDelegate {
 
         title = "Rangliste"
 
-        self.tableView.setContentOffset(
+        theTableView.setContentOffset(
             CGPointMake(0, resultSearchController.searchBar.frame.size.height),
             animated: true)
 
-        let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.hideBottomHairline()
-        self.tableView.backgroundView = nil
+        //let navigationBar = self.navigationController?.navigationBar
+        //navigationBar?.hideBottomHairline()
+
+        //theTableView.backgroundView = nil
+        theTableView.backgroundColor = .whiteColor()
+        theTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
+        theTableView.delegate = self
+        theTableView.dataSource = self
+        view.backgroundColor = .whiteColor()
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -65,16 +75,21 @@ UISearchBarDelegate {
             controller.dimsBackgroundDuringPresentation = false
             controller.hidesNavigationBarDuringPresentation = false
             controller.searchBar.prompt = "Ergebnisse"
-            controller.searchBar.barTintColor = .whiteColor()
-            controller.searchBar.backgroundImage = .imageWithColor(.blackColor())
-            controller.searchBar.translucent = true
-            controller.searchBar.tintColor = .blackColor()
+            //controller.searchBar.barTintColor = .whiteColor()
+            //controller.searchBar.backgroundImage = .imageWithColor(.redColor())
+            controller.searchBar.translucent = false
+            //controller.searchBar.tintColor = .blackColor()
             controller.searchBar.sizeToFit()
             controller.searchBar.delegate = self
 
-            self.tableView.tableHeaderView = controller.searchBar
             return controller
         })()
+
+        self.resultSearchController.view.backgroundColor = .whiteColor()
+
+
+        theTableView.tableHeaderView = self.resultSearchController.searchBar
+
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -87,7 +102,7 @@ UISearchBarDelegate {
     // ---------------------------------------------------------------------------------------------
     func loadWrapper() {
         self.rankingEntries = []
-        tableView.reloadData()
+        theTableView.reloadData()
         self.navigationItem.rightBarButtonItem?.enabled = false
         spinnr.startAnimating()
         self.rankingEntries = []
@@ -101,7 +116,7 @@ UISearchBarDelegate {
         self.navigationItem.rightBarButtonItem?.enabled = true
         spinnr.stopAnimating()
         self.rankingEntries = rankingEntries
-        tableView.reloadData()
+        theTableView.reloadData()
         self.resultSearchController.searchBar.prompt = self.rankingEntries.count == 1 ?
             "\(self.rankingEntries.count) result" :
             "\(self.rankingEntries.count) Einträge"
@@ -109,13 +124,13 @@ UISearchBarDelegate {
 
     //MARK: - Table view data source
     // ---------------------------------------------------------------------------------------------
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         if self.resultSearchController.active {
             return self.filteredRankingEntries.count
@@ -125,7 +140,7 @@ UISearchBarDelegate {
     }
 
     // ---------------------------------------------------------------------------------------------
-    override func tableView(
+    func tableView(
         tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
@@ -172,7 +187,7 @@ UISearchBarDelegate {
         return cell
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 64.0
     }
 
@@ -192,7 +207,7 @@ UISearchBarDelegate {
         )
         let array = (rankingEntries as NSArray).filteredArrayUsingPredicate(searchPredicate)
         filteredRankingEntries = array as! [RankingEntry]
-        self.tableView.reloadData()
+        theTableView.reloadData()
         if self.resultSearchController.active {
             searchController.searchBar.prompt = self.filteredRankingEntries.count == 1 ?
                 "\(self.filteredRankingEntries.count) Ergebnis" :
@@ -213,7 +228,7 @@ UISearchBarDelegate {
         // Pass the selected object to the new view controller.
 
         let detailVC = segue.destinationViewController as! RankingDetailViewController
-        let selectedRowsIndexPath: NSIndexPath = tableView.indexPathForSelectedRow!
+        let selectedRowsIndexPath: NSIndexPath = theTableView.indexPathForSelectedRow!
 
         var elem: RankingEntry
 
@@ -224,7 +239,7 @@ UISearchBarDelegate {
         } else {
             elem = rankingEntries[selectedRowsIndexPath.row]
         }
-        tableView.deselectRowAtIndexPath(selectedRowsIndexPath, animated: true)
+        theTableView.deselectRowAtIndexPath(selectedRowsIndexPath, animated: true)
         detailVC.theDataSource = elem
     }
 
