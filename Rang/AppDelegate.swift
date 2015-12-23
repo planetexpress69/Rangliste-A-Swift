@@ -21,25 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.sharedApplication().statusBarStyle = .LightContent
 
             let navigationBarAppearace = UINavigationBar.appearance()
-            navigationBarAppearace.tintColor = Constants.Colors.textColor
-            navigationBarAppearace.barTintColor = .whiteColor()
+            navigationBarAppearace.tintColor = .whiteColor()
+            navigationBarAppearace.barTintColor = Constants.Colors.textColor
             navigationBarAppearace.translucent = false
             navigationBarAppearace.titleTextAttributes = [
                 NSFontAttributeName : UIFont.systemFontOfSize(22),
-                NSForegroundColorAttributeName : Constants.Colors.textColor
+                NSForegroundColorAttributeName : UIColor.whiteColor()
             ]
 
             self.window?.tintColor = Constants.Colors.textColor
             self.window?.backgroundColor = UIColor.blueColor()
 
             if let tabBarController = self.window?.rootViewController as? UITabBarController {
-                tabBarController.tabBar.tintColor = Constants.Colors.textColor
-                tabBarController.tabBar.barTintColor = .whiteColor()
+                tabBarController.tabBar.tintColor = .whiteColor()
+                tabBarController.tabBar.barTintColor = Constants.Colors.textColor
                 tabBarController.tabBar.translucent = false
-
-                let tabBarAppearance = UITabBar.appearance()
-                //tabBarAppearance.shadowImage = UIImage()
-                tabBarAppearance.backgroundImage = UIImage()
+                tabBarController.view.backgroundColor = .orangeColor();
 
                 if let controllersArray = tabBarController.viewControllers as?
                     Array<UINavigationController> {

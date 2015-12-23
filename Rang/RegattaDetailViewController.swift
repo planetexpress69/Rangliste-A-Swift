@@ -122,6 +122,9 @@ class RegattaDetailViewController: UIViewController, UITextFieldDelegate {
             self,
             action: "toggleThreeDays:",
             forControlEvents: .TouchUpInside)
+
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
     }
 
     // ---------------------------------------------------------------------------------------------

@@ -38,7 +38,7 @@ class SimpleDataProvider {
             sort()
         } else {
             dataStorageArray = []
-            //loadGreta()
+            loadGreta()
         }
     }
 

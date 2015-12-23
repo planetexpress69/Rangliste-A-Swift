@@ -19,44 +19,47 @@ class RegattaListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        regattaNameLabel?.textColor     = Constants.Colors.textColor
-        regattaFactorLabel?.textColor   = Constants.Colors.textColor
-        pointsLabel?.textColor          = Constants.Colors.textColor
-        positionLabel?.textColor        = Constants.Colors.textColor
+        regattaNameLabel?.textColor     = .whiteColor()
+        regattaFactorLabel?.textColor   = .whiteColor()
+        pointsLabel?.textColor          = .whiteColor()
+        positionLabel?.textColor        = .whiteColor()
+        self.backgroundColor = Constants.Colors.textColor
     }
 
     // ---------------------------------------------------------------------------------------------
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         if selected {
-            regattaNameLabel?.textColor = .whiteColor()
-            regattaFactorLabel?.textColor = .whiteColor()
-            pointsLabel?.textColor = .whiteColor()
-            positionLabel?.textColor = .whiteColor()
-        } else {
             regattaNameLabel?.textColor = Constants.Colors.textColor
             regattaFactorLabel?.textColor = Constants.Colors.textColor
             pointsLabel?.textColor = Constants.Colors.textColor
             positionLabel?.textColor = Constants.Colors.textColor
+            self.backgroundColor = .whiteColor()
+        } else {
+            regattaNameLabel?.textColor = .whiteColor()
+            regattaFactorLabel?.textColor = .whiteColor()
+            pointsLabel?.textColor = .whiteColor()
+            positionLabel?.textColor = .whiteColor()
+            self.backgroundColor = Constants.Colors.textColor
         }
     }
 
     // ---------------------------------------------------------------------------------------------
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        
         if highlighted {
-            regattaNameLabel?.textColor = .whiteColor()
-            regattaFactorLabel?.textColor = .whiteColor()
-            pointsLabel?.textColor = .whiteColor()
-            positionLabel?.textColor = .whiteColor()
-        } else {
             regattaNameLabel?.textColor = Constants.Colors.textColor
             regattaFactorLabel?.textColor = Constants.Colors.textColor
             pointsLabel?.textColor = Constants.Colors.textColor
             positionLabel?.textColor = Constants.Colors.textColor
+            self.backgroundColor = .whiteColor()
+        } else {
+            regattaNameLabel?.textColor = .whiteColor()
+            regattaFactorLabel?.textColor = .whiteColor()
+            pointsLabel?.textColor = .whiteColor()
+            positionLabel?.textColor = .whiteColor()
+            self.backgroundColor = Constants.Colors.textColor
         }
-
     }
+
 }

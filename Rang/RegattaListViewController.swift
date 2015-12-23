@@ -33,7 +33,7 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
             action: "addRegatta:")
         let attrs = [
             NSFontAttributeName : UIFont.fontAwesomeOfSize(20),
-            NSForegroundColorAttributeName : Constants.Colors.textColor
+            NSForegroundColorAttributeName : UIColor.whiteColor()
         ]
 
         addButton.setTitleTextAttributes(attrs, forState: .Normal)
@@ -56,14 +56,14 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
             target: nil,
             action: nil)
 
-        theTableView?.backgroundColor = .whiteColor()
+        theTableView?.backgroundColor = Constants.Colors.textColor
         theTableView?.delegate = self;
         theTableView?.dataSource = self;
 
         theTableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-        theScoreView.backgroundColor = .whiteColor()
-        theScoreLabel.textColor = Constants.Colors.textColor
+        theScoreView.backgroundColor = Constants.Colors.textColor
+        theScoreLabel.textColor = .whiteColor()
 
         //let navigationBar = self.navigationController?.navigationBar
         //navigationBar?.hideBottomHairline()
@@ -71,6 +71,15 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
         self.theTableView.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
 
         self.setNeedsStatusBarAppearanceUpdate()
+
+        self.navigationController?.navigationBar.setBackgroundImage(
+            UIImage(),
+            forBarMetrics: UIBarMetrics.Default)
+
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+        self.tabBarController?.tabBar.backgroundImage = UIImage()
+        self.tabBarController?.tabBar.shadowImage = UIImage()
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -101,7 +110,7 @@ class RegattaListViewController: UIViewController, UITableViewDataSource, UITabl
             let cell = tableView.dequeueReusableCellWithIdentifier("RegattaListCell",
                 forIndexPath: indexPath) as! RegattaListCell
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, 320, 100))
-            selectedBackgroundView.backgroundColor = Constants.Colors.textColor
+            selectedBackgroundView.backgroundColor = .whiteColor()
             cell.selectedBackgroundView = selectedBackgroundView
             cell.regattaNameLabel!.text = listOfRegattas[indexPath.row]["title"] as? String
 
