@@ -1,8 +1,8 @@
-# Ranglistenpunkte-A-Swift [![ship.io status](https://app.ship.io/jobs/w5ibkhMwmT6yvLW6/build_status.png)](https://app.ship.io/dashboard#/jobs/8401/history)
+# Ranglistenpunkte-A-Swift
 
 
 A tiny calculator to score regatta results. An upcoming Swift port of [Ranglistenpunkte](https://github.com/planetexpress69/Opti-Ranglistenpunkte).
-Work in progress.
+Work in progress. Acts as my personal Swift playground.
 
 
 ## Environments in which to run Ranglistenpunkte
